@@ -1,0 +1,78 @@
+// COLOR
+
+// DEFAULT COLORS
+$blackColor: #000;
+$btnColor: #fff;
+$btnBGColor: #00f;
+$btnColorAlt: #000;
+$btnBGColorAlt: #f00;
+$inputColor: #000;
+$inputBGColor: #fff;
+$modalColor: #fff;
+$modalBGColor: #000;
+$modalOverlayColor: rgba(0, 0, 0, 0.5);
+$hrColor: #1fd;
+// PROJECT COLORS
+$darkBlueColor: rgb(11, 13, 23);
+$lightPurpleColor: rgb(208, 214, 249);
+$whiteColor: rgb(255, 255, 255);
+
+// FONT
+$fontWeightRegular: 400;
+$fontWeightBold: 700;
+
+$fontFamilyPrimary: "Bellefair", serif;
+$fontFamilySecondary: "Barlow Condensed", sans-serif;
+$fontSizeH1: 150px;
+$fontSizeH2: 100px;
+$fontSizeH3: 56px;
+$fontSizeH4: 32px;
+$fontSizeH5: 28px;
+$fontSizeSubH1: 28px;
+$fontSizeSubH2: 14px;
+$fontSizeP: 18px;
+$fontSizeNavText: 16px;
+
+// TEXT
+$lineHeight: normal;
+
+$lineHeightP: 32px;
+
+$letterSpacingDefault: 0px;
+$letterSpacingH5: 4.75px;
+$letterSpacingSubH2: 2.35px;
+$letterSpacingNavText: 2.7px;
+
+// BORDER
+$border: 1px solid $blackColor;
+$borderRadius: 10px;
+$borderRadiusBtn: 6px;
+
+// OUTLINE
+$outlineOffset: 0px;
+
+// MARGIN
+$margin: 1rem;
+$marginInline: 1rem;
+$marginTop: 1rem;
+$marginRight: 1rem;
+$marginBottom: 1rem;
+$marginLeft: 1rem;
+
+// PADDING
+$padding: 1rem;
+$paddingInline: 1rem;
+$paddingTop: 1rem;
+$paddingRight: 1rem;
+$paddingBottom: 1rem;
+$paddingLeft: 1rem;
+$paddingBtn: 0.25rem 0.5rem;
+$paddingInput: 0.25rem 0.5rem;
+$paddingModal: 2rem 2.5rem;
+$paddingNav: 1.25rem;
+
+// BOX SHADOW (h-offset, v-offset, blur, spread, color)
+$boxShadow: 0px 0px 0px 0px $blackColor;
+
+// Z-INDEX
+$zIndex: 0;

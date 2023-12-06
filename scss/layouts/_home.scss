@@ -1,0 +1,139 @@
+.home {
+  height: 100vh;
+  min-height: 667px;
+  @include flexCenter;
+
+  background-color: $darkBlueColor;
+  background-image: url(../../dist/assets/home/background-home-mobile.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  .content {
+    width: 100%;
+    min-width: 320px;
+    max-width: 768px;
+    height: 100%;
+    min-height: 667px;
+    max-height: 920px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+}
+
+.explore-hover-overlay {
+  width: 200px;
+  height: 200px;
+  background-color: #1f2b28;
+  opacity: 0.8;
+  border-radius: 50%;
+  position: absolute;
+  bottom: calc(7.1964017991% - 25px);
+}
+
+.explore-hover-overlay-active {
+  scale: 1;
+  transition: ease-out 0.8s;
+}
+
+.explore-hover-overlay-notActive {
+  scale: 0.7;
+  transition: ease-out 0.8s;
+}
+
+.home .content .explore {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: $whiteColor;
+  position: absolute;
+  bottom: 7.1964017991%;
+  z-index: 2;
+
+  .explore__text {
+    display: inline;
+    font-family: $fontFamilyPrimary;
+    font-size: 20px;
+    letter-spacing: 1.25px;
+    color: $darkBlueColor;
+    margin: 1px 0;
+  }
+}
+
+.home .content .text {
+  color: $whiteColor;
+  max-width: 500px;
+  padding: 0 24px;
+  position: absolute;
+  top: 16.7916041979%;
+
+  .h1,
+  .p {
+    margin-top: 16px;
+  }
+}
+.home .content .logo {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 3.59820089955%;
+  left: 8%;
+  //   left: 3.59820089955%;
+}
+
+.home .content .hamburger-btn {
+  width: 24px;
+  height: 21px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 4.94752623688%;
+  right: 8%;
+  //   right: 3.59820089955%;
+
+  .rectangle {
+    width: 100%;
+    height: 3px;
+    background-color: $lightPurpleColor;
+    position: absolute;
+    top: 0;
+  }
+
+  .rectangle.n2 {
+    top: 9px;
+  }
+  .rectangle.n3 {
+    top: 18px;
+  }
+}
+
+.home .content .hamburger-btn-active {
+  .rectangle {
+    transform: translateY(9px) rotate(-315deg);
+    transition: ease-out 0.45s;
+  }
+  .rectangle.n2 {
+    opacity: 0;
+    transform: translateY(-0) rotate(-135deg);
+    transition: ease-out 0.1s;
+  }
+
+  .rectangle.n3 {
+    transform: translateY(-9px) rotate(-585deg);
+    transition: ease-out 0.45s;
+  }
+}
+
+.home .content .hamburger-btn-notActive {
+  .rectangle,
+  .rectangle.n3 {
+    transform: translateY(0) rotate(0deg);
+    transition: ease-out 0.45s;
+  }
+  .rectangle.n2 {
+    opacity: 1;
+    transform: rotate(0deg);
+    transition: ease-out 0.45s;
+  }
+}

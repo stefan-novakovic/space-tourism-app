@@ -1,0 +1,17 @@
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin mqMinW($size) {
+  @media only screen and (min-width: $size) {
+    @content;
+  }
+}
+
+@mixin mqMinH($size) {
+  @media only screen and (min-height: $size) {
+    @content;
+  }
+}

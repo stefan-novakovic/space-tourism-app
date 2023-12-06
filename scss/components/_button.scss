@@ -1,0 +1,16 @@
+// DEFAULT BUTTON
+.btn {
+  font-family: inherit;
+  font-size: inherit;
+  background-color: $btnBGColor;
+  color: $btnColor;
+  border: none;
+  border-radius: $borderRadiusBtn;
+  cursor: pointer;
+}
+
+// ALTERNATE BUTTON
+.btn.alt {
+  background-color: $btnBGColorAlt;
+  color: $btnColorAlt;
+}
