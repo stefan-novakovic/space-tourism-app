@@ -2,6 +2,8 @@
   height: 100vh;
   min-height: 667px;
   @include flexCenter;
+  position: relative;
+  overflow-x: hidden;
 
   background-color: $darkBlueColor;
   background-image: url(../../dist/assets/home/background-home-mobile.jpg);
@@ -48,7 +50,7 @@
   background-color: $whiteColor;
   position: absolute;
   bottom: 7.1964017991%;
-  z-index: 2;
+  z-index: 1;
 
   .explore__text {
     display: inline;
@@ -81,59 +83,37 @@
   //   left: 3.59820089955%;
 }
 
-.home .content .hamburger-btn {
-  width: 24px;
-  height: 21px;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
+.home .phone-menu {
+  width: 254px;
+  height: 100vh;
+  min-height: 667px;
+  background-color: rgba(255, 255, 255, 0.04);
   position: absolute;
-  top: 4.94752623688%;
-  right: 8%;
-  //   right: 3.59820089955%;
+  top: 0;
+  right: 0;
+  transform: translateX(255px);
 
-  .rectangle {
+  z-index: 2;
+
+  @include mqMinW(768px) {
+    display: none;
+  }
+
+  .blur-filter {
     width: 100%;
-    height: 3px;
-    background-color: $lightPurpleColor;
-    position: absolute;
-    top: 0;
-  }
+    height: 100%;
 
-  .rectangle.n2 {
-    top: 9px;
-  }
-  .rectangle.n3 {
-    top: 18px;
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
   }
 }
 
-.home .content .hamburger-btn-active {
-  .rectangle {
-    transform: translateY(9px) rotate(-315deg);
-    transition: ease-out 0.45s;
-  }
-  .rectangle.n2 {
-    opacity: 0;
-    transform: translateY(-0) rotate(-135deg);
-    transition: ease-out 0.1s;
-  }
-
-  .rectangle.n3 {
-    transform: translateY(-9px) rotate(-585deg);
-    transition: ease-out 0.45s;
-  }
+.home .phone-menu.phoneMenuShow {
+  transform: translate(0px);
+  transition: 0.9s ease-in-out;
 }
 
-.home .content .hamburger-btn-notActive {
-  .rectangle,
-  .rectangle.n3 {
-    transform: translateY(0) rotate(0deg);
-    transition: ease-out 0.45s;
-  }
-  .rectangle.n2 {
-    opacity: 1;
-    transform: rotate(0deg);
-    transition: ease-out 0.45s;
-  }
+.home .phone-menu.phoneMenuHide {
+  transform: translate(255px);
+  transition: 0.9s ease-in-out;
 }

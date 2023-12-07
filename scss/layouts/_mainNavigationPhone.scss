@@ -1,0 +1,38 @@
+.phoneNav {
+  height: 100%;
+  padding: $paddingNav;
+  .ul {
+    @include flexCenter;
+    flex-direction: column;
+    list-style-type: none;
+
+    .li {
+      width: 100%;
+      font-size: 16px;
+      font-family: $fontFamilySecondary;
+      letter-spacing: 2.7px;
+      margin-bottom: 2rem;
+
+      .li__a {
+        // display: block;
+        font-weight: $fontWeightRegular;
+        color: $whiteColor;
+
+        .li__a__numbr {
+          font-weight: $fontWeightBold;
+        }
+
+        .li__a__numbr.aHome {
+          margin-right: 11px;
+        }
+        .li__a__numbr.aDestination {
+          margin-right: 14px;
+        }
+        .li__a__numbr.aCrew,
+        .li__a__numbr.aTechnology {
+          margin-right: 12px;
+        }
+      }
+    }
+  }
+}
