@@ -95,10 +95,6 @@
 
   z-index: 2;
 
-  @include mqMinW(768px) {
-    display: none;
-  }
-
   .blur-filter {
     width: 100%;
     height: 100%;
