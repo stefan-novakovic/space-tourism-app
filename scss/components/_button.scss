@@ -2,8 +2,8 @@
 .btn {
   font-family: inherit;
   font-size: inherit;
-  background-color: $btnBGColor;
-  color: $btnColor;
+  background-color: $whiteColor;
+  color: $darkBlueColor;
   border: none;
   border-radius: $borderRadiusBtn;
   cursor: pointer;
@@ -11,11 +11,11 @@
 
 // ALTERNATE BUTTON
 .btn.alt {
-  background-color: $btnBGColorAlt;
-  color: $btnColorAlt;
+  background-color: $darkBlueColor;
+  color: $whiteColor;
 }
 
-// DEFAULT
+// DEFAULT HAMBURGER BUTTON
 .hamburger-btn {
   width: 24px;
   height: 21px;
@@ -25,7 +25,7 @@
   position: absolute;
 }
 
-.rectangle {
+.rect {
   width: 100%;
   height: 3px;
   background-color: $lightPurpleColor;
@@ -33,38 +33,39 @@
   top: 0;
 }
 
-.rectangle.n2 {
+.rect.n2 {
   top: 9px;
 }
 
-.rectangle.n3 {
+.rect.n3 {
   top: 18px;
 }
 
-// MODIFICATIONS FOR HOME PAGE HAMBURGER BUTTON
-.hamburger-btn.forHomePage {
+// MODIFICATIONS FOR HAMBURGER BUTTON (OPEN MENU)
+.hamburger-btn.btn-open {
   top: 4.94752623688%;
+  //   PO FIGMI:
+  //   left: 3.59820089955%;
   right: 8%;
-  z-index: 2;
 }
 
-// MODIFICATIONS FOR PHONE MENU HAMBURGER BUTTON
-.hamburger-btn.forHomePhoneMenu {
+// MODIFICATIONS FOR HAMBURGER BUTTON (CLOSE MENU)
+.hamburger-btn.btn-close {
   top: 0;
   right: 0;
   margin-top: 33px;
   margin-right: 24px;
-  z-index: 3;
+  z-index: 2;
 
-  .rectangle {
+  .rect {
     transform: translateY(9px) rotate(-315deg);
   }
 
-  .rectangle.n2 {
+  .rect.n2 {
     opacity: 0;
   }
 
-  .rectangle.n3 {
+  .rect.n3 {
     transform: translateY(-9px) rotate(-585deg);
   }
 }

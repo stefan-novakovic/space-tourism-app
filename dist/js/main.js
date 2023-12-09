@@ -8,41 +8,35 @@ document.addEventListener("DOMContentLoaded", initApp);
 const startApp = async () => {
   const dataJSON = await getJSONData();
   exploreBtnListen();
-  hamburgerBtnListenForMenuOpen(dataJSON);
-  hamburgerBtnListenForMenuClose();
+  hamburgerBtnListen(dataJSON);
 };
 
 const exploreBtnListen = () => {
-  const exploreBtn = document.getElementById("explore");
-  const exploreOverlay = document.getElementById("explore-overlay");
+  const exploreBtn = document.getElementById("explore-btn");
+  const exploreBtnOverlay = document.getElementById("explore-btn-overlay");
 
   exploreBtn.addEventListener("mouseover", (event) => {
-    exploreOverlay.classList.remove("explore-hover-overlay-notActive");
-    exploreOverlay.classList.add("explore-hover-overlay-active");
+    exploreBtnOverlay.classList.remove("overlay-not-active");
+    exploreBtnOverlay.classList.add("overlay-active");
   });
 
   exploreBtn.addEventListener("mouseleave", (event) => {
-    exploreOverlay.classList.remove("explore-hover-overlay-active");
-    exploreOverlay.classList.add("explore-hover-overlay-notActive");
+    exploreBtnOverlay.classList.remove("overlay-active");
+    exploreBtnOverlay.classList.add("overlay-not-active");
   });
 };
 
-const hamburgerBtnListenForMenuOpen = (dataJSON) => {
-  const hamburgerBtnHome = document.getElementById("hamburger-btn-home");
+const hamburgerBtnListen = (dataJSON) => {
+  const hamburgerBtnOpenMenu = document.getElementById("hamburger-btn-open");
+  const hamburgerBtnCloseMenu = document.getElementById("hamburger-btn-close");
   const phoneMenu = document.getElementById("phone-menu");
 
-  hamburgerBtnHome.addEventListener("click", (event) => {
+  hamburgerBtnOpenMenu.addEventListener("click", (event) => {
     phoneMenu.classList.remove("phoneMenuHide");
     phoneMenu.classList.add("phoneMenuShow");
   });
-  console.log(dataJSON);
-};
 
-const hamburgerBtnListenForMenuClose = () => {
-  const hamburgerBtnMenu = document.getElementById("hamburger-btn-menu");
-  const phoneMenu = document.getElementById("phone-menu");
-
-  hamburgerBtnMenu.addEventListener("click", (event) => {
+  hamburgerBtnCloseMenu.addEventListener("click", (event) => {
     phoneMenu.classList.remove("phoneMenuShow");
     phoneMenu.classList.add("phoneMenuHide");
   });

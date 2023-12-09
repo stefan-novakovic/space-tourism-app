@@ -20,61 +20,64 @@
 </head>
 
 <body>
-    <main id="main">
-        <section id="home" class="home">
-            <div id="content" class="content">
-                <div id="logo" class="logo">
-                    <img src="assets/shared/logo.svg" alt="Logo icon">
+    <main id="home-page-main">
+        <section id="home-page" class="home-page">
+            <div id="content-container" class="content-container">
+                <div id="logo-div" class="logo-div">
+                    <img id="logo-img" src="assets/shared/logo.svg" alt="Logo icon">
                 </div>
-                <button id="hamburger-btn-home" class="hamburger-btn forHomePage">
-                    <div class="rectangle"></div>
-                    <div class="rectangle n2"></div>
-                    <div class="rectangle n3"></div>
+                <button id="hamburger-btn-open" class="hamburger-btn btn-open">
+                    <div class="rect"></div>
+                    <div class="rect n2"></div>
+                    <div class="rect n3"></div>
                 </button>
 
-                <div id="text" class="text">
-                    <h2 class="h5 textCenter">SO, YOU WANT TO TRAVEL TO</h2>
-                    <h1 class="h1 textCenter">SPACE</h1>
-                    <p class="p textCenter">Let's face it; if you want to go to space, you might as well genuinely go to
-                        outer
-                        space and not
-                        hover kind of on the edge of it. Well sit back, and relax because we'll give you a truly out of
-                        this world experience!</p>
+                <div id="text-div" class="text-div">
+                    <h2 class="h2 text-center">SO, YOU WANT TO TRAVEL TO</h2>
+                    <h1 class="h1 text-center">SPACE</h1>
+                    <p class="p text-center">Let's face it; if you want to go to space, you might as well genuinely go
+                        to
+                        outer space and not hover kind of on the edge of it. Well sit back, and relax because we'll give
+                        you a truly out of this world experience!</p>
                 </div>
 
-                <button id="explore" class="btn explore">
-                    <p class="explore__text">EXPLORE</p>
-                </button>
+                <div id="explore-btn-overlay" class="explore-btn-hover-overlay overlay-not-active">
+                </div>
 
-                <div id="explore-overlay" class="explore-hover-overlay explore-hover-overlay-notActive"> </div>
+                <button id="explore-btn" class="btn explore-btn">
+                    <p class="explore-btn__text">EXPLORE</p>
+                </button>
             </div>
+
             <div id="phone-menu" class="phone-menu">
-                <div class="blur-filter">
-                    <button id="hamburger-btn-menu" class="hamburger-btn forHomePhoneMenu">
-                        <div class="rectangle"></div>
-                        <div class="rectangle n2"></div>
-                        <div class="rectangle n3"></div>
+                <div class="phone-menu__blur-filter">
+                    <button id="hamburger-btn-close" class="hamburger-btn btn-close">
+                        <div class="rect"></div>
+                        <div class="rect n2"></div>
+                        <div class="rect n3"></div>
                     </button>
 
-                    <nav class="phoneNav">
+                    <nav class="main-nav-phone">
                         <ul class="ul">
-                            <li class="li"><a class="li__a aHome" href="#"><span
-                                        class="li__a__numbr aHome">00</span>HOME</a>
+                            <li class="li">
+                                <a class="li__a a-home" href="#">
+                                    <span class="li__a__numbr a-home">00</span>HOME</a>
                             </li>
-                            <li class="li"><a class="li__a" href="destination.html"><span
-                                        class="li__a__numbr aDestination">01</span>DESTINATION</a>
+                            <li class="li">
+                                <a class="li__a" href="destination.html"><span
+                                        class="li__a__numbr a-destination">01</span>DESTINATION</a>
                             </li>
-                            <li class="li"><a class="li__a" href="crew.html"><span
-                                        class="li__a__numbr aCrew">02</span>CREW</a>
+                            <li class="li">
+                                <a class="li__a" href="crew.html"><span class="li__a__numbr a-crew">02</span>CREW</a>
                             </li>
-                            <li class="li"><a class="li__a" href="technology.html"><span
-                                        class="li__a__numbr aTechnology">03</span>TECHNOLOGY</a>
+                            <li class="li">
+                                <a class="li__a" href="technology.html"><span
+                                        class="li__a__numbr a-technology">03</span>TECHNOLOGY</a>
                             </li>
                         </ul>
                     </nav>
                 </div>
             </div>
-
         </section>
     </main>
 </body>

@@ -1,4 +1,4 @@
-.home {
+.home-page {
   height: 100vh;
   min-height: 667px;
   @include flexCenter;
@@ -10,62 +10,58 @@
   background-repeat: no-repeat;
   background-size: cover;
 
-  .content {
+  .content-container {
     width: 100%;
+    height: 100%;
     min-width: 320px;
     max-width: 768px;
-    height: 100%;
     min-height: 667px;
     max-height: 920px;
-    display: flex;
-    justify-content: center;
+    @include flexCenter;
     position: relative;
   }
 }
 
-.explore-hover-overlay {
+.explore-btn-hover-overlay {
   width: 200px;
   height: 200px;
-  background-color: #1f2b28;
+  background-color: $exploreBtnOverlayColor;
   opacity: 0.8;
   border-radius: 50%;
   position: absolute;
   bottom: calc(7.1964017991% - 25px);
 }
 
-.explore-hover-overlay-active {
+.explore-btn-hover-overlay.overlay-active {
   scale: 1;
   transition: ease-out 0.8s;
 }
 
-.explore-hover-overlay-notActive {
+.explore-btn-hover-overlay.overlay-not-active {
   scale: 0.7;
   transition: ease-out 0.8s;
 }
 
-.home .content .explore {
+.home-page .content-container .explore-btn {
   width: 150px;
   height: 150px;
   border-radius: 50%;
   background-color: $whiteColor;
   position: absolute;
   bottom: 7.1964017991%;
-  z-index: 1;
 
-  .explore__text {
-    display: inline;
+  .explore-btn__text {
     font-family: $fontFamilyPrimary;
     font-size: 20px;
     letter-spacing: 1.25px;
     color: $darkBlueColor;
-    margin: 1px 0;
   }
 }
 
-.home .content .text {
-  color: $whiteColor;
+.home-page .content-container .text-div {
   max-width: 500px;
   padding: 0 24px;
+  color: $whiteColor;
   position: absolute;
   top: 16.7916041979%;
 
@@ -74,16 +70,18 @@
     margin-top: 16px;
   }
 }
-.home .content .logo {
+
+.home-page .content-container .logo-div {
   width: 40px;
   height: 40px;
   position: absolute;
   top: 3.59820089955%;
   left: 8%;
+  //   PO FIGMI:
   //   left: 3.59820089955%;
 }
 
-.home .phone-menu {
+.home-page .phone-menu {
   width: 254px;
   height: 100vh;
   min-height: 667px;
@@ -93,9 +91,9 @@
   right: 0;
   transform: translateX(255px);
 
-  z-index: 2;
+  z-index: 1;
 
-  .blur-filter {
+  .phone-menu__blur-filter {
     width: 100%;
     height: 100%;
 
@@ -104,12 +102,25 @@
   }
 }
 
-.home .phone-menu.phoneMenuShow {
+.home-page .phone-menu.phoneMenuShow {
   transform: translate(0px);
-  transition: 0.9s ease-in-out;
+  transition: 0.875s ease-in-out;
 }
 
-.home .phone-menu.phoneMenuHide {
+.home-page .phone-menu.phoneMenuHide {
   transform: translate(255px);
-  transition: 0.9s ease-in-out;
+  transition: 0.875s ease-in-out;
+}
+
+// BACKGROUND IMAGE QUERIES
+@include mqMinW(525px) {
+  .home-page {
+    background-image: url(../../dist/assets/home/background-home-tablet.jpg);
+  }
+}
+@include mqMinW(950px) {
+  .home-page {
+    background-image: url(../../dist/assets/home/background-home-desktop.jpg);
+    background-position: right;
+  }
 }

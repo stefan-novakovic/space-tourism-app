@@ -1,6 +1,8 @@
-.phoneNav {
+.main-nav-phone {
+  width: 100%;
   height: 100%;
   padding: $paddingNav;
+
   .ul {
     @include flexCenter;
     flex-direction: column;
@@ -10,26 +12,25 @@
       width: 100%;
       font-size: 16px;
       font-family: $fontFamilySecondary;
+      font-weight: $fontWeightRegular;
       letter-spacing: 2.7px;
       margin-bottom: 2rem;
 
       .li__a {
-        // display: block;
-        font-weight: $fontWeightRegular;
         color: $whiteColor;
 
         .li__a__numbr {
           font-weight: $fontWeightBold;
         }
 
-        .li__a__numbr.aHome {
+        .li__a__numbr.a-home {
           margin-right: 11px;
         }
-        .li__a__numbr.aDestination {
+        .li__a__numbr.a-destination {
           margin-right: 14px;
         }
-        .li__a__numbr.aCrew,
-        .li__a__numbr.aTechnology {
+        .li__a__numbr.a-crew,
+        .li__a__numbr.a-technology {
           margin-right: 12px;
         }
       }

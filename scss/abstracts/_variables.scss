@@ -1,37 +1,27 @@
 // COLOR
 
 // DEFAULT COLORS
-$blackColor: #000;
-$btnColor: #fff;
-$btnBGColor: #00f;
-$btnColorAlt: #000;
-$btnBGColorAlt: #f00;
-$inputColor: #000;
-$inputBGColor: #fff;
-$modalColor: #fff;
-$modalBGColor: #000;
-$modalOverlayColor: rgba(0, 0, 0, 0.5);
-$hrColor: #1fd;
-// PROJECT COLORS
 $darkBlueColor: rgb(11, 13, 23);
 $lightPurpleColor: rgb(208, 214, 249);
 $whiteColor: rgb(255, 255, 255);
+$exploreBtnOverlayColor: #1f2b28;
 
 // FONT
+$fontFamilyPrimary: "Bellefair", serif;
+$fontFamilySecondary: "Barlow Condensed", sans-serif;
+
 $fontWeightRegular: 400;
 $fontWeightBold: 700;
 
-$fontFamilyPrimary: "Bellefair", serif;
-$fontFamilySecondary: "Barlow Condensed", sans-serif;
-$fontSizeH1: 150px;
-$fontSizeH2: 100px;
-$fontSizeH3: 56px;
-$fontSizeH4: 32px;
-$fontSizeH5: 28px;
-$fontSizeSubH1: 28px;
-$fontSizeSubH2: 14px;
-$fontSizeP: 18px;
-$fontSizeNavText: 16px;
+// $fontSizeH1: 150px;
+// $fontSizeH2: 100px;
+// $fontSizeH3: 56px;
+// $fontSizeH4: 32px;
+// $fontSizeH5: 28px;
+// $fontSizeSubH1: 28px;
+// $fontSizeSubH2: 14px;
+// $fontSizeP: 18px;
+// $fontSizeNavText: 16px;
 
 // TEXT
 $lineHeight: normal;
@@ -44,7 +34,7 @@ $letterSpacingSubH2: 2.35px;
 $letterSpacingNavText: 2.7px;
 
 // BORDER
-$border: 1px solid $blackColor;
+$border: 1px solid $darkBlueColor;
 $borderRadius: 10px;
 $borderRadiusBtn: 6px;
 
@@ -67,12 +57,10 @@ $paddingRight: 1rem;
 $paddingBottom: 1rem;
 $paddingLeft: 1rem;
 $paddingBtn: 0.25rem 0.5rem;
-$paddingInput: 0.25rem 0.5rem;
-$paddingModal: 2rem 2.5rem;
 $paddingNav: 7.375rem 2rem 0;
 
 // BOX SHADOW (h-offset, v-offset, blur, spread, color)
-$boxShadow: 0px 0px 0px 0px $blackColor;
+$boxShadow: 0px 0px 0px 0px $darkBlueColor;
 
 // Z-INDEX
 $zIndex: 0;
