@@ -1,0 +1,21 @@
+.main-nav {
+  padding: 39px 3rem;
+  .ul {
+    @include flexCenter;
+    height: 18px;
+    justify-content: space-between;
+    flex-direction: row;
+    list-style-type: none;
+
+    .li {
+      font-size: 14px;
+      font-family: $fontBarlowCondensedRegular;
+      font-weight: $fontWeightRegular;
+      letter-spacing: 2.36px;
+
+      .li__a {
+        color: $whiteColor;
+      }
+    }
+  }
+}
