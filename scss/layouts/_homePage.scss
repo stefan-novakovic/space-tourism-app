@@ -2,8 +2,8 @@
   height: 100vh;
   min-height: 667px;
   @include flexCenter;
-  position: relative;
   overflow-x: hidden;
+  position: relative;
 
   background-color: $darkBlueColor;
   background-image: url(../../dist/assets/home/background-home-mobile.jpg);
@@ -13,10 +13,8 @@
   .content-container {
     width: 100%;
     height: 100%;
-    min-width: 320px;
     max-width: 768px;
-    min-height: 667px;
-    max-height: 920px;
+    max-height: 850px;
     @include flexCenter;
     position: relative;
   }
@@ -29,17 +27,16 @@
   opacity: 0.8;
   border-radius: 50%;
   position: absolute;
-  bottom: calc(7.1964017991% - 25px);
+  bottom: calc(7.1964017991vh - 25px);
+  transition: scale ease-out 0.8s;
 }
 
 .explore-btn-hover-overlay.overlay-active {
   scale: 1;
-  transition: ease-out 0.8s;
 }
 
 .explore-btn-hover-overlay.overlay-not-active {
   scale: 0.7;
-  transition: ease-out 0.8s;
 }
 
 .home-page .content-container .explore-btn {
@@ -48,10 +45,10 @@
   border-radius: 50%;
   background-color: $whiteColor;
   position: absolute;
-  bottom: 7.1964017991%;
+  bottom: 7.1964017991vh;
 
   .explore-btn__text {
-    font-family: $fontFamilyPrimary;
+    font-family: $fontBellefairRegular;
     font-size: 20px;
     letter-spacing: 1.25px;
     color: $darkBlueColor;
@@ -59,11 +56,11 @@
 }
 
 .home-page .content-container .text-div {
-  max-width: 500px;
-  padding: 0 24px;
+  max-width: 600px;
+  margin: 0 24px;
   color: $whiteColor;
   position: absolute;
-  top: 16.7916041979%;
+  top: 16.7916041979vh;
 
   .h1,
   .p {
@@ -75,10 +72,10 @@
   width: 40px;
   height: 40px;
   position: absolute;
-  top: 3.59820089955%;
-  left: 8%;
+  top: 24px;
+  left: 24px;
   //   PO FIGMI:
-  //   left: 3.59820089955%;
+  //   left: 3.59820089955vw;
 }
 
 .home-page .phone-menu {
