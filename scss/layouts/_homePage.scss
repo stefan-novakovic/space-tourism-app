@@ -27,7 +27,7 @@
   opacity: 0.8;
   border-radius: 50%;
   position: absolute;
-  bottom: calc(7.1964017991vh - 25px);
+  bottom: calc(48px - 25px);
   transition: scale ease-out 0.8s;
 }
 
@@ -45,7 +45,7 @@
   border-radius: 50%;
   background-color: $whiteColor;
   position: absolute;
-  bottom: 7.1964017991vh;
+  bottom: 48px;
 
   .explore-btn__text {
     font-family: $fontBellefairRegular;
@@ -60,7 +60,7 @@
   margin: 0 24px;
   color: $whiteColor;
   position: absolute;
-  top: 16.7916041979vh;
+  top: 112px;
 
   .h1,
   .p {
@@ -68,14 +68,15 @@
   }
 }
 
-.home-page .content-container .logo-div {
+.home-page .content-container .logo-div-phone {
   width: 40px;
   height: 40px;
   position: absolute;
   top: 24px;
   left: 24px;
-  //   PO FIGMI:
-  //   left: 3.59820089955vw;
+  @include mqMinW(768px) {
+    display: none;
+  }
 }
 
 .home-page .phone-menu {
@@ -89,6 +90,10 @@
   transform: translateX(255px);
 
   z-index: 1;
+
+  @include mqMinW(768px) {
+    display: none;
+  }
 
   .phone-menu__blur-filter {
     width: 100%;

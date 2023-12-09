@@ -23,6 +23,10 @@
   border: none;
   cursor: pointer;
   position: absolute;
+
+  @include mqMinW(768px) {
+    display: none;
+  }
 }
 
 .rect {
