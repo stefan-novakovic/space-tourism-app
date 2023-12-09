@@ -14,13 +14,26 @@
     min-height: 1024px;
   }
 
+  @include mqMinW(1440px) {
+    min-height: 900px;
+  }
+
   .content-container {
     width: 100%;
     height: 100%;
-    max-width: 768px;
-    max-height: 1024px;
+    max-width: 1440px;
+    max-height: 1366px;
     @include flexCenter;
     position: relative;
+
+    @include mqMinW(1440px) {
+      max-width: 1440px;
+      max-height: 900px;
+      background-color: $darkBlueColor;
+      background-image: url(../../dist/assets/home/background-home-desktop.jpg);
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
   }
 }
 
@@ -28,7 +41,7 @@
   width: 200px;
   height: 200px;
   background-color: $exploreBtnOverlayColor;
-  opacity: 0.8;
+  opacity: 0.875;
   border-radius: 50%;
   position: absolute;
   bottom: calc(48px - 25px);
@@ -38,6 +51,13 @@
     width: 302px;
     height: 302px;
     bottom: calc(90px - 30px);
+  }
+
+  @include mqMinW(1440px) {
+    width: 350px;
+    height: 350px;
+    bottom: calc(131px - 37px);
+    right: (165px - 37px);
   }
 }
 
@@ -63,6 +83,13 @@
     bottom: 90px;
   }
 
+  @include mqMinW(1440px) {
+    width: 274px;
+    height: 274px;
+    bottom: 131px;
+    right: 165px;
+  }
+
   .explore-btn__text {
     font-family: $fontBellefairRegular;
     font-size: 20px;
@@ -85,6 +112,12 @@
 
   @include mqMinW(768px) {
     top: 202px;
+  }
+
+  @include mqMinW(1440px) {
+    top: auto;
+    bottom: 131px;
+    left: 165px;
   }
 }
 
@@ -136,7 +169,7 @@
 
 @include mqMinW(768px) {
   .home-page .menu-and-logo-container {
-    width: 729px;
+    width: 94.6265%;
     height: 96px;
     @include flexCenter;
     justify-content: space-between;
@@ -144,11 +177,34 @@
     top: 0;
     right: 0;
 
+    @include mqMinW(1440px) {
+      width: 96.181%;
+    }
+
     .menu {
       width: 450px;
       height: 100%;
       background-color: rgba(255, 255, 255, 0.04);
+
+      @include mqMinW(1440px) {
+        width: 830px;
+      }
     }
+  }
+}
+
+@include mqMinW(1440px) {
+  .home-page .menu-and-logo-container {
+    margin-top: 40px;
+  }
+  .rectangle-line {
+    width: 473px;
+    height: 1px;
+    background-color: $whiteColor;
+    opacity: 0.2515;
+    position: absolute;
+    left: 112px;
+    z-index: 1;
   }
 }
 
@@ -161,6 +217,12 @@
 @include mqMinW(950px) {
   .home-page {
     background-image: url(../../dist/assets/home/background-home-desktop.jpg);
-    background-position: right;
+    background-position: center;
+  }
+}
+
+@include mqMinW(1440px) {
+  .home-page {
+    background-image: none;
   }
 }

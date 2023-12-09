@@ -22,11 +22,17 @@ main {
   font-size: 80px;
   font-weight: $fontWeightRegular;
   line-height: 100px;
+  text-align: center;
 
   @include mqMinW(768px) {
     font-size: 150px;
     line-height: 150px;
     margin-right: 5px;
+  }
+  @include mqMinW(1440px) {
+    line-height: auto;
+    margin-right: 0px;
+    text-align: left;
   }
 }
 
@@ -36,10 +42,16 @@ main {
   font-weight: $fontWeightRegular;
   letter-spacing: 2.7px;
   color: $lightPurpleColor;
+  text-align: center;
 
   @include mqMinW(768px) {
     font-size: 20px;
     letter-spacing: 3.38px;
+  }
+  @include mqMinW(1440px) {
+    font-size: 28px;
+    letter-spacing: 4.72px;
+    text-align: left;
   }
 }
 
@@ -49,11 +61,18 @@ main {
   font-weight: $fontWeightRegular;
   line-height: 25px;
   color: $lightPurpleColor;
+  text-align: center;
 
   @include mqMinW(768px) {
     font-size: 16px;
     line-height: 28px;
     margin-inline: 3px;
+  }
+  @include mqMinW(1440px) {
+    font-size: 18px;
+    line-height: 32px;
+    margin-inline: 0px;
+    text-align: left;
   }
 }
 

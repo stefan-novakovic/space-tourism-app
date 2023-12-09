@@ -1,5 +1,9 @@
 .main-nav {
   padding: 39px 3rem;
+
+  @include mqMinW(1440px) {
+    padding: 39px 165px 38px 123px;
+  }
   .ul {
     @include flexCenter;
     height: 18px;
@@ -7,14 +11,46 @@
     flex-direction: row;
     list-style-type: none;
 
+    @include mqMinW(1440px) {
+      height: 19px;
+    }
+
     .li {
       font-size: 14px;
       font-family: $fontBarlowCondensedRegular;
       font-weight: $fontWeightRegular;
       letter-spacing: 2.36px;
 
+      @include mqMinW(1440px) {
+        font-size: 16px;
+        letter-spacing: 2.7px;
+      }
+
       .li__a {
         color: $whiteColor;
+      }
+
+      .li__a__numbr {
+        display: none;
+        font-family: $fontBarlowCondensedRegular;
+        font-weight: $fontWeightBold;
+
+        @include mqMinW(1440px) {
+          display: inline;
+          font-size: 16px;
+          letter-spacing: 2.7px;
+        }
+      }
+
+      .li__a__numbr.a-home {
+        margin-right: 11px;
+      }
+      .li__a__numbr.a-destination {
+        margin-right: 14px;
+      }
+      .li__a__numbr.a-crew,
+      .li__a__numbr.a-technology {
+        margin-right: 12px;
       }
     }
   }
