@@ -5,12 +5,20 @@
   overflow-x: hidden;
   position: relative;
 
+  background-color: $darkBlueColor;
+  background-image: url("../../dist/assets/crew/background-crew-mobile.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: luminosity;
+
   @include mqMinW(768px) {
     min-height: 1024px;
+    background-image: url("../../dist/assets/crew/background-crew-tablet.jpg");
   }
 
   @include mqMinW(1440px) {
     min-height: 900px;
+    background-image: url("../../dist/assets/crew/background-crew-desktop.jpg");
   }
 
   .content-container {

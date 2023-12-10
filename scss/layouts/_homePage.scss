@@ -6,7 +6,7 @@
   position: relative;
 
   background-color: $darkBlueColor;
-  background-image: url(../../dist/assets/home/background-home-mobile.jpg);
+  background-image: url("../../dist/assets/home/background-home-mobile.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 
@@ -34,7 +34,7 @@
       max-width: 1440px;
       max-height: 900px;
       background-color: $darkBlueColor;
-      background-image: url(../../dist/assets/home/background-home-desktop.jpg);
+      background-image: url("../../dist/assets/home/background-home-desktop.jpg");
       background-repeat: no-repeat;
       background-size: contain;
     }
@@ -215,12 +215,12 @@
 // BACKGROUND IMAGE QUERIES
 @include mqMinW(525px) {
   .home-page {
-    background-image: url(../../dist/assets/home/background-home-tablet.jpg);
+    background-image: url("../../dist/assets/home/background-home-tablet.jpg");
   }
 }
 @include mqMinW(950px) {
   .home-page {
-    background-image: url(../../dist/assets/home/background-home-desktop.jpg);
+    background-image: url("../../dist/assets/home/background-home-desktop.jpg");
     background-position: center;
   }
 }
