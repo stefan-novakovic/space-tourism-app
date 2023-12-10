@@ -1,0 +1,120 @@
+.crew-page {
+  height: 100vh;
+  min-height: 667px;
+  @include flexCenter;
+  overflow-x: hidden;
+  position: relative;
+
+  @include mqMinW(768px) {
+    min-height: 1024px;
+  }
+
+  @include mqMinW(1440px) {
+    min-height: 900px;
+  }
+
+  .content-container {
+    width: 100%;
+    height: 100%;
+    max-width: 1440px;
+    max-height: 830px;
+    @include flexCenter;
+    position: relative;
+
+    @include mqMinW(768px) {
+      max-height: 1366px;
+    }
+
+    @include mqMinW(1440px) {
+      max-width: 1440px;
+      max-height: 900px;
+    }
+  }
+}
+
+.crew-page .content-container .logo-div-phone {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  @include mqMinW(768px) {
+    display: none;
+  }
+}
+
+.crew-page .phone-menu {
+  width: 254px;
+  height: 100vh;
+  min-height: 667px;
+  background-color: rgba(255, 255, 255, 0.04);
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateX(255px);
+
+  z-index: 1;
+
+  @include mqMinW(768px) {
+    display: none;
+  }
+}
+
+.blur-filter {
+  width: 100%;
+  height: 100%;
+
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+}
+
+.crew-page .phone-menu.phoneMenuShow {
+  transform: translate(0px);
+  transition: 0.875s ease-in-out;
+}
+
+.crew-page .phone-menu.phoneMenuHide {
+  transform: translate(255px);
+  transition: 0.875s ease-in-out;
+}
+
+@include mqMinW(768px) {
+  .crew-page .menu-and-logo-container {
+    width: 94.6265%;
+    height: 96px;
+    @include flexCenter;
+    justify-content: space-between;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    @include mqMinW(1440px) {
+      width: 96.181%;
+    }
+
+    .menu {
+      width: 450px;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.04);
+
+      @include mqMinW(1440px) {
+        width: 830px;
+      }
+    }
+  }
+}
+
+@include mqMinW(1440px) {
+  .crew-page .menu-and-logo-container {
+    margin-top: 40px;
+  }
+  .rectangle-line {
+    width: 473px;
+    height: 1px;
+    background-color: $whiteColor;
+    opacity: 0.2515;
+    position: absolute;
+    left: 112px;
+    z-index: 1;
+  }
+}
