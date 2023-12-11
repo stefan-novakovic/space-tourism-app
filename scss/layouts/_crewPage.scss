@@ -17,7 +17,7 @@
 
 .crew-page {
   height: 100vh;
-  min-height: 667px;
+  min-height: 710px;
   @include flexCenter;
   overflow-x: hidden;
   position: relative;
@@ -144,7 +144,7 @@
 .crew-page .phone-menu {
   width: 254px;
   height: 100vh;
-  min-height: 667px;
+  min-height: 710px;
   background-color: rgba(255, 255, 255, 0.04);
   position: absolute;
   top: 0;
