@@ -7,6 +7,13 @@
   color: $whiteColor;
   position: absolute;
   top: 88px;
+
+  @include mqMinW(768px) {
+    font-size: 20px;
+    letter-spacing: 3.38px;
+    top: 136px;
+    left: 38.5px;
+  }
 }
 
 .crew-page-title-text-nmbr {
@@ -49,6 +56,7 @@
 
     @include mqMinW(768px) {
       max-height: 1366px;
+      overflow-y: hidden;
     }
 
     @include mqMinW(1440px) {
@@ -65,17 +73,34 @@
   top: 139px;
   overflow-y: hidden;
 
+  @include mqMinW(768px) {
+    width: auto;
+    height: auto;
+    top: auto;
+    bottom: -40px;
+  }
+
   .crew-img {
     height: 222px;
     width: auto;
     margin-inline: auto;
+
+    @include mqMinW(768px) {
+      height: 572px;
+      width: auto;
+    }
   }
+
   .crew-img-rect {
     height: 1px;
     width: 100%;
     background-color: #383b4b;
     position: relative;
     z-index: 1;
+
+    @include mqMinW(768px) {
+      display: none;
+    }
   }
 }
 
@@ -85,10 +110,21 @@
   position: absolute;
   top: 394px;
 
+  @include mqMinW(768px) {
+    width: 458px;
+    top: 220px;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
   .buttons-container {
     @include flexCenter;
     gap: 16px;
     margin-bottom: 32px;
+
+    @include mqMinW(768px) {
+      margin-bottom: 0;
+    }
 
     .oval-btn {
       width: 10px;
@@ -114,11 +150,20 @@
       font-size: 16px;
       margin-bottom: 8px;
       opacity: 0.4951;
+
+      @include mqMinW(768px) {
+        font-size: 24px;
+        opacity: 0.4994;
+      }
     }
 
     .crew-name-text {
       font-size: 24px;
       margin-bottom: 16px;
+
+      @include mqMinW(768px) {
+        font-size: 40px;
+      }
     }
 
     .crew-bio-text {
@@ -126,6 +171,13 @@
       font-size: 15px;
       line-height: 25px;
       color: $lightPurpleColor;
+
+      @include mqMinW(768px) {
+        height: 84px;
+        font-size: 16px;
+        line-height: 28px;
+        margin-bottom: 40px;
+      }
     }
   }
 }

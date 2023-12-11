@@ -22,6 +22,8 @@ export const crewDotBtnsListen = (dataJSON) => {
   const buttons = document.querySelectorAll(".oval-btn");
   for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener("click", (event) => {
+      const deviceScreenWidth768px = window.matchMedia("(min-width: 768px)");
+
       if (!inProgress) {
         inProgress = true;
         for (let i = 0; i < buttons.length; i++) {
@@ -34,7 +36,11 @@ export const crewDotBtnsListen = (dataJSON) => {
 
         const img = document.querySelector(".crew-img");
         img.style.transition = "ease-in-out transform 1.25s";
-        img.style.transform = "translateY(225px)";
+        if (deviceScreenWidth768px.matches) {
+          img.style.transform = "translateY(540px)";
+        } else {
+          img.style.transform = "translateY(225px)";
+        }
         setTimeout(() => {
           img.setAttribute("src", dataJSON.crew[i].images.png);
           img.setAttribute("alt", dataJSON.crew[i].name + " image");
@@ -74,6 +80,25 @@ export const crewDotBtnsListen = (dataJSON) => {
           crewBioText.textContent = correctedText;
           crewBioText.style.opacity = "1";
           crewBioText.style.scale = "1";
+          if (deviceScreenWidth768px.matches) {
+            if (dataJSON.crew[i].name === "Douglas Hurley") {
+              document.querySelector(
+                ".text-and-buttons-container"
+              ).style.width = "458px";
+            } else if (dataJSON.crew[i].name === "Mark Shuttleworth") {
+              document.querySelector(
+                ".text-and-buttons-container"
+              ).style.width = "520px";
+            } else if (dataJSON.crew[i].name === "Anousheh Ansari") {
+              document.querySelector(
+                ".text-and-buttons-container"
+              ).style.width = "535.7px";
+            } else {
+              document.querySelector(
+                ".text-and-buttons-container"
+              ).style.width = "592px";
+            }
+          }
           crewBioText.style.transition = "ease-in-out all 1.25s";
         }, 1500);
         setTimeout(() => {
