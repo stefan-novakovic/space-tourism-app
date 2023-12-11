@@ -1,5 +1,5 @@
 import { exploreBtnListen, homeHamburgerBtnListen } from "./homePage.js";
-import { crewHamburgerBtnListen } from "./crewPage.js";
+import { crewHamburgerBtnListen, crewDotBtnsListen } from "./crewPage.js";
 
 const initApp = () => {
   console.log("DOM Content Loaded!");
@@ -12,7 +12,9 @@ const startApp = async () => {
   const dataJSON = await getJSONData();
   exploreBtnListen();
   homeHamburgerBtnListen(dataJSON);
+
   crewHamburgerBtnListen(dataJSON);
+  crewDotBtnsListen(dataJSON);
 };
 
 const getJSONData = async () => {

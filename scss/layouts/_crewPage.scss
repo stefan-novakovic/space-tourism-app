@@ -1,3 +1,20 @@
+.crew-page-title-text {
+  font-family: $fontBarlowCondensedRegular;
+  font-weight: $fontWeightRegular;
+  font-size: 16px;
+  letter-spacing: 2.7px;
+  text-align: left;
+  color: $whiteColor;
+  position: absolute;
+  top: 88px;
+}
+
+.crew-page-title-text-nmbr {
+  opacity: 0.25;
+  font-weight: $fontWeightBold;
+  margin-right: 16px;
+}
+
 .crew-page {
   height: 100vh;
   min-height: 667px;
@@ -27,6 +44,7 @@
     max-width: 1440px;
     max-height: 830px;
     @include flexCenter;
+    flex-direction: column;
     position: relative;
 
     @include mqMinW(768px) {
@@ -36,6 +54,78 @@
     @include mqMinW(1440px) {
       max-width: 1440px;
       max-height: 900px;
+    }
+  }
+}
+
+.crew-page .photo-div-c {
+  width: 327px;
+  height: 223px;
+  position: absolute;
+  top: 139px;
+  overflow-y: hidden;
+
+  .crew-img {
+    height: 222px;
+    width: auto;
+    margin-inline: auto;
+  }
+  .crew-img-rect {
+    height: 1px;
+    width: 100%;
+    background-color: #383b4b;
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.text-and-buttons-container {
+  width: 327px;
+  margin-inline: 1rem;
+  position: absolute;
+  top: 394px;
+
+  .buttons-container {
+    @include flexCenter;
+    gap: 16px;
+    margin-bottom: 32px;
+
+    .oval-btn {
+      width: 10px;
+      height: 10px;
+      border: none;
+      border-radius: 50%;
+      background-color: white;
+      opacity: 0.1744;
+      cursor: pointer;
+    }
+    .oval-btn:first-child {
+      opacity: 1;
+    }
+  }
+
+  .text-div {
+    font-family: $fontBellefairRegular;
+    font-weight: $fontWeightRegular;
+    text-align: center;
+    color: $whiteColor;
+
+    .crew-role-text {
+      font-size: 16px;
+      margin-bottom: 8px;
+      opacity: 0.4951;
+    }
+
+    .crew-name-text {
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
+
+    .crew-bio-text {
+      font-family: $fontBarlowRegular;
+      font-size: 15px;
+      line-height: 25px;
+      color: $lightPurpleColor;
     }
   }
 }
