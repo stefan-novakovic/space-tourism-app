@@ -23,6 +23,7 @@ export const crewDotBtnsListen = (dataJSON) => {
   for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener("click", (event) => {
       const deviceScreenWidth768px = window.matchMedia("(min-width: 768px)");
+      const deviceScreenWidth1440px = window.matchMedia("(min-width: 1440px)");
 
       if (!inProgress) {
         inProgress = true;
@@ -36,8 +37,16 @@ export const crewDotBtnsListen = (dataJSON) => {
 
         const img = document.querySelector(".crew-img");
         img.style.transition = "ease-in-out transform 1.25s";
-        if (deviceScreenWidth768px.matches) {
+        if (
+          deviceScreenWidth768px.matches &&
+          !deviceScreenWidth1440px.matches
+        ) {
           img.style.transform = "translateY(540px)";
+        } else if (
+          deviceScreenWidth768px.matches &&
+          deviceScreenWidth1440px.matches
+        ) {
+          img.style.transform = "translateY(715px)";
         } else {
           img.style.transform = "translateY(225px)";
         }
@@ -80,7 +89,10 @@ export const crewDotBtnsListen = (dataJSON) => {
           crewBioText.textContent = correctedText;
           crewBioText.style.opacity = "1";
           crewBioText.style.scale = "1";
-          if (deviceScreenWidth768px.matches) {
+          if (
+            deviceScreenWidth768px.matches &&
+            !deviceScreenWidth1440px.matches
+          ) {
             if (dataJSON.crew[i].name === "Douglas Hurley") {
               document.querySelector(
                 ".text-and-buttons-container"
@@ -98,6 +110,13 @@ export const crewDotBtnsListen = (dataJSON) => {
                 ".text-and-buttons-container"
               ).style.width = "592px";
             }
+          } else if (
+            deviceScreenWidth768px.matches &&
+            deviceScreenWidth1440px.matches
+          ) {
+            document.querySelector(".text-and-buttons-container").style.width =
+              "auto";
+            crewBioText.style.width = "444px";
           }
           crewBioText.style.transition = "ease-in-out all 1.25s";
         }, 1500);

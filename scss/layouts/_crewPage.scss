@@ -14,6 +14,13 @@
     top: 136px;
     left: 38.5px;
   }
+
+  @include mqMinW(1440px) {
+    font-size: 28px;
+    letter-spacing: 4.72px;
+    top: 212px;
+    left: 166.5px;
+  }
 }
 
 .crew-page-title-text-nmbr {
@@ -42,7 +49,7 @@
 
   @include mqMinW(1440px) {
     min-height: 900px;
-    background-image: url("../../dist/assets/crew/background-crew-desktop.jpg");
+    background-image: none;
   }
 
   .content-container {
@@ -62,6 +69,11 @@
     @include mqMinW(1440px) {
       max-width: 1440px;
       max-height: 900px;
+
+      background-color: $darkBlueColor;
+      background-image: url("../../dist/assets/crew/background-crew-desktop.jpg");
+      background-repeat: no-repeat;
+      background-size: contain;
     }
   }
 }
@@ -80,6 +92,11 @@
     bottom: -40px;
   }
 
+  @include mqMinW(1440px) {
+    bottom: 0px;
+    right: 137px;
+  }
+
   .crew-img {
     height: 222px;
     width: auto;
@@ -88,6 +105,10 @@
     @include mqMinW(768px) {
       height: 572px;
       width: auto;
+    }
+
+    @include mqMinW(1440px) {
+      height: max-content;
     }
   }
 
@@ -117,6 +138,13 @@
     flex-direction: column-reverse;
   }
 
+  @include mqMinW(1440px) {
+    width: auto;
+    height: auto;
+    top: 400px;
+    left: 165px;
+  }
+
   .buttons-container {
     @include flexCenter;
     gap: 16px;
@@ -126,14 +154,27 @@
       margin-bottom: 0;
     }
 
+    @include mqMinW(1440px) {
+      gap: 24px;
+      justify-content: flex-start;
+      margin-left: 2px;
+      position: absolute;
+      top: 391px;
+    }
+
     .oval-btn {
       width: 10px;
       height: 10px;
       border: none;
       border-radius: 50%;
-      background-color: white;
+      background-color: $whiteColor;
       opacity: 0.1744;
       cursor: pointer;
+
+      @include mqMinW(1440px) {
+        width: 15px;
+        height: 15px;
+      }
     }
     .oval-btn:first-child {
       opacity: 1;
@@ -142,12 +183,16 @@
 
   .text-div {
     font-family: $fontBellefairRegular;
-    font-weight: $fontWeightRegular;
     text-align: center;
     color: $whiteColor;
 
+    @include mqMinW(1440px) {
+      text-align: left;
+    }
+
     .crew-role-text {
       font-size: 16px;
+      font-weight: $fontWeightRegular;
       margin-bottom: 8px;
       opacity: 0.4951;
 
@@ -155,19 +200,34 @@
         font-size: 24px;
         opacity: 0.4994;
       }
+
+      @include mqMinW(1440px) {
+        width: max-content;
+        font-size: 32px;
+        margin-left: 0.5px;
+        margin-bottom: 15px;
+      }
     }
 
     .crew-name-text {
       font-size: 24px;
+      font-weight: $fontWeightRegular;
       margin-bottom: 16px;
 
       @include mqMinW(768px) {
         font-size: 40px;
       }
+
+      @include mqMinW(1440px) {
+        font-size: 56px;
+        margin-left: 0.5px;
+        margin-bottom: 27px;
+      }
     }
 
     .crew-bio-text {
       font-family: $fontBarlowRegular;
+      font-weight: $fontWeightRegular;
       font-size: 15px;
       line-height: 25px;
       color: $lightPurpleColor;
@@ -177,6 +237,14 @@
         font-size: 16px;
         line-height: 28px;
         margin-bottom: 40px;
+      }
+
+      @include mqMinW(1440px) {
+        font-size: 18px;
+        line-height: 32px;
+        margin-bottom: 0px;
+        width: 444px;
+        height: auto;
       }
     }
   }
