@@ -127,3 +127,40 @@ export const crewDotBtnsListen = (dataJSON) => {
     });
   }
 };
+
+export const crewWindowResizeListen = (dataJSON) => {
+  window.addEventListener("resize", (event) => {
+    let index;
+    const buttons = document.querySelectorAll(".oval-btn");
+    for (let i = 0; i < buttons.length; i++) {
+      if (getComputedStyle(buttons[i]).getPropertyValue("opacity") === "1") {
+        index = i;
+      }
+    }
+
+    if (window.innerWidth < 768) {
+      document.querySelector(".crew-bio-text").style.width = "auto";
+      document.querySelector(".text-and-buttons-container").style.width =
+        "327px";
+    } else if (window.innerWidth >= 768 && window.innerWidth < 1440) {
+      document.querySelector(".crew-bio-text").style.width = "auto";
+      if (dataJSON.crew[index].name === "Douglas Hurley") {
+        document.querySelector(".text-and-buttons-container").style.width =
+          "458px";
+      } else if (dataJSON.crew[index].name === "Mark Shuttleworth") {
+        document.querySelector(".text-and-buttons-container").style.width =
+          "520px";
+      } else if (dataJSON.crew[index].name === "Anousheh Ansari") {
+        document.querySelector(".text-and-buttons-container").style.width =
+          "535.7px";
+      } else {
+        document.querySelector(".text-and-buttons-container").style.width =
+          "592px";
+      }
+    } else if (window.innerWidth >= 1440) {
+      document.querySelector(".crew-bio-text").style.width = "444px";
+      document.querySelector(".text-and-buttons-container").style.width =
+        "auto";
+    }
+  });
+};
