@@ -1,34 +1,3 @@
-.crew-page-title-text {
-  font-family: $fontBarlowCondensedRegular;
-  font-weight: $fontWeightRegular;
-  font-size: 16px;
-  letter-spacing: 2.7px;
-  text-align: left;
-  color: $whiteColor;
-  position: absolute;
-  top: 88px;
-
-  @include mqMinW(768px) {
-    font-size: 20px;
-    letter-spacing: 3.38px;
-    top: 136px;
-    left: 38.5px;
-  }
-
-  @include mqMinW(1440px) {
-    font-size: 28px;
-    letter-spacing: 4.72px;
-    top: 212px;
-    left: 166.5px;
-  }
-}
-
-.crew-page-title-text-numbr {
-  opacity: 0.25;
-  font-weight: $fontWeightBold;
-  margin-right: 16px;
-}
-
 .crew-page {
   height: 100vh;
   min-height: 710px;
@@ -76,6 +45,37 @@
       background-size: contain;
     }
   }
+}
+
+.crew-page .crew-page-title-text {
+  font-family: $fontBarlowCondensedRegular;
+  font-weight: $fontWeightRegular;
+  font-size: 16px;
+  letter-spacing: 2.7px;
+  text-align: left;
+  color: $whiteColor;
+  position: absolute;
+  top: 88px;
+
+  @include mqMinW(768px) {
+    font-size: 20px;
+    letter-spacing: 3.38px;
+    top: 136px;
+    left: 38.5px;
+  }
+
+  @include mqMinW(1440px) {
+    font-size: 28px;
+    letter-spacing: 4.72px;
+    top: 212px;
+    left: 166.5px;
+  }
+}
+
+.crew-page .crew-page-title-text-numbr {
+  opacity: 0.25;
+  font-weight: $fontWeightBold;
+  margin-right: 16px;
 }
 
 .crew-page .photo-div-c {
@@ -278,7 +278,7 @@
   }
 }
 
-.blur-filter {
+.crew-page .blur-filter {
   width: 100%;
   height: 100%;
 
@@ -326,7 +326,7 @@
   .crew-page .menu-and-logo-container {
     margin-top: 40px;
   }
-  .rectangle-line {
+  .crew-page .rectangle-line {
     width: 473px;
     height: 1px;
     background-color: $whiteColor;
