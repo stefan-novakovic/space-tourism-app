@@ -1,9 +1,8 @@
-.crew-page-title-text {
+.technology-page-title-text {
   font-family: $fontBarlowCondensedRegular;
   font-weight: $fontWeightRegular;
   font-size: 16px;
   letter-spacing: 2.7px;
-  text-align: left;
   color: $whiteColor;
   position: absolute;
   top: 88px;
@@ -23,7 +22,7 @@
   }
 }
 
-.crew-page-title-text-nmbr {
+.technology-page-title-text-numbr {
   opacity: 0.25;
   font-weight: $fontWeightBold;
   margin-right: 16px;
@@ -37,14 +36,14 @@
   position: relative;
 
   background-color: $darkBlueColor;
-  background-image: url("../../dist/assets/crew/background-crew-mobile.jpg");
+  background-image: url("../../dist/assets/technology/background-technology-mobile.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-blend-mode: luminosity;
 
   @include mqMinW(768px) {
     min-height: 1024px;
-    background-image: url("../../dist/assets/crew/background-crew-tablet.jpg");
+    background-image: url("../../dist/assets/technology/background-technology-tablet.jpg");
   }
 
   @include mqMinW(1440px) {
@@ -71,16 +70,16 @@
       max-height: 900px;
 
       background-color: $darkBlueColor;
-      background-image: url("../../dist/assets/crew/background-crew-desktop.jpg");
+      background-image: url("../../dist/assets/technology/background-technology-desktop.jpg");
       background-repeat: no-repeat;
       background-size: contain;
     }
   }
 }
 
-.technology-page .photo-div-c {
-  width: 327px;
-  height: 223px;
+.technology-page .photo-div-t {
+  width: auto;
+  height: auto;
   position: absolute;
   top: 139px;
   overflow-y: hidden;
@@ -97,9 +96,9 @@
     right: 137px;
   }
 
-  .crew-img {
-    height: 222px;
+  .technology-img {
     width: auto;
+    height: 170px;
     margin-inline: auto;
 
     @include mqMinW(768px) {
@@ -111,25 +110,13 @@
       height: max-content;
     }
   }
-
-  .crew-img-rect {
-    height: 1px;
-    width: 100%;
-    background-color: #383b4b;
-    position: relative;
-    z-index: 1;
-
-    @include mqMinW(768px) {
-      display: none;
-    }
-  }
 }
 
-.text-and-buttons-container {
+.technology-page .text-and-buttons-container {
   width: 327px;
   margin-inline: 1rem;
   position: absolute;
-  top: 394px;
+  top: 343px;
 
   @include mqMinW(768px) {
     width: 458px;
@@ -148,7 +135,7 @@
   .buttons-container {
     @include flexCenter;
     gap: 16px;
-    margin-bottom: 32px;
+    margin-bottom: 26px;
 
     @include mqMinW(768px) {
       margin-bottom: 0;
@@ -162,13 +149,15 @@
       top: 391px;
     }
 
-    .oval-btn {
-      width: 10px;
-      height: 10px;
+    .oval-btn-alt {
+      width: 40px;
+      height: 40px;
       border: none;
       border-radius: 50%;
-      background-color: $whiteColor;
-      opacity: 0.1744;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      opacity: 1;
+      background-color: transparent;
+      color: $whiteColor;
       cursor: pointer;
 
       @include mqMinW(1440px) {
@@ -176,8 +165,9 @@
         height: 15px;
       }
     }
-    .oval-btn:first-child {
-      opacity: 1;
+    .oval-btn-alt:first-child {
+      background-color: $whiteColor;
+      color: $darkBlueColor;
     }
   }
 
@@ -190,11 +180,15 @@
       text-align: left;
     }
 
-    .crew-role-text {
-      font-size: 16px;
+    .technology-role-text {
+      font-family: $fontBarlowCondensedRegular;
       font-weight: $fontWeightRegular;
-      margin-bottom: 8px;
-      opacity: 0.4951;
+      font-size: 14px;
+      letter-spacing: 2.36px;
+      margin-bottom: 9px;
+      color: $lightPurpleColor;
+      width: max-content;
+      margin-inline: auto;
 
       @include mqMinW(768px) {
         font-size: 24px;
@@ -209,10 +203,12 @@
       }
     }
 
-    .crew-name-text {
+    .technology-name-text {
       font-size: 24px;
       font-weight: $fontWeightRegular;
       margin-bottom: 16px;
+      width: max-content;
+      margin-inline: auto;
 
       @include mqMinW(768px) {
         font-size: 40px;
@@ -225,7 +221,7 @@
       }
     }
 
-    .crew-bio-text {
+    .technology-bio-text {
       font-family: $fontBarlowRegular;
       font-weight: $fontWeightRegular;
       font-size: 15px;
