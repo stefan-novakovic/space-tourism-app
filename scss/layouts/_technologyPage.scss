@@ -1,0 +1,338 @@
+.crew-page-title-text {
+  font-family: $fontBarlowCondensedRegular;
+  font-weight: $fontWeightRegular;
+  font-size: 16px;
+  letter-spacing: 2.7px;
+  text-align: left;
+  color: $whiteColor;
+  position: absolute;
+  top: 88px;
+
+  @include mqMinW(768px) {
+    font-size: 20px;
+    letter-spacing: 3.38px;
+    top: 136px;
+    left: 38.5px;
+  }
+
+  @include mqMinW(1440px) {
+    font-size: 28px;
+    letter-spacing: 4.72px;
+    top: 212px;
+    left: 166.5px;
+  }
+}
+
+.crew-page-title-text-nmbr {
+  opacity: 0.25;
+  font-weight: $fontWeightBold;
+  margin-right: 16px;
+}
+
+.technology-page {
+  height: 100vh;
+  min-height: 710px;
+  @include flexCenter;
+  overflow-x: hidden;
+  position: relative;
+
+  background-color: $darkBlueColor;
+  background-image: url("../../dist/assets/crew/background-crew-mobile.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: luminosity;
+
+  @include mqMinW(768px) {
+    min-height: 1024px;
+    background-image: url("../../dist/assets/crew/background-crew-tablet.jpg");
+  }
+
+  @include mqMinW(1440px) {
+    min-height: 900px;
+    background-image: none;
+  }
+
+  .content-container {
+    width: 100%;
+    height: 100%;
+    max-width: 1440px;
+    max-height: 830px;
+    @include flexCenter;
+    flex-direction: column;
+    position: relative;
+
+    @include mqMinW(768px) {
+      max-height: 1366px;
+      overflow-y: hidden;
+    }
+
+    @include mqMinW(1440px) {
+      max-width: 1440px;
+      max-height: 900px;
+
+      background-color: $darkBlueColor;
+      background-image: url("../../dist/assets/crew/background-crew-desktop.jpg");
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+  }
+}
+
+.technology-page .photo-div-c {
+  width: 327px;
+  height: 223px;
+  position: absolute;
+  top: 139px;
+  overflow-y: hidden;
+
+  @include mqMinW(768px) {
+    width: auto;
+    height: auto;
+    top: auto;
+    bottom: -40px;
+  }
+
+  @include mqMinW(1440px) {
+    bottom: 0px;
+    right: 137px;
+  }
+
+  .crew-img {
+    height: 222px;
+    width: auto;
+    margin-inline: auto;
+
+    @include mqMinW(768px) {
+      height: 572px;
+      width: auto;
+    }
+
+    @include mqMinW(1440px) {
+      height: max-content;
+    }
+  }
+
+  .crew-img-rect {
+    height: 1px;
+    width: 100%;
+    background-color: #383b4b;
+    position: relative;
+    z-index: 1;
+
+    @include mqMinW(768px) {
+      display: none;
+    }
+  }
+}
+
+.text-and-buttons-container {
+  width: 327px;
+  margin-inline: 1rem;
+  position: absolute;
+  top: 394px;
+
+  @include mqMinW(768px) {
+    width: 458px;
+    top: 220px;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  @include mqMinW(1440px) {
+    width: auto;
+    height: auto;
+    top: 400px;
+    left: 165px;
+  }
+
+  .buttons-container {
+    @include flexCenter;
+    gap: 16px;
+    margin-bottom: 32px;
+
+    @include mqMinW(768px) {
+      margin-bottom: 0;
+    }
+
+    @include mqMinW(1440px) {
+      gap: 24px;
+      justify-content: flex-start;
+      margin-left: 2px;
+      position: absolute;
+      top: 391px;
+    }
+
+    .oval-btn {
+      width: 10px;
+      height: 10px;
+      border: none;
+      border-radius: 50%;
+      background-color: $whiteColor;
+      opacity: 0.1744;
+      cursor: pointer;
+
+      @include mqMinW(1440px) {
+        width: 15px;
+        height: 15px;
+      }
+    }
+    .oval-btn:first-child {
+      opacity: 1;
+    }
+  }
+
+  .text-div {
+    font-family: $fontBellefairRegular;
+    text-align: center;
+    color: $whiteColor;
+
+    @include mqMinW(1440px) {
+      text-align: left;
+    }
+
+    .crew-role-text {
+      font-size: 16px;
+      font-weight: $fontWeightRegular;
+      margin-bottom: 8px;
+      opacity: 0.4951;
+
+      @include mqMinW(768px) {
+        font-size: 24px;
+        opacity: 0.4994;
+      }
+
+      @include mqMinW(1440px) {
+        width: max-content;
+        font-size: 32px;
+        margin-left: 0.5px;
+        margin-bottom: 15px;
+      }
+    }
+
+    .crew-name-text {
+      font-size: 24px;
+      font-weight: $fontWeightRegular;
+      margin-bottom: 16px;
+
+      @include mqMinW(768px) {
+        font-size: 40px;
+      }
+
+      @include mqMinW(1440px) {
+        font-size: 56px;
+        margin-left: 0.5px;
+        margin-bottom: 27px;
+      }
+    }
+
+    .crew-bio-text {
+      font-family: $fontBarlowRegular;
+      font-weight: $fontWeightRegular;
+      font-size: 15px;
+      line-height: 25px;
+      color: $lightPurpleColor;
+
+      @include mqMinW(768px) {
+        height: 84px;
+        font-size: 16px;
+        line-height: 28px;
+        margin-bottom: 40px;
+      }
+
+      @include mqMinW(1440px) {
+        font-size: 18px;
+        line-height: 32px;
+        margin-bottom: 0px;
+        width: 444px;
+        height: auto;
+      }
+    }
+  }
+}
+
+.technology-page .content-container .logo-div-phone {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  @include mqMinW(768px) {
+    display: none;
+  }
+}
+
+.technology-page .phone-menu {
+  width: 254px;
+  height: 100vh;
+  min-height: 710px;
+  background-color: rgba(255, 255, 255, 0.04);
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateX(255px);
+
+  z-index: 1;
+
+  @include mqMinW(768px) {
+    display: none;
+  }
+}
+
+.blur-filter {
+  width: 100%;
+  height: 100%;
+
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+}
+
+.technology-page .phone-menu.phoneMenuShow {
+  transform: translate(0px);
+  transition: 0.875s ease-in-out;
+}
+
+.technology-page .phone-menu.phoneMenuHide {
+  transform: translate(255px);
+  transition: 0.875s ease-in-out;
+}
+
+@include mqMinW(768px) {
+  .technology-page .menu-and-logo-container {
+    width: 94.6265%;
+    height: 96px;
+    @include flexCenter;
+    justify-content: space-between;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    @include mqMinW(1440px) {
+      width: 96.181%;
+    }
+
+    .menu {
+      width: 450px;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.04);
+
+      @include mqMinW(1440px) {
+        width: 830px;
+      }
+    }
+  }
+}
+
+@include mqMinW(1440px) {
+  .technology-page .menu-and-logo-container {
+    margin-top: 40px;
+  }
+  .rectangle-line {
+    width: 473px;
+    height: 1px;
+    background-color: $whiteColor;
+    opacity: 0.2515;
+    position: absolute;
+    left: 112px;
+    z-index: 1;
+  }
+}
