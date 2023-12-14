@@ -20,9 +20,6 @@ export const technologyDotBtnsListen = (dataJSON) => {
   const buttons = document.querySelectorAll(".oval-btn-alt");
   for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener("click", (event) => {
-      const deviceScreenWidth768px = window.matchMedia("(min-width: 768px)");
-      const deviceScreenWidth1440px = window.matchMedia("(min-width: 1440px)");
-
       for (let i = 0; i < buttons.length; i++) {
         buttons[i].style.backgroundColor = "transparent";
         buttons[i].style.color = "white";
@@ -33,12 +30,12 @@ export const technologyDotBtnsListen = (dataJSON) => {
 
       const img = document.querySelector(".technology-img");
       img.style.transition = "ease-in-out all 1.25s";
-      img.style.transform = "translateX(105%)";
+      img.style.transform = "translateX(126%)";
       setTimeout(() => {
         img.setAttribute("src", dataJSON.technology[i].images.landscape);
         img.setAttribute("alt", dataJSON.technology[i].name + " image");
         img.style.transition = "none";
-        img.style.transform = "translateX(-105%)";
+        img.style.transform = "translateX(-126%)";
       }, 1255);
       setTimeout(() => {
         img.style.transition = "ease-in-out all 1.25s";
