@@ -79,35 +79,32 @@
 
 .technology-page .photo-div-t {
   width: 100%;
-  height: auto;
+  max-width: 430px;
   position: absolute;
   top: 139px;
+  overflow-x: hidden;
 
   @include mqMinW(768px) {
-    width: auto;
-    height: auto;
-    top: auto;
-    bottom: -40px;
+    max-width: 768px;
+    top: 220px;
   }
 
   @include mqMinW(1440px) {
-    bottom: 0px;
-    right: 137px;
+    max-width: none;
+    top: 220px;
   }
 
   .technology-img {
     width: 100%;
-    max-width: 520px;
-    margin-inline: auto;
     height: 150px;
 
     @include mqMinW(768px) {
-      height: 572px;
-      width: auto;
+      height: 310px;
     }
 
     @include mqMinW(1440px) {
-      height: max-content;
+      width: auto;
+      height: auto;
     }
   }
 }
@@ -120,9 +117,9 @@
 
   @include mqMinW(768px) {
     width: 458px;
-    top: 220px;
+    top: 586px;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
   }
 
   @include mqMinW(1440px) {
@@ -140,7 +137,7 @@
     margin-inline: auto;
 
     @include mqMinW(768px) {
-      margin-bottom: 0;
+      margin-bottom: 44px;
     }
 
     @include mqMinW(1440px) {
@@ -165,9 +162,14 @@
       color: $whiteColor;
       cursor: pointer;
 
+      @include mqMinW(768px) {
+        width: 60px;
+        height: 60px;
+      }
+
       @include mqMinW(1440px) {
-        width: 15px;
-        height: 15px;
+        width: 60px;
+        height: 60px;
       }
     }
     .oval-btn-alt:first-child {
@@ -197,8 +199,9 @@
       color: $lightPurpleColor;
 
       @include mqMinW(768px) {
-        font-size: 24px;
-        opacity: 0.4994;
+        font-size: 16px;
+        letter-spacing: 2.7px;
+        margin-bottom: 16px;
       }
 
       @include mqMinW(1440px) {
@@ -212,13 +215,14 @@
     .name-text {
       font-size: 24px;
       font-weight: $fontWeightRegular;
-      margin-bottom: 16px;
       width: max-content;
       margin-inline: auto;
       color: $whiteColor;
+      margin-bottom: 16px;
 
       @include mqMinW(768px) {
         font-size: 40px;
+        margin-bottom: 16px;
       }
 
       @include mqMinW(1440px) {
@@ -237,16 +241,13 @@
       color: $lightPurpleColor;
 
       @include mqMinW(768px) {
-        height: 84px;
         font-size: 16px;
         line-height: 28px;
-        margin-bottom: 40px;
       }
 
       @include mqMinW(1440px) {
         font-size: 18px;
         line-height: 32px;
-        margin-bottom: 0px;
         width: 444px;
         height: auto;
       }

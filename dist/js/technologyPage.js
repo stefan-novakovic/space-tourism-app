@@ -30,17 +30,21 @@ export const technologyDotBtnsListen = (dataJSON) => {
 
       const img = document.querySelector(".technology-img");
       img.style.transition = "ease-in-out all 1.25s";
-      img.style.transform = "translateX(126%)";
+      img.style.transform = "translateX(105%)";
       setTimeout(() => {
         img.setAttribute("src", dataJSON.technology[i].images.landscape);
         img.setAttribute("alt", dataJSON.technology[i].name + " image");
         img.style.transition = "none";
-        img.style.transform = "translateX(-126%)";
+        img.style.transform = "translateX(-105%)";
       }, 1255);
       setTimeout(() => {
         img.style.transition = "ease-in-out all 1.25s";
         img.style.transform = "translateX(0%)";
       }, 1280);
+      setTimeout(() => {
+        img.style.transition = "none";
+        img.style.transform = "none";
+      }, 2531);
 
       const terminologyText = document.querySelector(".terminology-text");
       terminologyText.style.transition = "ease-in-out all 1.25s";
