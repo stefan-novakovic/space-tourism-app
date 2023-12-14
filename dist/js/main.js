@@ -4,7 +4,10 @@ import {
   crewDotBtnsListen,
   crewWindowResizeListen,
 } from "./crewPage.js";
-
+import {
+  technologyDotBtnsListen,
+  technologyHamburgerBtnListen,
+} from "./technologyPage.js";
 const initApp = () => {
   console.log("DOM Content Loaded!");
   startApp();
@@ -20,6 +23,9 @@ const startApp = async () => {
   crewHamburgerBtnListen(dataJSON);
   crewDotBtnsListen(dataJSON);
   crewWindowResizeListen(dataJSON);
+
+  technologyHamburgerBtnListen(dataJSON);
+  technologyDotBtnsListen(dataJSON);
 };
 
 const getJSONData = async () => {
