@@ -90,8 +90,9 @@
   }
 
   @include mqMinW(1440px) {
-    max-width: none;
-    top: 220px;
+    max-width: 515px;
+    top: 272px;
+    right: 0;
   }
 
   .technology-img {
@@ -123,10 +124,12 @@
   }
 
   @include mqMinW(1440px) {
+    flex-direction: row;
     width: auto;
     height: auto;
-    top: 400px;
+    top: 383px;
     left: 165px;
+    margin-inline: 0;
   }
 
   .buttons-container {
@@ -141,11 +144,11 @@
     }
 
     @include mqMinW(1440px) {
-      gap: 24px;
+      flex-direction: column;
       justify-content: flex-start;
-      margin-left: 2px;
-      position: absolute;
-      top: 391px;
+      gap: 32px;
+      margin-bottom: 0;
+      margin-right: 80px;
     }
 
     .oval-btn-alt {
@@ -163,13 +166,17 @@
       cursor: pointer;
 
       @include mqMinW(768px) {
+        font-size: 24px;
+        letter-spacing: 1.5px;
         width: 60px;
         height: 60px;
       }
 
       @include mqMinW(1440px) {
-        width: 60px;
-        height: 60px;
+        font-size: 32px;
+        letter-spacing: 2px;
+        width: 80px;
+        height: 80px;
       }
     }
     .oval-btn-alt:first-child {
@@ -206,9 +213,9 @@
 
       @include mqMinW(1440px) {
         width: max-content;
-        font-size: 32px;
-        margin-left: 0.5px;
-        margin-bottom: 15px;
+        margin-inline: 0 auto;
+        font-size: 16px;
+        margin-bottom: 11px;
       }
     }
 
@@ -226,9 +233,9 @@
       }
 
       @include mqMinW(1440px) {
+        margin-inline: 0 auto;
         font-size: 56px;
-        margin-left: 0.5px;
-        margin-bottom: 27px;
+        margin-bottom: 17px;
       }
     }
 
