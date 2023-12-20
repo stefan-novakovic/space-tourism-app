@@ -1,8 +1,29 @@
+#marker {
+  display: none;
+  background-color: $whiteColor;
+  transition: 1s;
+  position: absolute;
+  bottom: 0;
+  cursor: pointer;
+
+  @include mqMinW(768px) {
+    display: block;
+    width: 36px;
+    height: 3px;
+    left: 48px;
+  }
+
+  @include mqMinW(1440px) {
+    width: 71px;
+    left: 123px;
+  }
+}
+
 .main-nav {
   padding: 39px 3rem;
 
   @include mqMinW(1440px) {
-    padding: 39px 165px 38px 123px;
+    padding: 0 165px 0 123px;
   }
   .ul {
     @include flexCenter;
@@ -12,7 +33,7 @@
     list-style-type: none;
 
     @include mqMinW(1440px) {
-      height: 19px;
+      height: 96px;
     }
 
     .li {
@@ -22,12 +43,21 @@
       letter-spacing: 2.36px;
 
       @include mqMinW(1440px) {
+        height: 100%;
+        display: flex;
+        align-items: center;
         font-size: 16px;
         letter-spacing: 2.7px;
       }
 
       .li__a {
         color: $whiteColor;
+        height: 100%;
+
+        @include mqMinW(768px) {
+          display: flex;
+          align-items: center;
+        }
       }
 
       .li__a__numbr {
