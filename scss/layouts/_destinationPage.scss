@@ -78,19 +78,24 @@
   @include mqMinW(768px) {
     margin-right: 19px;
   }
+
+  @include mqMinW(1440px) {
+    margin-right: 28px;
+  }
 }
 
 .destination-page .photo-div-d {
   position: absolute;
   top: 139px;
-  // overflow: hidden;
 
   @include mqMinW(768px) {
     top: 220px;
   }
 
   @include mqMinW(1440px) {
-    right: 137px;
+    right: auto;
+    top: 343px;
+    left: 230px;
   }
 
   .destination-img {
@@ -121,10 +126,10 @@
   }
 
   @include mqMinW(1440px) {
-    width: auto;
-    height: auto;
-    top: 400px;
-    left: 165px;
+    width: 445px;
+    height: 472px;
+    top: 310px;
+    left: 832px;
   }
 
   .moons-menu {
@@ -134,6 +139,10 @@
 
     @include mqMinW(768px) {
       max-width: 285.5px;
+    }
+
+    @include mqMinW(1440px) {
+      margin-inline: 0;
     }
   }
 
@@ -159,6 +168,12 @@
         height: auto;
         margin-bottom: 8px;
       }
+
+      @include mqMinW(1440px) {
+        font-size: 100px;
+        margin-inline: 0;
+        margin-bottom: 14px;
+      }
     }
 
     .destination-desc-text {
@@ -176,11 +191,10 @@
       }
 
       @include mqMinW(1440px) {
+        width: 444px;
         font-size: 18px;
         line-height: 32px;
-        margin-bottom: 0px;
-        width: 444px;
-        height: auto;
+        margin-bottom: 54px;
       }
     }
 
@@ -237,6 +251,28 @@
       }
     }
 
+    @include mqMinW(1440px) {
+      .avg-distance {
+        position: absolute;
+        left: 0px;
+      }
+
+      .est-travel-time {
+        position: absolute;
+        left: 221.5px;
+      }
+
+      .destination-parameter-name-text.first-parameter {
+        width: fit-content;
+        margin-inline: 0;
+      }
+
+      .destination-parameter-name-text.second-parameter {
+        width: fit-content;
+        margin-inline: 0;
+      }
+    }
+
     .destination-parameter-name-value-text {
       width: fit-content;
       margin-inline: auto;
@@ -247,6 +283,10 @@
       @include mqMinW(768px) {
         margin-bottom: 16px;
       }
+
+      @include mqMinW(1440px) {
+        margin-inline: 0;
+      }
     }
 
     @include mqMinW(768px) {
@@ -256,6 +296,16 @@
 
       .destination-parameter-name-value-text.second-parameter {
         width: 223px;
+      }
+    }
+
+    @include mqMinW(1440px) {
+      .destination-parameter-name-value-text.first-parameter {
+        width: fit-content;
+      }
+
+      .destination-parameter-name-value-text.second-parameter {
+        width: fit-content;
       }
     }
   }

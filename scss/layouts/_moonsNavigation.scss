@@ -46,6 +46,7 @@
       .li__moon {
         color: $whiteColor;
         height: 100%;
+        cursor: pointer;
 
         @include mqMinW(768px) {
           display: flex;
