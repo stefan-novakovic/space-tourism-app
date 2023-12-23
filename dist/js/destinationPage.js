@@ -160,14 +160,22 @@ export const moonsNavListen = (dataJSON) => {
   }
 };
 
+let inProgressMoonsNavMarker = false;
 export const moonsNavMenuMarkerPositionSwitchListen = () => {
   const moonsMarker = document.getElementById("moons-marker");
   const listItem = document.querySelectorAll(".moons-nav .ul .li");
 
   listItem.forEach((link) => {
     link.addEventListener("click", (event) => {
-      moonsMarker.style.left = link.offsetLeft + "px";
-      moonsMarker.style.width = link.offsetWidth + "px";
+      if (!inProgressMoonsNavMarker) {
+        inProgressMoonsNavMarker = true;
+        moonsMarker.style.left = link.offsetLeft + "px";
+        moonsMarker.style.width = link.offsetWidth + "px";
+
+        setTimeout(() => {
+          inProgressMoonsNavMarker = false;
+        }, 2005);
+      }
     });
   });
 };
