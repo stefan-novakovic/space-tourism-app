@@ -22,9 +22,6 @@ export const moonsNavListen = (dataJSON) => {
   const buttons = document.querySelectorAll(".li__moon");
   for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener("click", (event) => {
-      const deviceScreenWidth768px = window.matchMedia("(min-width: 768px)");
-      const deviceScreenWidth1440px = window.matchMedia("(min-width: 1440px)");
-
       if (!inProgress) {
         inProgress = true;
 
@@ -33,6 +30,9 @@ export const moonsNavListen = (dataJSON) => {
         img.style.opacity = "0.25";
         img.style.scale = "0";
         img.style.transform = "rotate(1080deg)";
+        img.style.filter = "blur(6px)";
+        img.style.filter = "brightness(0%)";
+        img.style.filter = "grayscale(1)";
 
         setTimeout(() => {
           img.setAttribute("src", dataJSON.destinations[i].images.png);
@@ -41,6 +41,9 @@ export const moonsNavListen = (dataJSON) => {
           img.style.opacity = "1";
           img.style.scale = "1";
           img.style.transform = "rotate(0deg)";
+          img.style.filter = "blur(0px)";
+          img.style.filter = "brightness(100%)";
+          img.style.filter = "grayscale(0)";
         }, 2000);
 
         // setTimeout(() => {
@@ -165,17 +168,25 @@ export const moonsNavMenuMarkerPositionSwitchListen = () => {
   const moonsMarker = document.getElementById("moons-marker");
   const listItem = document.querySelectorAll(".moons-nav .ul .li");
 
+  const deviceScreenWidth768px = window.matchMedia("(min-width: 768px)");
+
   listItem.forEach((link) => {
     link.addEventListener("click", (event) => {
       if (!inProgressMoonsNavMarker) {
         inProgressMoonsNavMarker = true;
-        if (link.firstChild.nextSibling.textContent === "MOON") {
-          moonsMarker.style.left = "0px";
-        } else if (link.firstChild.nextSibling.textContent === "TITAN") {
-          moonsMarker.style.left = "201.5px";
-        } else {
-          moonsMarker.style.left =
-            link.offsetLeft - 18 + link.offsetWidth / 2 + "px";
+
+        if (!deviceScreenWidth768px) {
+          if (link.firstChild.nextSibling.textContent === "MOON") {
+            moonsMarker.style.left = "0px";
+          } else if (link.firstChild.nextSibling.textContent === "TITAN") {
+            moonsMarker.style.left = "201.5px";
+          } else {
+            moonsMarker.style.left =
+              link.offsetLeft - 18 + link.offsetWidth / 2 + "px";
+          }
+        } else if (deviceScreenWidth768px) {
+          moonsMarker.style.left = link.offsetLeft + "px";
+          moonsMarker.style.width = link.offsetWidth + "px";
         }
 
         setTimeout(() => {

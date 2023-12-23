@@ -32,7 +32,6 @@
 
     @include mqMinW(768px) {
       max-height: 1366px;
-      overflow-y: hidden;
     }
 
     @include mqMinW(1440px) {
@@ -75,6 +74,10 @@
   opacity: 0.25;
   font-weight: $fontWeightBold;
   margin-right: 18px;
+
+  @include mqMinW(768px) {
+    margin-right: 19px;
+  }
 }
 
 .destination-page .photo-div-d {
@@ -83,14 +86,10 @@
   // overflow: hidden;
 
   @include mqMinW(768px) {
-    width: auto;
-    height: auto;
-    top: auto;
-    bottom: -40px;
+    top: 220px;
   }
 
   @include mqMinW(1440px) {
-    bottom: 0px;
     right: 137px;
   }
 
@@ -100,7 +99,7 @@
     margin-inline: auto;
 
     @include mqMinW(768px) {
-      height: 572px;
+      height: 300px;
       width: auto;
     }
 
@@ -117,10 +116,8 @@
   top: 335px;
 
   @include mqMinW(768px) {
-    width: 458px;
-    top: 220px;
-    display: flex;
-    flex-direction: column-reverse;
+    width: 573px;
+    top: 573px;
   }
 
   @include mqMinW(1440px) {
@@ -151,18 +148,16 @@
 
     .destination-name-text {
       height: 64px;
+      width: fit-content;
+      margin-inline: auto;
       font-size: 56px;
       font-weight: $fontWeightRegular;
       margin-bottom: 1px;
 
       @include mqMinW(768px) {
-        font-size: 40px;
-      }
-
-      @include mqMinW(1440px) {
-        font-size: 56px;
-        margin-left: 0.5px;
-        margin-bottom: 27px;
+        font-size: 80px;
+        height: auto;
+        margin-bottom: 8px;
       }
     }
 
@@ -175,10 +170,9 @@
       margin-bottom: 32px;
 
       @include mqMinW(768px) {
-        height: 84px;
         font-size: 16px;
         line-height: 28px;
-        margin-bottom: 40px;
+        margin-bottom: 49px;
       }
 
       @include mqMinW(1440px) {
@@ -199,11 +193,22 @@
       margin-bottom: 32px;
 
       @include mqMinW(768px) {
-        display: none;
+        margin-bottom: 28px;
+      }
+    }
+
+    .destination-parameters {
+      @include mqMinW(768px) {
+        height: 89px;
+        display: flex;
+        flex-direction: row;
+        position: relative;
       }
     }
 
     .destination-parameter-name-text {
+      width: fit-content;
+      margin-inline: auto;
       font-family: $fontBarlowCondensedRegular;
       font-size: 14px;
       font-weight: $fontWeightRegular;
@@ -212,10 +217,46 @@
       margin-bottom: 12px;
     }
 
+    @include mqMinW(768px) {
+      .avg-distance {
+        position: absolute;
+        left: 65.5px;
+      }
+
+      .est-travel-time {
+        position: absolute;
+        left: 292.5px;
+      }
+
+      .destination-parameter-name-text.first-parameter {
+        width: 216px;
+      }
+
+      .destination-parameter-name-text.second-parameter {
+        width: 223px;
+      }
+    }
+
     .destination-parameter-name-value-text {
+      width: fit-content;
+      margin-inline: auto;
       font-size: 28px;
       font-weight: $fontWeightRegular;
       margin-bottom: 32px;
+
+      @include mqMinW(768px) {
+        margin-bottom: 16px;
+      }
+    }
+
+    @include mqMinW(768px) {
+      .destination-parameter-name-value-text.first-parameter {
+        width: 216px;
+      }
+
+      .destination-parameter-name-value-text.second-parameter {
+        width: 223px;
+      }
     }
   }
 }
