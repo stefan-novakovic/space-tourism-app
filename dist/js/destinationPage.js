@@ -1,13 +1,15 @@
 export const destinationMoonsNavListen = (dataJSON) => {
   let inProgress = false;
 
-  const buttons = document.querySelectorAll(".li__moon");
+  const buttons = document.querySelectorAll(".destination-page .li__moon");
   for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener("click", (event) => {
       if (!inProgress) {
         inProgress = true;
 
-        const img = document.querySelector(".destination-img");
+        const img = document.querySelector(
+          ".destination-page .destination-img"
+        );
         img.style.transition = "ease-in-out all 1.75s";
         img.style.opacity = "0.25";
         img.style.scale = "0";
@@ -38,7 +40,7 @@ export const destinationMoonsNavListen = (dataJSON) => {
         // }, 2000);
 
         const destinationNameText = document.querySelector(
-          ".destination-name-text"
+          ".destination-page .destination-name-text"
         );
         destinationNameText.style.transition = "ease-in-out all 1.75s";
         destinationNameText.style.opacity = "0";
@@ -52,7 +54,7 @@ export const destinationMoonsNavListen = (dataJSON) => {
         }, 2000);
 
         const destinationDescText = document.querySelector(
-          ".destination-desc-text"
+          ".destination-page .destination-desc-text"
         );
         destinationDescText.style.transition = "ease-in-out all 1.75s";
         destinationDescText.style.opacity = "0";
@@ -66,7 +68,7 @@ export const destinationMoonsNavListen = (dataJSON) => {
         }, 2000);
 
         const destinationDividerRect = document.querySelector(
-          ".destination-divider-rect"
+          ".destination-page .destination-divider-rect"
         );
         destinationDividerRect.style.transition = "ease-in-out all 1.75s";
         destinationDividerRect.style.opacity = "0";
@@ -78,7 +80,7 @@ export const destinationMoonsNavListen = (dataJSON) => {
         }, 2000);
 
         const destinationAvgDistanceText = document.querySelector(
-          ".avg-distance .destination-parameter-name-text"
+          ".destination-page .avg-distance .destination-parameter-name-text"
         );
         destinationAvgDistanceText.style.transition = "ease-in-out all 1.75s";
         destinationAvgDistanceText.style.opacity = "0";
@@ -90,7 +92,7 @@ export const destinationMoonsNavListen = (dataJSON) => {
         }, 2000);
 
         const destinationAvgDistanceValueText = document.querySelector(
-          ".avg-distance .destination-parameter-name-value-text"
+          ".destination-page .avg-distance .destination-parameter-name-value-text"
         );
         destinationAvgDistanceValueText.style.transition =
           "ease-in-out all 1.75s";
@@ -106,7 +108,7 @@ export const destinationMoonsNavListen = (dataJSON) => {
         }, 2000);
 
         const destinationEstTravelTimeText = document.querySelector(
-          ".est-travel-time .destination-parameter-name-text"
+          ".destination-page .est-travel-time .destination-parameter-name-text"
         );
         destinationEstTravelTimeText.style.transition = "ease-in-out all 1.75s";
         destinationEstTravelTimeText.style.opacity = "0";
@@ -119,7 +121,7 @@ export const destinationMoonsNavListen = (dataJSON) => {
         }, 2000);
 
         const destinationEstTravelTimeValueText = document.querySelector(
-          ".est-travel-time .destination-parameter-name-value-text"
+          ".destination-page .est-travel-time .destination-parameter-name-value-text"
         );
         destinationEstTravelTimeValueText.style.transition =
           "ease-in-out all 1.75s";
@@ -145,7 +147,9 @@ export const destinationMoonsNavListen = (dataJSON) => {
 let inProgressMoonsNavMenuMarker = false;
 export const destinationMoonsNavMenuMarkerPositionSwitchListen = () => {
   const moonsMenuMarker = document.getElementById("moons-menu-marker");
-  const listItem = document.querySelectorAll(".moons-nav .ul .li");
+  const listItem = document.querySelectorAll(
+    ".destination-page .moons-nav .ul .li"
+  );
 
   const deviceScreenWidth768px = window.matchMedia("(min-width: 768px)");
 

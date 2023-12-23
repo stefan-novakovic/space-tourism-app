@@ -38,7 +38,7 @@ const getJSONData = async () => {
 
 const navMenuMarkerPositionSwitchListen = () => {
   const marker = document.getElementById("menu-marker");
-  const listItem = document.querySelectorAll(".nav .ul .li");
+  const listItem = document.querySelectorAll(".header .nav .ul .li");
 
   listItem.forEach((link) => {
     link.addEventListener("click", (event) => {
