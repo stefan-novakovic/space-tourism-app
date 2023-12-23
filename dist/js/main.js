@@ -1,5 +1,10 @@
 import { exploreBtnListen, homeHamburgerBtnListen } from "./homePage.js";
 import {
+  destinationHamburgerBtnListen,
+  moonsNavListen,
+  moonsNavMenuMarkerPositionSwitchListen,
+} from "./destinationPage.js";
+import {
   crewHamburgerBtnListen,
   crewDotBtnsListen,
   crewWindowResizeListen,
@@ -17,9 +22,15 @@ document.addEventListener("DOMContentLoaded", initApp);
 
 const startApp = async () => {
   const dataJSON = await getJSONData();
+
   navMenuMarkerPositionSwitchListen();
+
   exploreBtnListen();
   homeHamburgerBtnListen(dataJSON);
+
+  destinationHamburgerBtnListen(dataJSON);
+  moonsNavListen(dataJSON);
+  moonsNavMenuMarkerPositionSwitchListen();
 
   crewHamburgerBtnListen(dataJSON);
   crewDotBtnsListen(dataJSON);

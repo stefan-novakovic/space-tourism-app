@@ -1,0 +1,68 @@
+#moons-marker {
+  width: 35px;
+  height: 3px;
+  background-color: $whiteColor;
+  transition: 1s;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  cursor: pointer;
+}
+
+.moons-nav {
+  margin-bottom: 20px;
+
+  @include mqMinW(1440px) {
+    margin: 0 165px 0 123px;
+  }
+
+  .ul {
+    height: 28px;
+    @include flexCenter;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: row;
+    list-style-type: none;
+
+    @include mqMinW(1440px) {
+      height: 96px;
+    }
+
+    .li {
+      font-size: 14px;
+      font-family: $fontBarlowCondensedRegular;
+      font-weight: $fontWeightRegular;
+      letter-spacing: 2.362px;
+
+      @include mqMinW(1440px) {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        font-size: 16px;
+        letter-spacing: 2.7px;
+      }
+
+      .li__moon {
+        color: $whiteColor;
+        height: 100%;
+
+        @include mqMinW(768px) {
+          display: flex;
+          align-items: center;
+        }
+      }
+      .li__moon.moon {
+        width: 35px;
+      }
+      .li__moon.mars {
+        width: 33px;
+      }
+      .li__moon.europa {
+        width: 49px;
+      }
+      .li__moon.titan {
+        width: 37px;
+      }
+    }
+  }
+}
