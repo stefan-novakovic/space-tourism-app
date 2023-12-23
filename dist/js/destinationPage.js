@@ -169,8 +169,14 @@ export const moonsNavMenuMarkerPositionSwitchListen = () => {
     link.addEventListener("click", (event) => {
       if (!inProgressMoonsNavMarker) {
         inProgressMoonsNavMarker = true;
-        moonsMarker.style.left = link.offsetLeft + "px";
-        moonsMarker.style.width = link.offsetWidth + "px";
+        if (link.firstChild.nextSibling.textContent === "MOON") {
+          moonsMarker.style.left = "0px";
+        } else if (link.firstChild.nextSibling.textContent === "TITAN") {
+          moonsMarker.style.left = "201.5px";
+        } else {
+          moonsMarker.style.left =
+            link.offsetLeft - 18 + link.offsetWidth / 2 + "px";
+        }
 
         setTimeout(() => {
           inProgressMoonsNavMarker = false;
