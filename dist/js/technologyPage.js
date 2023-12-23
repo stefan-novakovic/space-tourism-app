@@ -1,25 +1,7 @@
-export const technologyHamburgerBtnListen = (dataJSON) => {
-  const hamburgerBtnOpenMenu = document.getElementById("hamburger-btn-open-t");
-  const hamburgerBtnCloseMenu = document.getElementById(
-    "hamburger-btn-close-t"
-  );
-  const phoneMenu = document.getElementById("phone-menu-t");
-
-  hamburgerBtnOpenMenu.addEventListener("click", (event) => {
-    phoneMenu.classList.remove("phoneMenuHide");
-    phoneMenu.classList.add("phoneMenuShow");
-  });
-
-  hamburgerBtnCloseMenu.addEventListener("click", (event) => {
-    phoneMenu.classList.remove("phoneMenuShow");
-    phoneMenu.classList.add("phoneMenuHide");
-  });
-};
-
 export const technologyDotBtnsListen = (dataJSON) => {
   let inProgress = false;
 
-  const buttons = document.querySelectorAll(".oval-btn-alt");
+  const buttons = document.querySelectorAll(".technology-page .circle-btn-alt");
   for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener("click", (event) => {
       if (!inProgress) {
@@ -32,7 +14,7 @@ export const technologyDotBtnsListen = (dataJSON) => {
         buttons[i].style.backgroundColor = "white";
         buttons[i].style.color = "rgb(11, 13, 23)";
 
-        const img = document.querySelector(".technology-img");
+        const img = document.querySelector(".technology-page .technology-img");
         img.style.transition = "ease-in-out all 1.25s";
         img.style.transform = "translateX(105%)";
         setTimeout(() => {
@@ -40,7 +22,9 @@ export const technologyDotBtnsListen = (dataJSON) => {
             "(min-width: 1440px)"
           );
           if (deviceScreenWidth1440px.matches) {
-            const imgSource = document.querySelector(".technology-img-source");
+            const imgSource = document.querySelector(
+              ".technology-page .technology-img-source"
+            );
             imgSource.setAttribute(
               "srcset",
               dataJSON.technology[i].images.portrait
@@ -63,7 +47,9 @@ export const technologyDotBtnsListen = (dataJSON) => {
           img.style.transform = "none";
         }, 2531);
 
-        const terminologyText = document.querySelector(".terminology-text");
+        const terminologyText = document.querySelector(
+          ".technology-page .terminology-text"
+        );
         terminologyText.style.transition = "ease-in-out all 1.25s";
         terminologyText.style.opacity = "0";
         terminologyText.style.scale = "0";
@@ -73,7 +59,7 @@ export const technologyDotBtnsListen = (dataJSON) => {
           terminologyText.style.transition = "ease-in-out all 1.3s";
         }, 1250);
 
-        const nameText = document.querySelector(".name-text");
+        const nameText = document.querySelector(".technology-page .name-text");
         nameText.style.transition = "ease-in-out all 1.25s";
         nameText.style.opacity = "0";
         nameText.style.scale = "0";
@@ -84,7 +70,7 @@ export const technologyDotBtnsListen = (dataJSON) => {
           nameText.style.transition = "ease-in-out all 1.3s";
         }, 1250);
 
-        const descText = document.querySelector(".desc-text");
+        const descText = document.querySelector(".technology-page .desc-text");
         descText.style.transition = "ease-in-out all 1.25s";
         descText.style.opacity = "0";
         descText.style.scale = "0";

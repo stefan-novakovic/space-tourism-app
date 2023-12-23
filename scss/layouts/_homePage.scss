@@ -1,4 +1,26 @@
-.home-page-title-big-text {
+.home-page {
+  height: 100vh;
+  min-height: 667px;
+  max-height: 900px;
+  width: 100%;
+  max-width: 1440px;
+  @include flexCenter;
+  overflow-x: hidden;
+  position: relative;
+
+  @include mqMinW(768px) {
+    min-height: 1024px;
+    max-height: 1366px;
+  }
+
+  @include mqMinW(1440px) {
+    min-height: 900px;
+    max-height: 900px;
+    max-width: 1440px;
+  }
+}
+
+.home-page .title-big-text {
   font-size: 80px;
   font-weight: $fontWeightRegular;
   line-height: 100px;
@@ -16,7 +38,7 @@
   }
 }
 
-.home-page-title-regular-text {
+.home-page .title-regular-text {
   font-family: $fontBarlowCondensedRegular;
   font-size: 16px;
   font-weight: $fontWeightRegular;
@@ -35,7 +57,7 @@
   }
 }
 
-.home-page-desc-text {
+.home-page .desc-text {
   font-family: $fontBarlowRegular;
   font-size: 15px;
   font-weight: $fontWeightRegular;
@@ -56,8 +78,8 @@
   }
 }
 
-.home-page-title-big-text,
-.home-page-desc-text {
+.home-page .title-big-text,
+.home-page .desc-text {
   margin-top: 16px;
 
   @include mqMinW(768px) {
@@ -65,82 +87,7 @@
   }
 }
 
-.home-page {
-  height: 100vh;
-  min-height: 667px;
-  @include flexCenter;
-  overflow-x: hidden;
-  position: relative;
-
-  background-color: $darkBlueColor;
-  background-image: url("../../dist/assets/home/background-home-mobile.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  @include mqMinW(768px) {
-    min-height: 1024px;
-  }
-
-  @include mqMinW(1440px) {
-    min-height: 900px;
-  }
-
-  .content-container {
-    width: 100%;
-    height: 100%;
-    max-width: 1440px;
-    max-height: 830px;
-    @include flexCenter;
-    position: relative;
-
-    @include mqMinW(768px) {
-      max-height: 1366px;
-    }
-
-    @include mqMinW(1440px) {
-      max-width: 1440px;
-      max-height: 900px;
-      background-color: $darkBlueColor;
-      background-image: url("../../dist/assets/home/background-home-desktop.jpg");
-      background-repeat: no-repeat;
-      background-size: contain;
-    }
-  }
-}
-
-.explore-btn-hover-overlay {
-  width: 200px;
-  height: 200px;
-  background-color: $exploreBtnOverlayColor;
-  opacity: 0.875;
-  border-radius: 50%;
-  position: absolute;
-  bottom: calc(48px - 25px);
-  transition: scale ease-out 0.8s;
-
-  @include mqMinW(768px) {
-    width: 302px;
-    height: 302px;
-    bottom: calc(90px - 30px);
-  }
-
-  @include mqMinW(1440px) {
-    width: 350px;
-    height: 350px;
-    bottom: calc(131px - 37px);
-    right: (165px - 37px);
-  }
-}
-
-.explore-btn-hover-overlay.overlay-active {
-  scale: 1;
-}
-
-.explore-btn-hover-overlay.overlay-not-active {
-  scale: 0.7;
-}
-
-.home-page .content-container .explore-btn {
+.home-page .explore-btn {
   width: 150px;
   height: 150px;
   border-radius: 50%;
@@ -174,7 +121,39 @@
   }
 }
 
-.home-page .content-container .text-div {
+.home-page .explore-btn-hover-overlay {
+  width: 200px;
+  height: 200px;
+  background-color: $exploreBtnOverlayColor;
+  opacity: 0.875;
+  border-radius: 50%;
+  position: absolute;
+  bottom: calc(48px - 25px);
+  transition: scale ease-out 0.8s;
+
+  @include mqMinW(768px) {
+    width: 302px;
+    height: 302px;
+    bottom: calc(90px - 30px);
+  }
+
+  @include mqMinW(1440px) {
+    width: 350px;
+    height: 350px;
+    bottom: calc(131px - 37px);
+    right: (165px - 37px);
+  }
+}
+
+.home-page .explore-btn-hover-overlay.overlay-active {
+  scale: 1;
+}
+
+.home-page .explore-btn-hover-overlay.overlay-not-active {
+  scale: 0.7;
+}
+
+.home-page .text-div {
   max-width: 450px;
   margin: 0 24px;
   color: $whiteColor;
@@ -192,7 +171,7 @@
   }
 }
 
-.home-page .content-container .logo-div-phone {
+.home-page .logo-div-phone {
   width: 40px;
   height: 40px;
   position: absolute;
@@ -200,100 +179,5 @@
   left: 24px;
   @include mqMinW(768px) {
     display: none;
-  }
-}
-
-.home-page .phone-menu {
-  width: 254px;
-  height: 100vh;
-  min-height: 667px;
-  background-color: rgba(255, 255, 255, 0.04);
-  position: absolute;
-  top: 0;
-  right: 0;
-  transform: translateX(255px);
-
-  z-index: 1;
-
-  @include mqMinW(768px) {
-    display: none;
-  }
-}
-
-.blur-filter {
-  width: 100%;
-  height: 100%;
-
-  backdrop-filter: blur(40px);
-  -webkit-backdrop-filter: blur(40px);
-}
-
-.home-page .phone-menu.phoneMenuShow {
-  transform: translate(0px);
-  transition: 0.875s ease-in-out;
-}
-
-.home-page .phone-menu.phoneMenuHide {
-  transform: translate(255px);
-  transition: 0.875s ease-in-out;
-}
-
-@include mqMinW(768px) {
-  .home-page .menu-and-logo-container {
-    width: 94.6265%;
-    height: 96px;
-    @include flexCenter;
-    justify-content: space-between;
-    position: absolute;
-    top: 0;
-    right: 0;
-
-    @include mqMinW(1440px) {
-      width: 96.181%;
-    }
-
-    .menu {
-      width: 450px;
-      height: 100%;
-      background-color: rgba(255, 255, 255, 0.04);
-
-      @include mqMinW(1440px) {
-        width: 830px;
-      }
-    }
-  }
-}
-
-@include mqMinW(1440px) {
-  .home-page .menu-and-logo-container {
-    margin-top: 40px;
-  }
-  .rectangle-line {
-    width: 473px;
-    height: 1px;
-    background-color: $whiteColor;
-    opacity: 0.2515;
-    position: absolute;
-    left: 112px;
-    z-index: 1;
-  }
-}
-
-// BACKGROUND IMAGE QUERIES
-@include mqMinW(525px) {
-  .home-page {
-    background-image: url("../../dist/assets/home/background-home-tablet.jpg");
-  }
-}
-@include mqMinW(950px) {
-  .home-page {
-    background-image: url("../../dist/assets/home/background-home-desktop.jpg");
-    background-position: center;
-  }
-}
-
-@include mqMinW(1440px) {
-  .home-page {
-    background-image: none;
   }
 }

@@ -1,48 +1,22 @@
 .destination-page {
   height: 100vh;
   min-height: 850px;
+  max-height: 900px;
+  width: 100%;
+  max-width: 1440px;
+  flex-direction: column;
   @include flexCenter;
   overflow-x: hidden;
   position: relative;
 
-  background-color: $darkBlueColor;
-  background-image: url("../../dist/assets/destination/background-destination-mobile.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-blend-mode: luminosity;
-
   @include mqMinW(768px) {
     min-height: 1024px;
-    background-image: url("../../dist/assets/destination/background-destination-tablet.jpg");
+    max-height: 1366px;
   }
 
   @include mqMinW(1440px) {
-    min-height: 900px;
-    background-image: none;
-  }
-
-  .content-container {
-    width: 100%;
-    height: 100%;
     max-width: 1440px;
-    max-height: 850px;
-    @include flexCenter;
-    flex-direction: column;
-    position: relative;
-
-    @include mqMinW(768px) {
-      max-height: 1366px;
-    }
-
-    @include mqMinW(1440px) {
-      max-width: 1440px;
-      max-height: 900px;
-
-      background-color: $darkBlueColor;
-      background-image: url("../../dist/assets/destination/background-destination-desktop.jpg");
-      background-repeat: no-repeat;
-      background-size: contain;
-    }
+    min-height: 900px;
   }
 }
 
@@ -84,7 +58,7 @@
   }
 }
 
-.destination-page .photo-div-d {
+.destination-page .photo-div {
   position: absolute;
   top: 139px;
 
@@ -242,11 +216,11 @@
         left: 292.5px;
       }
 
-      .destination-parameter-name-text.first-parameter {
+      .avg-distance .destination-parameter-name-text {
         width: 216px;
       }
 
-      .destination-parameter-name-text.second-parameter {
+      .est-travel-time .destination-parameter-name-text {
         width: 223px;
       }
     }
@@ -262,12 +236,12 @@
         left: 221.5px;
       }
 
-      .destination-parameter-name-text.first-parameter {
+      .avg-distance .destination-parameter-name-text {
         width: fit-content;
         margin-inline: 0;
       }
 
-      .destination-parameter-name-text.second-parameter {
+      .est-travel-time .destination-parameter-name-text {
         width: fit-content;
         margin-inline: 0;
       }
@@ -290,110 +264,23 @@
     }
 
     @include mqMinW(768px) {
-      .destination-parameter-name-value-text.first-parameter {
+      .avg-distance .destination-parameter-name-value-text {
         width: 216px;
       }
 
-      .destination-parameter-name-value-text.second-parameter {
+      .est-travel-time .destination-parameter-name-value-text {
         width: 223px;
       }
     }
 
     @include mqMinW(1440px) {
-      .destination-parameter-name-value-text.first-parameter {
+      .avg-distance .destination-parameter-name-value-text {
         width: fit-content;
       }
 
-      .destination-parameter-name-value-text.second-parameter {
+      .est-travel-time .destination-parameter-name-value-text {
         width: fit-content;
       }
     }
-  }
-}
-
-.destination-page .content-container .logo-div-phone {
-  width: 40px;
-  height: 40px;
-  position: absolute;
-  top: 24px;
-  left: 24px;
-  @include mqMinW(768px) {
-    display: none;
-  }
-}
-
-.destination-page .phone-menu {
-  width: 254px;
-  height: 100vh;
-  min-height: 710px;
-  background-color: rgba(255, 255, 255, 0.04);
-  position: absolute;
-  top: 0;
-  right: 0;
-  transform: translateX(255px);
-
-  z-index: 1;
-
-  @include mqMinW(768px) {
-    display: none;
-  }
-}
-
-.destination-page .blur-filter {
-  width: 100%;
-  height: 100%;
-
-  backdrop-filter: blur(40px);
-  -webkit-backdrop-filter: blur(40px);
-}
-
-.destination-page .phone-menu.phoneMenuShow {
-  transform: translate(0px);
-  transition: 0.875s ease-in-out;
-}
-
-.destination-page .phone-menu.phoneMenuHide {
-  transform: translate(255px);
-  transition: 0.875s ease-in-out;
-}
-
-@include mqMinW(768px) {
-  .destination-page .menu-and-logo-container {
-    width: 94.6265%;
-    height: 96px;
-    @include flexCenter;
-    justify-content: space-between;
-    position: absolute;
-    top: 0;
-    right: 0;
-
-    @include mqMinW(1440px) {
-      width: 96.181%;
-    }
-
-    .menu {
-      width: 450px;
-      height: 100%;
-      background-color: rgba(255, 255, 255, 0.04);
-
-      @include mqMinW(1440px) {
-        width: 830px;
-      }
-    }
-  }
-}
-
-@include mqMinW(1440px) {
-  .destination-page .menu-and-logo-container {
-    margin-top: 40px;
-  }
-  .destination-page .rectangle-line {
-    width: 473px;
-    height: 1px;
-    background-color: $whiteColor;
-    opacity: 0.2515;
-    position: absolute;
-    left: 112px;
-    z-index: 1;
   }
 }

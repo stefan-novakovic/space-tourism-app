@@ -1,25 +1,7 @@
-export const crewHamburgerBtnListen = (dataJSON) => {
-  const hamburgerBtnOpenMenu = document.getElementById("hamburger-btn-open-c");
-  const hamburgerBtnCloseMenu = document.getElementById(
-    "hamburger-btn-close-c"
-  );
-  const phoneMenu = document.getElementById("phone-menu-c");
-
-  hamburgerBtnOpenMenu.addEventListener("click", (event) => {
-    phoneMenu.classList.remove("phoneMenuHide");
-    phoneMenu.classList.add("phoneMenuShow");
-  });
-
-  hamburgerBtnCloseMenu.addEventListener("click", (event) => {
-    phoneMenu.classList.remove("phoneMenuShow");
-    phoneMenu.classList.add("phoneMenuHide");
-  });
-};
-
 export const crewDotBtnsListen = (dataJSON) => {
   let inProgress = false;
 
-  const buttons = document.querySelectorAll(".oval-btn");
+  const buttons = document.querySelectorAll(".circle-btn");
   for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener("click", (event) => {
       const deviceScreenWidth768px = window.matchMedia("(min-width: 768px)");
@@ -131,7 +113,7 @@ export const crewDotBtnsListen = (dataJSON) => {
 export const crewWindowResizeListen = (dataJSON) => {
   window.addEventListener("resize", (event) => {
     let index;
-    const buttons = document.querySelectorAll(".oval-btn");
+    const buttons = document.querySelectorAll(".circle-btn");
     for (let i = 0; i < buttons.length; i++) {
       if (getComputedStyle(buttons[i]).getPropertyValue("opacity") === "1") {
         index = i;

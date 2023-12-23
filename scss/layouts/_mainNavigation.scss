@@ -1,4 +1,4 @@
-#marker {
+#menu-marker {
   display: none;
   background-color: $whiteColor;
   transition: 1s;
@@ -19,7 +19,7 @@
   }
 }
 
-.main-nav {
+.nav {
   padding: 39px 3rem;
 
   @include mqMinW(1440px) {

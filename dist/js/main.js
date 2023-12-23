@@ -1,18 +1,11 @@
-import { exploreBtnListen, homeHamburgerBtnListen } from "./homePage.js";
+import { homeExploreBtnListen } from "./homePage.js";
 import {
-  destinationHamburgerBtnListen,
-  moonsNavListen,
-  moonsNavMenuMarkerPositionSwitchListen,
+  destinationMoonsNavListen,
+  destinationMoonsNavMenuMarkerPositionSwitchListen,
 } from "./destinationPage.js";
-import {
-  crewHamburgerBtnListen,
-  crewDotBtnsListen,
-  crewWindowResizeListen,
-} from "./crewPage.js";
-import {
-  technologyDotBtnsListen,
-  technologyHamburgerBtnListen,
-} from "./technologyPage.js";
+import { crewDotBtnsListen, crewWindowResizeListen } from "./crewPage.js";
+import { technologyDotBtnsListen } from "./technologyPage.js";
+
 const initApp = () => {
   console.log("DOM Content Loaded!");
   startApp();
@@ -24,19 +17,16 @@ const startApp = async () => {
   const dataJSON = await getJSONData();
 
   navMenuMarkerPositionSwitchListen();
+  hamburgerBtnListen();
 
-  exploreBtnListen();
-  homeHamburgerBtnListen(dataJSON);
+  homeExploreBtnListen();
 
-  destinationHamburgerBtnListen(dataJSON);
-  moonsNavListen(dataJSON);
-  moonsNavMenuMarkerPositionSwitchListen();
+  destinationMoonsNavListen(dataJSON);
+  destinationMoonsNavMenuMarkerPositionSwitchListen();
 
-  crewHamburgerBtnListen(dataJSON);
   crewDotBtnsListen(dataJSON);
   crewWindowResizeListen(dataJSON);
 
-  technologyHamburgerBtnListen(dataJSON);
   technologyDotBtnsListen(dataJSON);
 };
 
@@ -47,13 +37,29 @@ const getJSONData = async () => {
 };
 
 const navMenuMarkerPositionSwitchListen = () => {
-  const marker = document.getElementById("marker");
-  const listItem = document.querySelectorAll(".main-nav .ul .li");
+  const marker = document.getElementById("menu-marker");
+  const listItem = document.querySelectorAll(".nav .ul .li");
 
   listItem.forEach((link) => {
     link.addEventListener("click", (event) => {
       marker.style.left = link.offsetLeft + "px";
       marker.style.width = link.offsetWidth + "px";
     });
+  });
+};
+
+const hamburgerBtnListen = () => {
+  const hamburgerBtnOpenMenu = document.getElementById("hamburger-btn-open");
+  const hamburgerBtnCloseMenu = document.getElementById("hamburger-btn-close");
+  const phoneSidebarMenu = document.getElementById("phone-sidebar-menu");
+
+  hamburgerBtnOpenMenu.addEventListener("click", (event) => {
+    phoneSidebarMenu.classList.remove("phoneMenuHide");
+    phoneSidebarMenu.classList.add("phoneMenuShow");
+  });
+
+  hamburgerBtnCloseMenu.addEventListener("click", (event) => {
+    phoneSidebarMenu.classList.remove("phoneMenuShow");
+    phoneSidebarMenu.classList.add("phoneMenuHide");
   });
 };
