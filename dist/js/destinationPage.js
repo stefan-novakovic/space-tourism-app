@@ -30,7 +30,7 @@ export const moonsNavListen = (dataJSON) => {
         img.style.opacity = "0.25";
         img.style.scale = "0";
         img.style.transform = "rotate(1080deg)";
-        img.style.filter = "blur(6px)";
+        img.style.filter = "blur(2px)";
         img.style.filter = "brightness(0%)";
         img.style.filter = "grayscale(1)";
 
