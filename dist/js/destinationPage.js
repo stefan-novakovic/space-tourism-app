@@ -145,37 +145,73 @@ export const destinationMoonsNavListen = (dataJSON) => {
 };
 
 let inProgressMoonsNavMenuMarker = false;
+let choice = 0;
 export const destinationMoonsNavMenuMarkerPositionSwitchListen = () => {
-  const moonsMenuMarker = document.getElementById("moons-menu-marker");
   const listItem = document.querySelectorAll(
     ".destination-page .moons-nav .ul .li"
   );
 
-  const deviceScreenWidth768px = window.matchMedia("(min-width: 768px)");
-
-  listItem.forEach((link) => {
-    link.addEventListener("click", (event) => {
+  for (let i = 0; i < listItem.length; i++) {
+    listItem[i].addEventListener("click", (event) => {
+      choice = i;
       if (!inProgressMoonsNavMenuMarker) {
         inProgressMoonsNavMenuMarker = true;
 
-        if (!deviceScreenWidth768px) {
-          if (link.firstChild.nextSibling.textContent === "MOON") {
-            moonsMenuMarker.style.left = "0px";
-          } else if (link.firstChild.nextSibling.textContent === "TITAN") {
-            moonsMenuMarker.style.left = "201.5px";
-          } else {
-            moonsMenuMarker.style.left =
-              link.offsetLeft - 18 + link.offsetWidth / 2 + "px";
-          }
-        } else if (deviceScreenWidth768px) {
-          moonsMenuMarker.style.left = link.offsetLeft + "px";
-          moonsMenuMarker.style.width = link.offsetWidth + "px";
-        }
+        markerPositionSwitch(listItem[i], 0);
 
         setTimeout(() => {
           inProgressMoonsNavMenuMarker = false;
         }, 2005);
       }
     });
+  }
+};
+
+const markerPositionSwitch = (listItem, resizeOrNot) => {
+  const moonsMenuMarker = document.getElementById("moons-menu-marker");
+  const deviceScreenWidth768px = window.matchMedia("(min-width: 768px)");
+
+  if (resizeOrNot === 1) {
+    moonsMenuMarker.style.transition = "0s";
+  } else {
+    moonsMenuMarker.style.transition = "1s";
+  }
+
+  if (!deviceScreenWidth768px.matches) {
+    moonsMenuMarker.style.width = "36px";
+    if (listItem.firstChild.nextSibling.textContent === "MOON") {
+      moonsMenuMarker.style.left = "0px";
+    } else if (listItem.firstChild.nextSibling.textContent === "TITAN") {
+      moonsMenuMarker.style.left = "201.5px";
+    } else {
+      moonsMenuMarker.style.left =
+        listItem.offsetLeft - 18 + listItem.offsetWidth / 2 + "px";
+    }
+  } else {
+    if (listItem.firstChild.nextSibling.textContent === "MOON") {
+      moonsMenuMarker.style.left = "0px";
+      moonsMenuMarker.style.width = "41px";
+    } else if (listItem.firstChild.nextSibling.textContent === "MARS") {
+      moonsMenuMarker.style.left =
+        listItem.offsetLeft - 22.5 + listItem.offsetWidth / 2 + "px";
+      moonsMenuMarker.style.width = "41px";
+    } else if (listItem.firstChild.nextSibling.textContent === "EUROPA") {
+      moonsMenuMarker.style.left =
+        listItem.offsetLeft - 29 + listItem.offsetWidth / 2 + "px";
+      moonsMenuMarker.style.width = "56px";
+    } else if (listItem.firstChild.nextSibling.textContent === "TITAN") {
+      moonsMenuMarker.style.left = "239.5px";
+      moonsMenuMarker.style.width = "43px";
+    }
+  }
+};
+
+export const destinationMoonsMarkerPositionSwitchOnWindowResize = () => {
+  window.addEventListener("resize", (event) => {
+    const listItem = document.querySelectorAll(
+      ".destination-page .moons-nav .ul .li"
+    );
+    console.log(listItem[choice]);
+    markerPositionSwitch(listItem[choice], 1);
   });
 };

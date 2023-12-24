@@ -2,6 +2,7 @@ import { homeExploreBtnListen } from "./homePage.js";
 import {
   destinationMoonsNavListen,
   destinationMoonsNavMenuMarkerPositionSwitchListen,
+  destinationMoonsMarkerPositionSwitchOnWindowResize,
 } from "./destinationPage.js";
 import { crewDotBtnsListen, crewWindowResizeListen } from "./crewPage.js";
 import { technologyDotBtnsListen } from "./technologyPage.js";
@@ -17,12 +18,14 @@ const startApp = async () => {
   const dataJSON = await getJSONData();
 
   navMenuMarkerPositionSwitchListen();
+  markerPositionSwitchOnWindowResize();
   hamburgerBtnListen();
 
   homeExploreBtnListen();
 
   destinationMoonsNavListen(dataJSON);
   destinationMoonsNavMenuMarkerPositionSwitchListen();
+  destinationMoonsMarkerPositionSwitchOnWindowResize();
 
   crewDotBtnsListen(dataJSON);
   crewWindowResizeListen(dataJSON);
@@ -37,19 +40,18 @@ const getJSONData = async () => {
 };
 
 let inProgress = false;
+let choice = 0;
 const navMenuMarkerPositionSwitchListen = () => {
-  const marker = document.getElementById("menu-marker");
   const listItem = document.querySelectorAll(".header .nav .ul .li");
   const listItemPhone = document.querySelectorAll("main .nav-phone .ul .li");
 
   for (let i = 0; i < listItem.length; i++) {
     listItem[i].addEventListener("click", (event) => {
+      choice = i;
       if (!inProgress) {
         inProgress = true;
 
-        marker.style.left = listItem[i].offsetLeft + "px";
-        marker.style.width = listItem[i].offsetWidth + "px";
-
+        markerPositionSwitch(listItem[i], 0);
         pageSwitch(i);
         setTimeout(() => {
           inProgress = false;
@@ -68,9 +70,6 @@ const navMenuMarkerPositionSwitchListen = () => {
 
       if (!inProgress) {
         inProgress = true;
-
-        marker.style.left = listItemPhone[i].offsetLeft + "px";
-        marker.style.width = listItemPhone[i].offsetWidth + "px";
 
         pageSwitch(i);
         setTimeout(() => {
@@ -94,6 +93,28 @@ const hamburgerBtnListen = () => {
   hamburgerBtnCloseMenu.addEventListener("click", (event) => {
     phoneSidebarMenu.classList.remove("phoneMenuShow");
     phoneSidebarMenu.classList.add("phoneMenuHide");
+  });
+};
+
+const markerPositionSwitch = (listItem, resizeOrNot) => {
+  const marker = document.getElementById("menu-marker");
+
+  if (resizeOrNot === 1) {
+    marker.style.transition = "0s";
+  } else {
+    marker.style.transition = "1s";
+  }
+  marker.style.left = listItem.offsetLeft + "px";
+  marker.style.width = listItem.offsetWidth + "px";
+};
+
+const markerPositionSwitchOnWindowResize = () => {
+  window.addEventListener("resize", (event) => {
+    if (window.innerWidth >= 768) {
+      const listItem = document.querySelectorAll(".header .nav .ul .li");
+      console.log(listItem[choice]);
+      markerPositionSwitch(listItem[choice], 1);
+    }
   });
 };
 
