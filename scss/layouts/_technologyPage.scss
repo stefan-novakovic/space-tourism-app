@@ -232,8 +232,13 @@
       font-weight: $fontWeightRegular;
       font-size: 15px;
       line-height: 25px;
+      margin-inline: 24px;
 
       color: $lightPurpleColor;
+
+      @include mqMinW(375px) {
+        margin-inline: 0;
+      }
 
       @include mqMinW(768px) {
         font-size: 16px;

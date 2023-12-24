@@ -217,6 +217,11 @@
       font-size: 15px;
       line-height: 25px;
       color: $lightPurpleColor;
+      margin-inline: 24px;
+
+      @include mqMinW(375px) {
+        margin-inline: 0;
+      }
 
       @include mqMinW(768px) {
         height: 84px;
