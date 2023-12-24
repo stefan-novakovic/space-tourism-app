@@ -75,7 +75,7 @@ const navMenuMarkerPositionSwitchListen = () => {
         pageSwitch(i);
         setTimeout(() => {
           inProgress = false;
-        }, 1801);
+        }, 1651);
       }
     });
   }
@@ -224,7 +224,7 @@ const pageSwitch = (index) => {
       setTimeout(() => {
         document.getElementById("home-page").style.transform = "translateX(0%)";
         document.getElementById("home-page").style.transition =
-          "all 0.75s ease-out";
+          "all 0.6s ease-out";
       }, 48);
     }, 1002);
   } else if (index === 1) {
@@ -234,7 +234,7 @@ const pageSwitch = (index) => {
         document.getElementById("destination-page").style.transform =
           "translateX(0%)";
         document.getElementById("destination-page").style.transition =
-          "all 0.75s ease-out";
+          "all 0.6s ease-out";
       }, 48);
     }, 1002);
   } else if (index === 2) {
@@ -243,7 +243,7 @@ const pageSwitch = (index) => {
       setTimeout(() => {
         document.getElementById("crew-page").style.transform = "translateX(0%)";
         document.getElementById("crew-page").style.transition =
-          "all 0.75s ease-out";
+          "all 0.6s ease-out";
       }, 48);
     }, 1002);
   } else if (index === 3) {
@@ -253,7 +253,7 @@ const pageSwitch = (index) => {
         document.getElementById("technology-page").style.transform =
           "translateX(0%)";
         document.getElementById("technology-page").style.transition =
-          "all 0.75s ease-out";
+          "all 0.6s ease-out";
       }, 48);
     }, 1002);
   }
