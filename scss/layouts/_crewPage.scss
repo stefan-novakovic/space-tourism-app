@@ -6,6 +6,7 @@
   @include flexCenter;
   overflow: hidden;
   position: relative;
+  display: none;
 
   background-color: $darkBlueColor;
   background-image: url("../../dist/assets/crew/background-crew-mobile.jpg");

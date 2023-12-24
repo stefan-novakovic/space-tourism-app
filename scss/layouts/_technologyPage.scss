@@ -7,6 +7,7 @@
   flex-direction: column;
   overflow-x: hidden;
   position: relative;
+  display: none;
 
   background-color: $darkBlueColor;
   background-image: url("../../dist/assets/technology/background-technology-mobile.jpg");
