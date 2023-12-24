@@ -1,16 +1,28 @@
 .crew-page {
   height: 100vh;
   min-height: 710px;
-  max-height: 900px;
   width: 100%;
   max-width: 1440px;
   @include flexCenter;
   overflow: hidden;
   position: relative;
 
+  background-color: $darkBlueColor;
+  background-image: url("../../dist/assets/crew/background-crew-mobile.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  @include mqMinW(525px) {
+    background-image: url("../../dist/assets/crew/background-crew-tablet.jpg");
+  }
+
+  @include mqMinW(950px) {
+    background-image: url("../../dist/assets/crew/background-crew-desktop.jpg");
+    background-position: center;
+  }
+
   @include mqMinW(768px) {
     min-height: 1024px;
-    max-height: 1366px;
   }
 
   @include mqMinW(1440px) {

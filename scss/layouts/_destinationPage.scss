@@ -1,17 +1,29 @@
 .destination-page {
   height: 100vh;
   min-height: 850px;
-  max-height: 900px;
   width: 100%;
-  max-width: 1440px;
   flex-direction: column;
   @include flexCenter;
   overflow-x: hidden;
   position: relative;
+  // display: none;
+
+  background-color: $darkBlueColor;
+  background-image: url("../../dist/assets/destination/background-destination-mobile.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  @include mqMinW(525px) {
+    background-image: url("../../dist/assets/destination/background-destination-tablet.jpg");
+  }
+
+  @include mqMinW(950px) {
+    background-image: url("../../dist/assets/destination/background-destination-desktop.jpg");
+    background-position: center;
+  }
 
   @include mqMinW(768px) {
     min-height: 1024px;
-    max-height: 1366px;
   }
 
   @include mqMinW(1440px) {

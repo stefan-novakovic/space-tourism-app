@@ -1,16 +1,30 @@
 .home-page {
   height: 100vh;
   min-height: 667px;
-  max-height: 900px;
+  // max-height: 932px;
   width: 100%;
   max-width: 1440px;
   @include flexCenter;
   overflow-x: hidden;
   position: relative;
+  // display: none;
+
+  background-color: $darkBlueColor;
+  background-image: url("../../dist/assets/home/background-home-mobile.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  @include mqMinW(525px) {
+    background-image: url("../../dist/assets/home/background-home-tablet.jpg");
+  }
+
+  @include mqMinW(950px) {
+    background-image: url("../../dist/assets/home/background-home-desktop.jpg");
+    background-position: center;
+  }
 
   @include mqMinW(768px) {
     min-height: 1024px;
-    max-height: 1366px;
   }
 
   @include mqMinW(1440px) {
@@ -93,18 +107,18 @@
   border-radius: 50%;
   background-color: $whiteColor;
   position: absolute;
-  bottom: 48px;
+  top: 469px;
 
   @include mqMinW(768px) {
     width: 242px;
     height: 242px;
-    bottom: 90px;
+    top: 692px;
   }
 
   @include mqMinW(1440px) {
     width: 274px;
     height: 274px;
-    bottom: 131px;
+    top: 495px;
     right: 165px;
   }
 
@@ -128,19 +142,19 @@
   opacity: 0.875;
   border-radius: 50%;
   position: absolute;
-  bottom: calc(48px - 25px);
+  top: calc(469px - 25px);
   transition: scale ease-out 0.8s;
 
   @include mqMinW(768px) {
     width: 302px;
     height: 302px;
-    bottom: calc(90px - 30px);
+    top: calc(692px - 30px);
   }
 
   @include mqMinW(1440px) {
     width: 350px;
     height: 350px;
-    bottom: calc(131px - 37px);
+    top: calc(495px - 37px);
     right: (165px - 37px);
   }
 }
