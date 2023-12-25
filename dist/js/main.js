@@ -47,6 +47,22 @@ const navMenuMarkerPositionSwitchListen = () => {
 
   for (let i = 0; i < listItem.length; i++) {
     listItem[i].addEventListener("click", (event) => {
+      setTimeout(() => {
+        if (i === 0) {
+          document.querySelector(".home-page .title-regular-text").focus();
+        } else if (i === 1) {
+          document
+            .querySelector(".destination-page .destination-page-title-text")
+            .focus();
+        } else if (i === 2) {
+          document.querySelector(".crew-page .crew-page-title-text").focus();
+        } else if (i === 3) {
+          document
+            .querySelector(".technology-page .technology-page-title-text")
+            .focus();
+        }
+      }, 1500);
+
       choice = i;
       if (!inProgress) {
         inProgress = true;

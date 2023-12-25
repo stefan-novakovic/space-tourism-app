@@ -26,6 +26,7 @@
                 <img id="logo-img-phone" src="assets/shared/logo.svg" alt="Logo icon">
             </div>
 
+
             <button id="hamburger-btn-open" class="hamburger-btn btn-open">
                 <div class="rect"></div>
                 <div class="rect n2"></div>
@@ -46,19 +47,20 @@
                         <nav class="nav">
                             <ul class="ul">
                                 <li class="li">
-                                    <a class="li__a" href="#">
+                                    <a class="li__a" href="#" aria-label="Select home page">
                                         <span class="li__a__numbr a-home">00</span>HOME</a>
                                 </li>
                                 <li class="li">
-                                    <a class="li__a" href="#"><span
-                                            class="li__a__numbr a-destination">01</span>DESTINATION</a>
+                                    <a class="li__a" href="#" aria-label="Select destination page">
+                                        <span class="li__a__numbr a-destination">01</span>DESTINATION</a>
                                 </li>
                                 <li class="li">
-                                    <a class="li__a" href="#"><span class="li__a__numbr a-crew">02</span>CREW</a>
+                                    <a class="li__a" href="#" aria-label="Select crew page">
+                                        <span class="li__a__numbr a-crew">02</span>CREW</a>
                                 </li>
                                 <li class="li">
-                                    <a class="li__a" href="#"><span
-                                            class="li__a__numbr a-technology">03</span>TECHNOLOGY</a>
+                                    <a class="li__a" href="#" aria-label="Select technology page">
+                                        <span class="li__a__numbr a-technology">03</span>TECHNOLOGY</a>
                                 </li>
                             </ul>
                         </nav>
@@ -98,9 +100,10 @@
 
         <section id="home-page" class="home-page">
             <div id="text-div" class="text-div">
-                <h2 class="title-regular-text">SO, YOU WANT TO TRAVEL TO</h2>
-                <h1 class="title-big-text">SPACE</h1>
-                <p class="desc-text">
+                <h1 class="title-regular-text" tabindex="0" aria-label="So, you want to travel to space">SO, YOU WANT TO
+                    TRAVEL TO</h1>
+                <h2 class="title-big-text">SPACE</h2>
+                <p class="desc-text" tabindex="0">
                     Let's face it; if you want to go to space, you might as well
                     genuinely go to outer space and not hover kind of on the edge of it. Well sit back, and relax
                     because we'll give you a truly out of this world experience!
@@ -110,81 +113,16 @@
             <div id="explore-btn-overlay" class="explore-btn-hover-overlay overlay-not-active">
             </div>
 
-            <button id="explore-btn" class="btn explore-btn">
+            <button id="explore-btn" class="btn explore-btn" tabindex="-1">
                 <p class="explore-btn__text">EXPLORE</p>
             </button>
         </section>
 
-        <section id="crew-page" class="crew-page">
-            <h2 class="crew-page-title-text">
-                <span class="crew-page-title-text-numbr">02</span>
-                MEET YOUR CREW
-            </h2>
-
-            <div class="photo-div">
-                <img class="crew-img" src="./assets/crew/image-douglas-hurley.png" alt="Douglas Hurley image">
-                <div class="crew-img-rect"></div>
-            </div>
-
-            <div class="text-and-buttons-container">
-                <div class="buttons-container">
-                    <button class="circle-btn"></button>
-                    <button class="circle-btn"></button>
-                    <button class="circle-btn"></button>
-                    <button class="circle-btn"></button>
-                </div>
-
-                <div class="text-div">
-                    <h4 class="crew-role-text">COMMANDER</h4>
-                    <h3 class="crew-name-text">DOUGLAS HURLEY</h3>
-                    <p class="crew-bio-text">
-                        Douglas Gerald Hurley is an American engineer, former Marine Corps pilot and former NASA
-                        astronaut. He launched into space for the third time as commander of Crew Dragon Demo-2.
-                    </p>
-                </div>
-        </section>
-
-        <section id="technology-page" class="technology-page">
-            <h2 class="technology-page-title-text">
-                <span class="technology-page-title-text-numbr">03</span>
-                SPACE LAUNCH 101
-            </h2>
-
-            <picture class="photo-div">
-                <source class="technology-img-source" media="(min-width: 1440px)"
-                    srcset="./assets/technology/image-launch-vehicle-portrait.jpg">
-                <img class="technology-img" src="./assets/technology/image-launch-vehicle-landscape.jpg"
-                    alt="Launch vehicle image">
-            </picture>
-
-            <div class="text-and-buttons-container">
-                <div class="buttons-container">
-                    <button class="circle-btn-alt">1</button>
-                    <button class="circle-btn-alt">2</button>
-                    <button class="circle-btn-alt">3</button>
-                </div>
-
-                <div class="text-div">
-                    <h4 class="terminology-text">THE TERMINOLOGY...</h4>
-                    <h3 class="name-text">LAUNCH VEHICLE</h3>
-                    <p class="desc-text">
-                        A launch vehicle or carrier rocket is a rocket‑propelled vehicle used to carry a payload from
-                        Earth's surface to space, usually to Earth orbit or beyond. Our WEB-X carrier rocket is the most
-                        powerful in operation. Standing 150 metres tall, it's quite an awe-inspiring sight on the launch
-                        pad!
-                    </p>
-                </div>
-        </section>
-
         <section id="destination-page" class="destination-page">
-            <h2 class="destination-page-title-text">
+            <h2 class="destination-page-title-text" tabindex="0" aria-label="Pick your destination">
                 <span class="destination-page-title-text-numbr">01</span>
                 PICK YOUR DESTINATION
             </h2>
-
-            <div class="photo-div">
-                <img class="destination-img" src="./assets/destination/image-moon.png" alt="Moon image">
-            </div>
 
             <div class="text-and-moons-nav-container">
                 <div id="moons-menu" class="moons-menu">
@@ -192,24 +130,24 @@
                     <nav class="moons-nav">
                         <ul class="ul">
                             <li class="li">
-                                <div class="li__moon moon">MOON</div>
+                                <a class="li__moon moon" href="#" tabindex="0" aria-label="Select Moon">MOON</a>
                             </li>
                             <li class="li">
-                                <div class="li__moon mars">MARS</div>
+                                <a class="li__moon mars" href="#" tabindex="0" aria-label="Select Mars">MARS</a>
                             </li>
                             <li class="li">
-                                <div class="li__moon europa">EUROPA</div>
+                                <a class="li__moon europa" href="#" tabindex="0" aria-label="Select Europa">EUROPA</a>
                             </li>
                             <li class="li">
-                                <div class="li__moon titan">TITAN</div>
+                                <a class="li__moon titan" href="#" tabindex="0" aria-label="Select Titan">TITAN</a>
                             </li>
                         </ul>
                     </nav>
                 </div>
 
                 <div class="text-div">
-                    <h3 class="destination-name-text">MOON</h3>
-                    <p class="destination-desc-text">
+                    <h3 class="destination-name-text" tabindex="0">MOON</h3>
+                    <p class="destination-desc-text" tabindex="0">
                         See our planet as you've never seen it before. A perfect relaxing trip away to help regain
                         perspective and come back refreshed. While you're there, take in some history by visiting the
                         Luna 2 and Apollo 11 landing sites.
@@ -219,16 +157,84 @@
 
                     <div class="destination-parameters">
                         <div class="avg-distance">
-                            <h4 class="destination-parameter-name-text">AVG. DISTANCE</h4>
-                            <p class="destination-parameter-name-value-text">384,400 KM</p>
+                            <h4 class="destination-parameter-name-text" tabindex="0">AVG. DISTANCE</h4>
+                            <p class="destination-parameter-name-value-text" tabindex="0">384,400 KM</p>
                         </div>
 
                         <div class="est-travel-time">
-                            <h5 class="destination-parameter-name-text">EST. TRAVEL TIME</h5>
-                            <p class="destination-parameter-name-value-text">3 DAYS</p>
+                            <h5 class="destination-parameter-name-text" tabindex="0" aria-label="Estimated travel time">
+                                EST. TRAVEL TIME</h5>
+                            <p class="destination-parameter-name-value-text" tabindex="0">3 DAYS</p>
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div class="photo-div" tabindex="0">
+                <img class="destination-img" src="./assets/destination/image-moon.png" alt="Moon image">
+            </div>
+        </section>
+
+        <section id="crew-page" class="crew-page">
+            <h2 class="crew-page-title-text" tabindex="0" aria-label="Meet your crew">
+                <span class="crew-page-title-text-numbr">02</span>
+                MEET YOUR CREW
+            </h2>
+
+            <div class="photo-div" tabindex="0">
+                <img class="crew-img" src="./assets/crew/image-douglas-hurley.png" alt="Douglas Hurley image">
+                <div class="crew-img-rect"></div>
+            </div>
+
+            <div class="text-and-buttons-container">
+                <div class="text-div">
+                    <h3 class="crew-role-text" tabindex="0">COMMANDER</h3>
+                    <h4 class="crew-name-text" tabindex="0">DOUGLAS HURLEY</h4>
+                    <p class="crew-bio-text" tabindex="0">
+                        Douglas Gerald Hurley is an American engineer, former Marine Corps pilot and former NASA
+                        astronaut. He launched into space for the third time as commander of Crew Dragon Demo-2.
+                    </p>
+                </div>
+
+                <div class="buttons-container">
+                    <button class="circle-btn" aria-label="Select first crew member"></button>
+                    <button class="circle-btn" aria-label="Select second crew member"></button>
+                    <button class="circle-btn" aria-label="Select third crew member"></button>
+                    <button class="circle-btn" aria-label="Select fourth crew member"></button>
+                </div>
+        </section>
+
+        <section id="technology-page" class="technology-page">
+            <h2 class="technology-page-title-text" tabindex="0" aria-label="Space launch 101">
+                <span class="technology-page-title-text-numbr">03</span>
+                SPACE LAUNCH 101
+            </h2>
+
+            <picture class="photo-div" tabindex="0">
+                <source class="technology-img-source" media="(min-width: 1440px)"
+                    srcset="./assets/technology/image-launch-vehicle-portrait.jpg">
+                <img class="technology-img" src="./assets/technology/image-launch-vehicle-landscape.jpg"
+                    alt="Launch vehicle image">
+            </picture>
+
+            <div class="text-and-buttons-container">
+                <div class="text-div">
+                    <h3 class="terminology-text" tabindex="0" aria-label="The terminology">THE TERMINOLOGY...</h3>
+                    <h4 class="name-text" tabindex="0">LAUNCH VEHICLE</h4>
+                    <p class="desc-text" tabindex="0">
+                        A launch vehicle or carrier rocket is a rocket‑propelled vehicle used to carry a payload from
+                        Earth's surface to space, usually to Earth orbit or beyond. Our WEB-X carrier rocket is the most
+                        powerful in operation. Standing 150 metres tall, it's quite an awe-inspiring sight on the launch
+                        pad!
+                    </p>
+                </div>
+
+                <div class="buttons-container">
+                    <button class="circle-btn-alt" aria-label="Select launch vehicle">1</button>
+                    <button class="circle-btn-alt" aria-label="Select spaceport">2</button>
+                    <button class="circle-btn-alt" aria-label="Select space capsule">3</button>
+                </div>
+            </div>
         </section>
     </main>
 </body>

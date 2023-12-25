@@ -51,6 +51,9 @@ export const destinationMoonsNavListen = (dataJSON) => {
           destinationNameText.style.opacity = "1";
           destinationNameText.style.scale = "1";
           destinationNameText.style.transition = "ease-in-out all 1.75s";
+          setTimeout(() => {
+            destinationNameText.focus();
+          }, 750);
         }, 2000);
 
         const destinationDescText = document.querySelector(

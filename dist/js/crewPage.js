@@ -39,6 +39,10 @@ export const crewDotBtnsListen = (dataJSON) => {
           img.style.transform = "translateY(0px)";
         }, 1500);
 
+        setTimeout(() => {
+          document.querySelector(".crew-page .photo-div").focus();
+        }, 2000);
+
         const crewRoleText = document.querySelector(
           ".crew-page .crew-role-text"
         );

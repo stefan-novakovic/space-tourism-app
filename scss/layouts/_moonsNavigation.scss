@@ -32,6 +32,7 @@
     }
 
     .li {
+      height: 100%;
       font-size: 14px;
       font-family: $fontBarlowCondensedRegular;
       font-weight: $fontWeightRegular;
@@ -46,12 +47,10 @@
         color: $whiteColor;
         height: 100%;
         cursor: pointer;
-
-        @include mqMinW(768px) {
-          display: flex;
-          align-items: center;
-        }
+        display: flex;
+        align-items: flex-start;
       }
+
       .li__moon.moon {
         width: 35px;
 

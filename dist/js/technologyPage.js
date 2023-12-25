@@ -42,6 +42,11 @@ export const technologyDotBtnsListen = (dataJSON) => {
           img.style.transition = "ease-in-out all 1.25s";
           img.style.transform = "translateX(0%)";
         }, 1280);
+
+        setTimeout(() => {
+          document.querySelector(".technology-page .photo-div").focus();
+        }, 2000);
+
         setTimeout(() => {
           img.style.transition = "none";
           img.style.transform = "none";
