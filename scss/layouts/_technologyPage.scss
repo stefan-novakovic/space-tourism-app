@@ -172,6 +172,11 @@
       color: $darkBlueColor;
       border: none;
     }
+
+    .circle-btn-alt:hover,
+    .circle-btn-alt:focus-visible {
+      border: 1px solid $whiteColor;
+    }
   }
 
   .text-div {

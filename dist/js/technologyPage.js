@@ -14,6 +14,17 @@ export const technologyDotBtnsListen = (dataJSON) => {
         buttons[i].style.backgroundColor = "white";
         buttons[i].style.color = "rgb(11, 13, 23)";
 
+        for (let i = 0; i < buttons.length; i++) {
+          if (buttons[i].style.backgroundColor !== "white") {
+            buttons[i].addEventListener("mouseover", (event) => {
+              buttons[i].style.border = "1px solid rgb(255,255,255)";
+            });
+            buttons[i].addEventListener("mouseleave", (event) => {
+              buttons[i].style.border = "1px solid rgba(255,255,255,0.25)";
+            });
+          }
+        }
+
         const img = document.querySelector(".technology-page .technology-img");
         img.style.transition = "ease-in-out all 1.25s";
         img.style.transform = "translateX(105%)";
@@ -45,7 +56,7 @@ export const technologyDotBtnsListen = (dataJSON) => {
 
         setTimeout(() => {
           document.querySelector(".technology-page .photo-div").focus();
-        }, 2000);
+        }, 1500);
 
         setTimeout(() => {
           img.style.transition = "none";

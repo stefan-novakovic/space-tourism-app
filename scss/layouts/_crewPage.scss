@@ -162,6 +162,16 @@
         height: 15px;
       }
     }
+
+    .circle-btn:hover,
+    .circle-btn:focus-visible {
+      opacity: 0.5001;
+    }
+
+    .hover-opacity {
+      opacity: 0.5001;
+    }
+
     .circle-btn:first-child {
       opacity: 1;
     }

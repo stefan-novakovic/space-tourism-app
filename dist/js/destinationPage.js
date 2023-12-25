@@ -214,7 +214,6 @@ export const destinationMoonsMarkerPositionSwitchOnWindowResize = () => {
     const listItem = document.querySelectorAll(
       ".destination-page .moons-nav .ul .li"
     );
-    console.log(listItem[choice]);
     markerPositionSwitch(listItem[choice], 1);
   });
 };

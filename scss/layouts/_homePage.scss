@@ -136,26 +136,25 @@
 }
 
 .home-page .explore-btn-hover-overlay {
-  width: 200px;
-  height: 200px;
+  width: 220px;
+  height: 220px;
   background-color: $exploreBtnOverlayColor;
-  opacity: 0.875;
   border-radius: 50%;
   position: absolute;
-  top: calc(469px - 25px);
+  top: calc(459px - 25px);
   transition: scale ease-out 0.8s;
 
   @include mqMinW(768px) {
-    width: 302px;
-    height: 302px;
-    top: calc(692px - 30px);
+    width: 350px;
+    height: 350px;
+    top: calc(668px - 30px);
   }
 
   @include mqMinW(1440px) {
-    width: 350px;
-    height: 350px;
-    top: calc(495px - 37px);
-    right: (165px - 37px);
+    width: 450px;
+    height: 450px;
+    top: calc(444px - 37px);
+    right: (114px - 37px);
   }
 }
 
@@ -164,7 +163,14 @@
 }
 
 .home-page .explore-btn-hover-overlay.overlay-not-active {
-  scale: 0.7;
+  scale: 0.67;
+
+  @include mqMinW(768px) {
+    scale: 0.69142;
+  }
+  @include mqMinW(1440px) {
+    scale: 0.60889;
+  }
 }
 
 .home-page .text-div {

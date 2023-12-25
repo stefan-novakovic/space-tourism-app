@@ -1,21 +1,37 @@
 export const crewDotBtnsListen = (dataJSON) => {
   let inProgress = false;
-
+  let index;
   const buttons = document.querySelectorAll(".crew-page .circle-btn");
   for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener("click", (event) => {
+      buttons[0].disabled = true;
+      buttons[1].disabled = true;
+      buttons[2].disabled = true;
+      buttons[3].disabled = true;
+      buttons[i].removeEventListener("mouseover", mouseOverHoverOpacity);
+      buttons[i].removeEventListener("mouseout", mouseOutHoverOpacity);
+
+      index = i;
       const deviceScreenWidth768px = window.matchMedia("(min-width: 768px)");
       const deviceScreenWidth1440px = window.matchMedia("(min-width: 1440px)");
-
       if (!inProgress) {
         inProgress = true;
         for (let i = 0; i < buttons.length; i++) {
           buttons[i].style.transition = "ease-in-out opacity 0.75s";
           buttons[i].style.opacity = "0.1744";
         }
-        buttons[i].style.transition = "ease-in-out opacity 0.75s";
-        buttons[i].style.transitionDelay = "350ms";
-        buttons[i].style.opacity = "1";
+        setTimeout(() => {
+          buttons[i].style.transition = "ease-in-out opacity 0.75s";
+          buttons[i].style.opacity = "1";
+        }, 650);
+
+        for (let i = 0; i < buttons.length; i++) {
+          console.log(inProgress);
+          if (buttons[i] !== buttons[index]) {
+            buttons[i].addEventListener("mouseover", mouseOverHoverOpacity);
+            buttons[i].addEventListener("mouseout", mouseOutHoverOpacity);
+          }
+        }
 
         const img = document.querySelector(".crew-page .crew-img");
         img.style.transition = "ease-in-out transform 1.25s";
@@ -41,7 +57,7 @@ export const crewDotBtnsListen = (dataJSON) => {
 
         setTimeout(() => {
           document.querySelector(".crew-page .photo-div").focus();
-        }, 2000);
+        }, 1750);
 
         const crewRoleText = document.querySelector(
           ".crew-page .crew-role-text"
@@ -105,11 +121,26 @@ export const crewDotBtnsListen = (dataJSON) => {
           crewBioText.style.transition = "ease-in-out all 1.25s";
         }, 1500);
         setTimeout(() => {
+          buttons[0].disabled = false;
+          buttons[1].disabled = false;
+          buttons[2].disabled = false;
+          buttons[3].disabled = false;
           inProgress = false;
         }, 1525);
       }
     });
   }
+};
+
+const mouseOverHoverOpacity = (event) => {
+  event.target.style.transition = "0s";
+  event.target.style.opacity = "0.5";
+  event.stopPropagation();
+};
+
+const mouseOutHoverOpacity = (event) => {
+  event.target.style.transition = "0s";
+  event.target.style.opacity = "0.1744";
 };
 
 export const crewWindowResizeListen = (dataJSON) => {

@@ -128,7 +128,6 @@ const markerPositionSwitchOnWindowResize = () => {
   window.addEventListener("resize", (event) => {
     if (window.innerWidth >= 768) {
       const listItem = document.querySelectorAll(".header .nav .ul .li");
-      console.log(listItem[choice]);
       markerPositionSwitch(listItem[choice], 1);
     }
   });
