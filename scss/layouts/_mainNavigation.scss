@@ -20,23 +20,24 @@
 }
 
 .nav {
-  padding: 39px 3rem;
+  padding: 0 3rem;
 
   @include mqMinW(1440px) {
     padding: 0 165px 0 123px;
   }
   .ul {
     @include flexCenter;
-    height: 18px;
+
     justify-content: space-between;
     flex-direction: row;
     list-style-type: none;
 
+    height: 96px;
     @include mqMinW(1440px) {
-      height: 96px;
     }
 
     .li {
+      height: 100%;
       font-size: 14px;
       font-family: $fontBarlowCondensedRegular;
       font-weight: $fontWeightRegular;
@@ -82,6 +83,21 @@
       .li__a__numbr.a-technology {
         margin-right: 12px;
       }
+    }
+
+    .li:hover {
+      @include mqMinW(768px) {
+        border-top: 3px solid transparent;
+        border-bottom: 3px solid rgba(255, 255, 255, 0.5021);
+      }
+      @include mqMinW(1440px) {
+        border-top: 3.5px solid transparent;
+        border-bottom: 3.5px solid rgba(255, 255, 255, 0.5021);
+      }
+    }
+
+    .li:active .li__a {
+      color: rgba(255, 255, 255, 0.5021);
     }
   }
 }

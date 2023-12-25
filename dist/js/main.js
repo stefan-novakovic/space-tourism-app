@@ -3,6 +3,7 @@ import {
   destinationMoonsNavListen,
   destinationMoonsNavMenuMarkerPositionSwitchListen,
   destinationMoonsMarkerPositionSwitchOnWindowResize,
+  destinationMoonMarkerHover,
 } from "./destinationPage.js";
 import { crewDotBtnsListen, crewWindowResizeListen } from "./crewPage.js";
 import { technologyDotBtnsListen } from "./technologyPage.js";
@@ -23,6 +24,7 @@ const startApp = async () => {
 
   homeExploreBtnListen();
 
+  destinationMoonMarkerHover();
   destinationMoonsNavListen(dataJSON);
   destinationMoonsNavMenuMarkerPositionSwitchListen();
   destinationMoonsMarkerPositionSwitchOnWindowResize();

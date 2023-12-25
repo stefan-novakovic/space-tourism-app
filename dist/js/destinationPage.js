@@ -170,8 +170,60 @@ export const destinationMoonsNavMenuMarkerPositionSwitchListen = () => {
   }
 };
 
+export const destinationMoonMarkerHover = () => {
+  const moonsMenuHoverMarker = document.getElementById(
+    "moons-menu-hover-marker"
+  );
+
+  const deviceScreenWidth768px = window.matchMedia("(min-width: 768px)");
+
+  const listItem = document.querySelectorAll(
+    ".destination-page .moons-nav .ul .li"
+  );
+
+  for (let i = 0; i < listItem.length; i++) {
+    listItem[i].addEventListener("mouseover", (event) => {
+      moonsMenuHoverMarker.style.display = "block";
+
+      if (!deviceScreenWidth768px.matches) {
+        moonsMenuHoverMarker.style.width = "36px";
+        if (listItem[i].firstChild.nextSibling.textContent === "MOON") {
+          moonsMenuHoverMarker.style.left = "0px";
+        } else if (listItem[i].firstChild.nextSibling.textContent === "TITAN") {
+          moonsMenuHoverMarker.style.left = "201.5px";
+        } else {
+          moonsMenuHoverMarker.style.left =
+            listItem[i].offsetLeft - 18 + listItem[i].offsetWidth / 2 + "px";
+        }
+      } else {
+        if (listItem[i].firstChild.nextSibling.textContent === "MOON") {
+          moonsMenuHoverMarker.style.left = "0px";
+          moonsMenuHoverMarker.style.width = "41px";
+        } else if (listItem[i].firstChild.nextSibling.textContent === "MARS") {
+          moonsMenuHoverMarker.style.left =
+            listItem[i].offsetLeft - 22.5 + listItem[i].offsetWidth / 2 + "px";
+          moonsMenuHoverMarker.style.width = "41px";
+        } else if (
+          listItem[i].firstChild.nextSibling.textContent === "EUROPA"
+        ) {
+          moonsMenuHoverMarker.style.left =
+            listItem[i].offsetLeft - 29 + listItem[i].offsetWidth / 2 + "px";
+          moonsMenuHoverMarker.style.width = "56px";
+        } else if (listItem[i].firstChild.nextSibling.textContent === "TITAN") {
+          moonsMenuHoverMarker.style.left = "239.5px";
+          moonsMenuHoverMarker.style.width = "43px";
+        }
+      }
+    });
+    listItem[i].addEventListener("mouseout", (event) => {
+      moonsMenuHoverMarker.style.display = "none";
+    });
+  }
+};
+
 const markerPositionSwitch = (listItem, resizeOrNot) => {
   const moonsMenuMarker = document.getElementById("moons-menu-marker");
+
   const deviceScreenWidth768px = window.matchMedia("(min-width: 768px)");
 
   if (resizeOrNot === 1) {
@@ -215,5 +267,9 @@ export const destinationMoonsMarkerPositionSwitchOnWindowResize = () => {
       ".destination-page .moons-nav .ul .li"
     );
     markerPositionSwitch(listItem[choice], 1);
+    const moonsMenuHoverMarker = document.getElementById(
+      "moons-menu-hover-marker"
+    );
+    moonsMenuHoverMarker.style.display = "none";
   });
 };

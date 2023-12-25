@@ -176,6 +176,10 @@
     .circle-btn:first-child {
       opacity: 1;
     }
+
+    .circle-btn:active {
+      filter: brightness(80%);
+    }
   }
 
   .text-div {
