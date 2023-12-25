@@ -116,12 +116,13 @@
   margin-inline: 1rem;
   position: absolute;
   top: 394px;
+  display: flex;
+  flex-direction: column-reverse;
 
   @include mqMinW(768px) {
     width: 458px;
     top: 220px;
-    display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
   }
 
   @include mqMinW(1440px) {
