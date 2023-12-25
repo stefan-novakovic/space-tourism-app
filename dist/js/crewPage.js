@@ -35,24 +35,13 @@ export const crewDotBtnsListen = (dataJSON) => {
 
         const img = document.querySelector(".crew-page .crew-img");
         img.style.transition = "ease-in-out transform 1.25s";
-        if (
-          deviceScreenWidth768px.matches &&
-          !deviceScreenWidth1440px.matches
-        ) {
-          img.style.transform = "translateY(540px)";
-        } else if (
-          deviceScreenWidth768px.matches &&
-          deviceScreenWidth1440px.matches
-        ) {
-          img.style.transform = "translateY(715px)";
-        } else {
-          img.style.transform = "translateY(225px)";
-        }
+        img.style.transform = "translateY(102%)";
+
         setTimeout(() => {
           img.setAttribute("src", dataJSON.crew[i].images.png);
           img.setAttribute("alt", dataJSON.crew[i].name + " image");
           img.style.transition = "ease-in-out transform 1.25s";
-          img.style.transform = "translateY(0px)";
+          img.style.transform = "translateY(0%)";
         }, 1500);
 
         setTimeout(() => {
