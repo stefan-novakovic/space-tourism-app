@@ -53,6 +53,27 @@
   }
 }
 
+.header .menu .menu-selected-marker {
+  display: none;
+  background-color: $whiteColor;
+  transition: 1s;
+  position: absolute;
+  bottom: 0;
+  cursor: pointer;
+
+  @include mqMinW(768px) {
+    display: block;
+    width: 36px;
+    height: 3px;
+    left: 48px;
+  }
+
+  @include mqMinW(1440px) {
+    width: 71px;
+    left: 123px;
+  }
+}
+
 .header .rectangle-line {
   @include mqMinW(1440px) {
     width: 473px;

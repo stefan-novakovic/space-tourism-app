@@ -1,7 +1,6 @@
-#moons-menu-marker {
+.moons-menu-marker {
   width: 36px;
   height: 3px;
-  background-color: $whiteColor;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -12,19 +11,13 @@
   }
 }
 
+#moons-menu-selected-marker {
+  background-color: $whiteColor;
+}
+
 #moons-menu-hover-marker {
   display: none;
-  width: 36px;
-  height: 3px;
   background-color: rgba(255, 255, 255, 0.5021);
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  cursor: pointer;
-
-  @include mqMinW(768px) {
-    width: 41px;
-  }
 }
 
 .moons-nav {

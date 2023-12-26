@@ -220,7 +220,7 @@ export const destinationMoonMarkerHover = () => {
 };
 
 const markerPositionSwitch = (listItem, resizeOrNot) => {
-  const moonsMenuMarker = document.getElementById("moons-menu-marker");
+  const moonsMenuMarker = document.getElementById("moons-menu-selected-marker");
 
   const deviceScreenWidth768px = window.matchMedia("(min-width: 768px)");
 

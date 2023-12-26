@@ -5,7 +5,7 @@
   position: absolute;
   top: 0;
   right: 0;
-  transform: translateX(255px);
+  transform: translateX(102%);
 
   z-index: 1001;
 
@@ -20,6 +20,6 @@
 }
 
 .phone-sidebar-menu.phoneMenuHide {
-  transform: translate(255px);
+  transform: translate(102%);
   transition: 0.875s ease-in-out;
 }

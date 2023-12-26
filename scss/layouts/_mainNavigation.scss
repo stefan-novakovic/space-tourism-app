@@ -1,24 +1,3 @@
-#menu-marker {
-  display: none;
-  background-color: $whiteColor;
-  transition: 1s;
-  position: absolute;
-  bottom: 0;
-  cursor: pointer;
-
-  @include mqMinW(768px) {
-    display: block;
-    width: 36px;
-    height: 3px;
-    left: 48px;
-  }
-
-  @include mqMinW(1440px) {
-    width: 71px;
-    left: 123px;
-  }
-}
-
 .nav {
   padding: 0 3rem;
 
@@ -103,7 +82,7 @@
   }
 }
 
-.stay-hovered {
+.hover-stick {
   @include mqMinW(768px) {
     border-top: 3px solid transparent;
     border-bottom: 3px solid rgba(255, 255, 255, 0.5021);

@@ -34,70 +34,90 @@
   }
 }
 
-.home-page .title-big-text {
-  font-size: 80px;
-  font-weight: $fontWeightRegular;
-  line-height: 100px;
-  text-align: center;
+.home-page .text-div {
+  max-width: 450px;
+  margin-inline: 24px;
+  color: $whiteColor;
+  position: absolute;
+  top: 112px;
 
   @include mqMinW(768px) {
-    font-size: 150px;
-    line-height: 150px;
-    margin-right: 5px;
+    top: 202px;
   }
+
   @include mqMinW(1440px) {
-    line-height: auto;
-    margin-right: 0px;
-    text-align: left;
+    top: auto;
+    bottom: 131px;
+    left: 165px;
   }
-}
 
-.home-page .title-regular-text {
-  font-family: $fontBarlowCondensedRegular;
-  font-size: 16px;
-  font-weight: $fontWeightRegular;
-  letter-spacing: 2.7px;
-  color: $lightPurpleColor;
-  text-align: center;
-
-  @include mqMinW(768px) {
-    font-size: 20px;
-    letter-spacing: 3.38px;
-  }
-  @include mqMinW(1440px) {
-    font-size: 28px;
-    letter-spacing: 4.72px;
-    text-align: left;
-  }
-}
-
-.home-page .desc-text {
-  font-family: $fontBarlowRegular;
-  font-size: 15px;
-  font-weight: $fontWeightRegular;
-  line-height: 25px;
-  color: $lightPurpleColor;
-  text-align: center;
-
-  @include mqMinW(768px) {
+  .title-regular-text {
+    font-family: $fontBarlowCondensedRegular;
     font-size: 16px;
-    line-height: 28px;
-    margin-inline: 3px;
-  }
-  @include mqMinW(1440px) {
-    font-size: 18px;
-    line-height: 32px;
-    margin-inline: 0px;
-    text-align: left;
-  }
-}
+    font-weight: $fontWeightRegular;
+    letter-spacing: 2.7px;
+    color: $lightPurpleColor;
+    text-align: center;
 
-.home-page .title-big-text,
-.home-page .desc-text {
-  margin-top: 16px;
+    @include mqMinW(768px) {
+      font-size: 20px;
+      letter-spacing: 3.38px;
+    }
+    @include mqMinW(1440px) {
+      font-size: 28px;
+      letter-spacing: 4.72px;
+      text-align: left;
+    }
+  }
 
-  @include mqMinW(768px) {
-    margin-top: 24px;
+  .title-big-text {
+    font-size: 80px;
+    font-weight: $fontWeightRegular;
+    line-height: 100px;
+    text-align: center;
+
+    @include mqMinW(768px) {
+      font-size: 150px;
+      line-height: 150px;
+      margin-right: 5px;
+    }
+
+    @include mqMinW(1440px) {
+      line-height: auto;
+      margin-right: 0px;
+      text-align: left;
+    }
+  }
+
+  .desc-text {
+    font-family: $fontBarlowRegular;
+    font-size: 15px;
+    font-weight: $fontWeightRegular;
+    line-height: 25px;
+    color: $lightPurpleColor;
+    text-align: center;
+
+    @include mqMinW(768px) {
+      font-size: 16px;
+      line-height: 28px;
+      margin-inline: 3px;
+    }
+
+    @include mqMinW(1440px) {
+      font-size: 18px;
+      line-height: 32px;
+      margin-inline: 0px;
+      text-align: left;
+    }
+  }
+
+  .title-big-text,
+  .desc-text {
+    margin-top: 16px;
+
+    @include mqMinW(768px) {
+      margin-top: 24px;
+    }
   }
 }
 
@@ -170,34 +190,5 @@
   }
   @include mqMinW(1440px) {
     scale: 0.60889;
-  }
-}
-
-.home-page .text-div {
-  max-width: 450px;
-  margin-inline: 24px;
-  color: $whiteColor;
-  position: absolute;
-  top: 112px;
-
-  @include mqMinW(768px) {
-    top: 202px;
-  }
-
-  @include mqMinW(1440px) {
-    top: auto;
-    bottom: 131px;
-    left: 165px;
-  }
-}
-
-.home-page .logo-div-phone {
-  width: 40px;
-  height: 40px;
-  position: absolute;
-  top: 24px;
-  left: 24px;
-  @include mqMinW(768px) {
-    display: none;
   }
 }

@@ -54,9 +54,9 @@ const navMenuMarkerPositionSwitchListen = () => {
         inProgress = true;
 
         // SELEKTOVANA STRANICA OSTAJE PODVUCENA DOK MARKER NE STIGNE
-        listItem[i].classList.add("stay-hovered");
+        listItem[i].classList.add("hover-stick");
         setTimeout(() => {
-          listItem[i].classList.remove("stay-hovered");
+          listItem[i].classList.remove("hover-stick");
         }, 1005);
 
         markerPositionSwitch(listItem[i], 0);
@@ -105,7 +105,7 @@ const hamburgerBtnListen = () => {
 };
 
 const markerPositionSwitch = (listItem, resizeOrNot) => {
-  const marker = document.getElementById("menu-marker");
+  const marker = document.getElementById("menu-selected-marker");
 
   if (resizeOrNot === 1) {
     marker.style.transition = "0s";
