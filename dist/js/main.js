@@ -69,6 +69,12 @@ const navMenuMarkerPositionSwitchListen = () => {
       if (!inProgress) {
         inProgress = true;
 
+        // SELEKTOVANA STRANICA OSTAJE PODVUCENA DOK MARKER NE STIGNE
+        listItem[i].classList.add("stay-hovered");
+        setTimeout(() => {
+          listItem[i].classList.remove("stay-hovered");
+        }, 1005);
+
         markerPositionSwitch(listItem[i], 0);
         pageSwitch(i);
         setTimeout(() => {
@@ -258,7 +264,7 @@ const pageSwitch = (index) => {
 
   if (index === 0) {
     setTimeout(() => {
-      document.getElementById("home-page").style.display = "flex";
+      document.getElementById("home-page").style.display = "block";
       setTimeout(() => {
         document.getElementById("home-page").style.transform = "translateX(0%)";
         document.getElementById("home-page").style.transition =
@@ -267,7 +273,7 @@ const pageSwitch = (index) => {
     }, 1002);
   } else if (index === 1) {
     setTimeout(() => {
-      document.getElementById("destination-page").style.display = "flex";
+      document.getElementById("destination-page").style.display = "block";
       setTimeout(() => {
         document.getElementById("destination-page").style.transform =
           "translateX(0%)";
@@ -277,7 +283,7 @@ const pageSwitch = (index) => {
     }, 1002);
   } else if (index === 2) {
     setTimeout(() => {
-      document.getElementById("crew-page").style.display = "flex";
+      document.getElementById("crew-page").style.display = "block";
       setTimeout(() => {
         document.getElementById("crew-page").style.transform = "translateX(0%)";
         document.getElementById("crew-page").style.transition =
@@ -286,7 +292,7 @@ const pageSwitch = (index) => {
     }, 1002);
   } else if (index === 3) {
     setTimeout(() => {
-      document.getElementById("technology-page").style.display = "flex";
+      document.getElementById("technology-page").style.display = "block";
       setTimeout(() => {
         document.getElementById("technology-page").style.transform =
           "translateX(0%)";
