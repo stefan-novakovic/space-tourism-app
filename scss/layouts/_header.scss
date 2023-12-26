@@ -1,0 +1,66 @@
+.header {
+  height: 64px;
+  width: 100%;
+  max-width: 1440px;
+  position: absolute;
+  z-index: 1000;
+
+  @include mqMinW(768px) {
+    height: 96px;
+  }
+
+  @include mqMinW(1440px) {
+    height: 136px;
+  }
+}
+
+.header .logo-div-phone {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  @include mqMinW(768px) {
+    display: none;
+  }
+}
+
+.header .menu-and-logo-container {
+  @include mqMinW(768px) {
+    width: 94.6265%;
+    height: 96px;
+    @include flexCenter;
+    justify-content: space-between;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    @include mqMinW(1440px) {
+      width: 96.181%;
+      margin-top: 40px;
+    }
+  }
+}
+
+.header .menu {
+  @include mqMinW(768px) {
+    width: 450px;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.04);
+  }
+  @include mqMinW(1440px) {
+    width: 830px;
+  }
+}
+
+.header .rectangle-line {
+  @include mqMinW(1440px) {
+    width: 473px;
+    height: 1px;
+    background-color: $whiteColor;
+    opacity: 0.2515;
+    position: absolute;
+    left: 112px;
+    z-index: 1;
+  }
+}

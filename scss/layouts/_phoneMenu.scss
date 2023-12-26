@@ -1,0 +1,25 @@
+.phone-sidebar-menu {
+  width: 254px;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.04);
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateX(255px);
+
+  z-index: 1001;
+
+  @include mqMinW(768px) {
+    display: none;
+  }
+}
+
+.phone-sidebar-menu.phoneMenuShow {
+  transform: translate(0px);
+  transition: 0.875s ease-in-out;
+}
+
+.phone-sidebar-menu.phoneMenuHide {
+  transform: translate(255px);
+  transition: 0.875s ease-in-out;
+}
