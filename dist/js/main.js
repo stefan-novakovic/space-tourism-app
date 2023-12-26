@@ -264,7 +264,7 @@ const pageSwitch = (index) => {
 
   if (index === 0) {
     setTimeout(() => {
-      document.getElementById("home-page").style.display = "block";
+      document.getElementById("home-page").style.display = "flex";
       setTimeout(() => {
         document.getElementById("home-page").style.transform = "translateX(0%)";
         document.getElementById("home-page").style.transition =
@@ -273,7 +273,7 @@ const pageSwitch = (index) => {
     }, 1002);
   } else if (index === 1) {
     setTimeout(() => {
-      document.getElementById("destination-page").style.display = "block";
+      document.getElementById("destination-page").style.display = "flex";
       setTimeout(() => {
         document.getElementById("destination-page").style.transform =
           "translateX(0%)";
@@ -283,7 +283,7 @@ const pageSwitch = (index) => {
     }, 1002);
   } else if (index === 2) {
     setTimeout(() => {
-      document.getElementById("crew-page").style.display = "block";
+      document.getElementById("crew-page").style.display = "flex";
       setTimeout(() => {
         document.getElementById("crew-page").style.transform = "translateX(0%)";
         document.getElementById("crew-page").style.transition =
@@ -292,7 +292,7 @@ const pageSwitch = (index) => {
     }, 1002);
   } else if (index === 3) {
     setTimeout(() => {
-      document.getElementById("technology-page").style.display = "block";
+      document.getElementById("technology-page").style.display = "flex";
       setTimeout(() => {
         document.getElementById("technology-page").style.transform =
           "translateX(0%)";
