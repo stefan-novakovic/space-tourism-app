@@ -55,7 +55,7 @@ export const technologyDotBtnsListen = (dataJSON) => {
         }, 1280);
 
         setTimeout(() => {
-          document.querySelector(".technology-page .photo-div").focus();
+          document.querySelector(".technology-page .photo-container").focus();
         }, 1500);
 
         setTimeout(() => {
