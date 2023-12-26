@@ -7,6 +7,11 @@ export const destinationMoonsNavListen = (dataJSON) => {
       if (!inProgress) {
         inProgress = true;
 
+        const moonsMenuHoverMarker = document.getElementById(
+          "moons-menu-hover-marker"
+        );
+        moonsMenuHoverMarker.style.display = "none";
+
         const img = document.querySelector(
           ".destination-page .destination-img"
         );
@@ -175,7 +180,7 @@ export const destinationMoonMarkerHover = () => {
     "moons-menu-hover-marker"
   );
 
-  const deviceScreenWidth768px = window.matchMedia("(min-width: 768px)");
+  const deviceScreenWidth1440px = window.matchMedia("(min-width: 1440px)");
 
   const listItem = document.querySelectorAll(
     ".destination-page .moons-nav .ul .li"
@@ -183,19 +188,9 @@ export const destinationMoonMarkerHover = () => {
 
   for (let i = 0; i < listItem.length; i++) {
     listItem[i].addEventListener("mouseover", (event) => {
-      moonsMenuHoverMarker.style.display = "block";
+      if (deviceScreenWidth1440px.matches) {
+        moonsMenuHoverMarker.style.display = "block";
 
-      if (!deviceScreenWidth768px.matches) {
-        moonsMenuHoverMarker.style.width = "36px";
-        if (listItem[i].firstChild.nextSibling.textContent === "MOON") {
-          moonsMenuHoverMarker.style.left = "0px";
-        } else if (listItem[i].firstChild.nextSibling.textContent === "TITAN") {
-          moonsMenuHoverMarker.style.left = "201.5px";
-        } else {
-          moonsMenuHoverMarker.style.left =
-            listItem[i].offsetLeft - 18 + listItem[i].offsetWidth / 2 + "px";
-        }
-      } else {
         if (listItem[i].firstChild.nextSibling.textContent === "MOON") {
           moonsMenuHoverMarker.style.left = "0px";
           moonsMenuHoverMarker.style.width = "41px";
@@ -213,8 +208,11 @@ export const destinationMoonMarkerHover = () => {
           moonsMenuHoverMarker.style.left = "239.5px";
           moonsMenuHoverMarker.style.width = "43px";
         }
+      } else {
+        moonsMenuHoverMarker.style.display = "none";
       }
     });
+
     listItem[i].addEventListener("mouseout", (event) => {
       moonsMenuHoverMarker.style.display = "none";
     });
@@ -267,9 +265,7 @@ export const destinationMoonsMarkerPositionSwitchOnWindowResize = () => {
       ".destination-page .moons-nav .ul .li"
     );
     markerPositionSwitch(listItem[choice], 1);
-    const moonsMenuHoverMarker = document.getElementById(
-      "moons-menu-hover-marker"
-    );
-    moonsMenuHoverMarker.style.display = "none";
+
+    destinationMoonMarkerHover();
   });
 };
