@@ -42,6 +42,7 @@ const getJSONData = async () => {
 
 let inProgress = false;
 let choice = 0;
+let choicePhone = 0;
 const navMenuMarkerPositionSwitchListen = () => {
   const listItem = document.querySelectorAll(".header .nav .ul .li");
   const listItemPhone = document.querySelectorAll("main .nav-phone .ul .li");
@@ -69,6 +70,7 @@ const navMenuMarkerPositionSwitchListen = () => {
 
   for (let i = 0; i < listItemPhone.length; i++) {
     listItemPhone[i].addEventListener("click", (event) => {
+      choicePhone = i;
       setTimeout(() => {
         const phoneSidebarMenu = document.getElementById("phone-sidebar-menu");
         phoneSidebarMenu.classList.remove("phoneMenuShow");
@@ -115,11 +117,46 @@ const markerPositionSwitch = (listItem, resizeOrNot) => {
   marker.style.width = listItem.offsetWidth + "px";
 };
 
+let oldWidthPhone = window.matchMedia("(max-width: 767px)").matches;
+let oldWidthTablet = window.matchMedia("(min-width: 768px)").matches;
+let oldWidthDesktop = window.matchMedia("(min-width: 1440px)").matches;
 const markerPositionSwitchOnWindowResize = () => {
-  if (window.innerWidth >= 768) {
-    const listItem = document.querySelectorAll(".header .nav .ul .li");
-    markerPositionSwitch(listItem[choice], 1);
+  let newWidthPhone = window.matchMedia("(max-width: 767px)").matches;
+  let newWidthTablet = window.matchMedia("(min-width: 768px)").matches;
+  let newWidthDesktop = window.matchMedia("(min-width: 1440px)").matches;
+
+  const listItem = document.querySelectorAll(".header .nav .ul .li");
+  if (newWidthPhone && !newWidthTablet && !newWidthDesktop) {
+    if (oldWidthPhone && !oldWidthTablet && !oldWidthDesktop) {
+      markerPositionSwitch(listItem[choicePhone], 1);
+    } else if (!oldWidthPhone && oldWidthTablet && !oldWidthDesktop) {
+      markerPositionSwitch(listItem[choice], 1);
+    } else if (!oldWidthPhone && oldWidthTablet && oldWidthDesktop) {
+      markerPositionSwitch(listItem[choice], 1);
+    }
+  } else if (!newWidthPhone && newWidthTablet && !newWidthDesktop) {
+    if (oldWidthPhone && !oldWidthTablet && !oldWidthDesktop) {
+      markerPositionSwitch(listItem[choicePhone], 1);
+    } else if (!oldWidthPhone && oldWidthTablet && !oldWidthDesktop) {
+      markerPositionSwitch(listItem[choice], 1);
+    } else if (!oldWidthPhone && oldWidthTablet && oldWidthDesktop) {
+      markerPositionSwitch(listItem[choice], 1);
+    }
+  } else if (!newWidthPhone && newWidthTablet && newWidthDesktop) {
+    if (oldWidthPhone && !oldWidthTablet && !oldWidthDesktop) {
+      markerPositionSwitch(listItem[choicePhone], 1);
+    } else if (!oldWidthPhone && oldWidthTablet && !oldWidthDesktop) {
+      markerPositionSwitch(listItem[choice], 1);
+    } else if (!oldWidthPhone && oldWidthTablet && oldWidthDesktop) {
+      markerPositionSwitch(listItem[choice], 1);
+    }
   }
+
+  setTimeout(() => {
+    oldWidthPhone = newWidthPhone;
+    oldWidthTablet = newWidthTablet;
+    oldWidthDesktop = newWidthDesktop;
+  }, 100);
 };
 
 let counter = 0;

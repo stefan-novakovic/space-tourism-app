@@ -41,7 +41,6 @@ const markSelectedButton = (selectedButton) => {
 
 const removeButtonHoverEffectClassFromSelectedButton = (selectedButton) => {
   selectedButton.classList.remove("hover-effect-technology-page");
-  selectedButton.classList.add("hover-effect-technology-page");
 };
 
 const addButtonHoverListenersToNonSelectedButtons = (buttons) => {
