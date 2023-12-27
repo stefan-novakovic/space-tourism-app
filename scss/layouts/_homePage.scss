@@ -192,3 +192,8 @@
     scale: 0.60889;
   }
 }
+
+.home-page .explore-btn-click-effect {
+  transform: rotate(720deg);
+  transition: transform 1s;
+}

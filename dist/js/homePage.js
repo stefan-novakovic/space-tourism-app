@@ -16,11 +16,9 @@ export const homeExploreBtnListen = () => {
   exploreBtn.addEventListener("click", (event) => {
     if (!inProgress) {
       inProgress = true;
-      exploreBtn.style.transform = "rotate(720deg)";
-      exploreBtn.style.transition = "1s";
+      exploreBtn.classList.add("explore-btn-click-effect");
       setTimeout(() => {
-        exploreBtn.style.transform = "rotate(0deg)";
-        exploreBtn.style.transition = "0s";
+        exploreBtn.classList.remove("explore-btn-click-effect");
         inProgress = false;
       }, 1001);
     }

@@ -76,19 +76,19 @@
       }
     }
 
+    .li.hover-stick {
+      @include mqMinW(768px) {
+        border-top: 3px solid transparent;
+        border-bottom: 3px solid rgba(255, 255, 255, 0.5021);
+      }
+      @include mqMinW(1440px) {
+        border-top: 3.5px solid transparent;
+        border-bottom: 3.5px solid rgba(255, 255, 255, 0.5021);
+      }
+    }
+
     .li:active .li__a {
       color: rgba(255, 255, 255, 0.5021);
     }
-  }
-}
-
-.hover-stick {
-  @include mqMinW(768px) {
-    border-top: 3px solid transparent;
-    border-bottom: 3px solid rgba(255, 255, 255, 0.5021);
-  }
-  @include mqMinW(1440px) {
-    border-top: 3.5px solid transparent;
-    border-bottom: 3.5px solid rgba(255, 255, 255, 0.5021);
   }
 }

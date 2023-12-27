@@ -177,6 +177,21 @@
     .circle-btn-alt:focus-visible {
       border: 1px solid $whiteColor;
     }
+
+    .circle-btn-alt.reset-all-btns {
+      background-color: transparent;
+      color: $whiteColor;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .circle-btn-alt.hover-effect {
+      border: 1px solid $whiteColor;
+    }
+
+    .circle-btn-alt.mark-selected-btn {
+      background-color: $whiteColor;
+      color: $darkBlueColor;
+    }
   }
 
   .text-div {
@@ -256,6 +271,18 @@
         width: 444px;
         height: auto;
       }
+    }
+
+    .change-text-animation-out {
+      transition: ease-in-out all 1.25s;
+      opacity: 0;
+      scale: 0;
+    }
+
+    .change-text-animation-in {
+      transition: ease-in-out all 1.3s;
+      opacity: 1;
+      scale: 1;
     }
   }
 }

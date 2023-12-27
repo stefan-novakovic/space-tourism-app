@@ -11,11 +11,11 @@
   }
 }
 
-#moons-menu-selected-marker {
+.moons-menu-marker.selected-marker {
   background-color: $whiteColor;
 }
 
-#moons-menu-hover-marker {
+.moons-menu-marker.hover-marker {
   display: none;
   background-color: rgba(255, 255, 255, 0.5021);
 }
