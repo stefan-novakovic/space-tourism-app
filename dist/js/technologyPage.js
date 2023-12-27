@@ -33,6 +33,8 @@ const resetAllButtonsStyle = (buttons) => {
 };
 
 const markSelectedButton = (selectedButton) => {
+  selectedButton.classList.remove("hover-effect");
+
   selectedButton.classList.remove("reset-all-btns");
   selectedButton.classList.add("mark-selected-btn");
 };
