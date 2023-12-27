@@ -77,26 +77,26 @@ const changeImage = (dataJSON, index) => {
   img.style.transform = "translateX(104%)";
 
   setTimeout(() => {
-    imgSource.setAttribute(
-      "srcset",
-      dataJSON.technology[index].images.portrait
-    );
-    img.setAttribute("src", dataJSON.technology[index].images.landscape);
-    img.setAttribute("alt", dataJSON.technology[index].name + " image");
-
     const deviceScreenWidth1440px = window.matchMedia("(min-width: 1440px)");
     // Ako je screen width <1440px onda prebaci sliku sa desne na levu stranu (van ekrana)
     if (!deviceScreenWidth1440px.matches) {
       img.style.transition = "none";
       img.style.transform = "translateX(-104%)";
     }
-  }, 1260);
+
+    imgSource.setAttribute(
+      "srcset",
+      dataJSON.technology[index].images.portrait
+    );
+    img.setAttribute("src", dataJSON.technology[index].images.landscape);
+    img.setAttribute("alt", dataJSON.technology[index].name + " image");
+  }, 1270);
 
   // Tranzicija nove slike na ekran
   setTimeout(() => {
-    img.style.transition = "ease-in-out all 1.275s";
+    img.style.transition = "ease-in-out all 1.25s";
     img.style.transform = "translateX(0%)";
-  }, 1275);
+  }, 1300);
 
   // Fokusiraj novu sliku zbog screen reader-a (accessibility)
   setTimeout(() => {
