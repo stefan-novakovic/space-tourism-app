@@ -7,10 +7,12 @@ export const technologyDotBtnsListen = (dataJSON) => {
       if (!inProgress) {
         inProgress = true;
 
-        removeButtonHoverListeners(buttons);
+        removeButtonHoverListenersFromAllButtons(buttons);
         resetAllButtonsStyle(buttons);
+
         markSelectedButton(buttons[i]);
-        addButtonHoverListeners(buttons);
+        removeButtonHoverEffectClassFromSelectedButton(buttons[i]);
+        addButtonHoverListenersToNonSelectedButtons(buttons);
 
         changeImage(dataJSON, i);
         changeText(dataJSON, i);
@@ -27,18 +29,22 @@ export const technologyDotBtnsListen = (dataJSON) => {
 
 const resetAllButtonsStyle = (buttons) => {
   for (let i = 0; i < buttons.length; i++) {
-    buttons[i].classList.remove("mark-selected-btn");
-    buttons[i].classList.add("reset-all-btns");
+    buttons[i].classList.remove("mark-selected-technology-page-btn");
+    buttons[i].classList.add("reset-all-technology-page-btns");
   }
 };
 
 const markSelectedButton = (selectedButton) => {
-  selectedButton.classList.remove("hover-effect");
-
-  selectedButton.classList.remove("reset-all-btns");
-  selectedButton.classList.add("mark-selected-btn");
+  selectedButton.classList.remove("reset-all-technology-page-btns");
+  selectedButton.classList.add("mark-selected-technology-page-btn");
 };
-const addButtonHoverListeners = (buttons) => {
+
+const removeButtonHoverEffectClassFromSelectedButton = (selectedButton) => {
+  selectedButton.classList.remove("hover-effect-technology-page");
+  selectedButton.classList.add("hover-effect-technology-page");
+};
+
+const addButtonHoverListenersToNonSelectedButtons = (buttons) => {
   for (let i = 0; i < buttons.length; i++) {
     if (
       getComputedStyle(buttons[i]).getPropertyValue("background-color") !==
@@ -51,15 +57,15 @@ const addButtonHoverListeners = (buttons) => {
 };
 
 const addHoverEffectToBtn = (event) => {
-  event.target.classList.add("hover-effect");
+  event.target.classList.add("hover-effect-technology-page");
 };
 
 const removeHoverEffectFromBtn = (event) => {
-  event.target.classList.remove("hover-effect");
-  event.target.classList.add("reset-all-btns");
+  event.target.classList.remove("hover-effect-technology-page");
+  event.target.classList.add("reset-all-technology-page-btns");
 };
 
-const removeButtonHoverListeners = (buttons) => {
+const removeButtonHoverListenersFromAllButtons = (buttons) => {
   for (let i = 0; i < buttons.length; i++) {
     buttons[i].removeEventListener("mouseover", addHoverEffectToBtn);
     buttons[i].removeEventListener("mouseleave", removeHoverEffectFromBtn);
@@ -100,11 +106,17 @@ const changeImage = (dataJSON, index) => {
 
   // Fokusiraj novu sliku zbog screen reader-a (accessibility)
   setTimeout(() => {
-    document.querySelector(".technology-page .photo-container").focus();
-  }, 1500);
+    document.querySelector(".technology-page .terminology-text").focus();
+  }, 2000);
 };
 
 const changeText = (dataJSON, index) => {
+  terminologyText();
+  nameText(dataJSON, index);
+  descText(dataJSON, index);
+};
+
+const terminologyText = () => {
   const terminologyText = document.querySelector(
     ".technology-page .terminology-text"
   );
@@ -114,7 +126,9 @@ const changeText = (dataJSON, index) => {
     terminologyText.classList.remove("change-text-animation-out");
     terminologyText.classList.add("change-text-animation-in");
   }, 1250);
+};
 
+const nameText = (dataJSON, index) => {
   const nameText = document.querySelector(".technology-page .name-text");
   nameText.classList.remove("change-text-animation-in");
   nameText.classList.add("change-text-animation-out");
@@ -123,7 +137,9 @@ const changeText = (dataJSON, index) => {
     nameText.classList.remove("change-text-animation-out");
     nameText.classList.add("change-text-animation-in");
   }, 1250);
+};
 
+const descText = (dataJSON, index) => {
   const descText = document.querySelector(".technology-page .desc-text");
   descText.classList.remove("change-text-animation-in");
   descText.classList.add("change-text-animation-out");

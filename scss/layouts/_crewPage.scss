@@ -180,6 +180,21 @@
     .circle-btn:active {
       filter: brightness(80%);
     }
+
+    .circle-btn.reset-all-crew-page-btns {
+      transition: ease-in-out opacity 0.75s;
+      opacity: 0.1744;
+    }
+
+    .circle-btn.hover-effect-crew-page {
+      transition: 0s;
+      opacity: 0.5;
+    }
+
+    .circle-btn.mark-selected-crew-page-btn {
+      transition: ease-in-out opacity 0.75s;
+      opacity: 1;
+    }
   }
 
   .text-div {
@@ -252,6 +267,24 @@
         width: 444px;
         height: auto;
       }
+    }
+
+    .change-text-animation-out {
+      transition: ease-in-out all 1.5s;
+      opacity: 0;
+      scale: 0;
+    }
+
+    .change-role-text-animation-in {
+      transition: ease-in-out all 1.25s;
+      opacity: 0.4951;
+      scale: 1;
+    }
+
+    .change-name-and-bio-text-animation-in {
+      transition: ease-in-out all 1.25s;
+      opacity: 1;
+      scale: 1;
     }
   }
 }

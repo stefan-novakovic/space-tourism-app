@@ -1,119 +1,28 @@
 export const crewDotBtnsListen = (dataJSON) => {
   let inProgress = false;
-  let index;
+
   const buttons = document.querySelectorAll(".crew-page .circle-btn");
   for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener("click", (event) => {
-      buttons[0].disabled = true;
-      buttons[1].disabled = true;
-      buttons[2].disabled = true;
-      buttons[3].disabled = true;
-      buttons[i].removeEventListener("mouseover", mouseOverHoverOpacity);
-      buttons[i].removeEventListener("mouseout", mouseOutHoverOpacity);
+      disableButtonsFunctionality(buttons);
+      removeButtonHoverListenersForSelectedButton(buttons, i);
 
-      index = i;
-      const deviceScreenWidth768px = window.matchMedia("(min-width: 768px)");
-      const deviceScreenWidth1440px = window.matchMedia("(min-width: 1440px)");
       if (!inProgress) {
         inProgress = true;
-        for (let i = 0; i < buttons.length; i++) {
-          buttons[i].style.transition = "ease-in-out opacity 0.75s";
-          buttons[i].style.opacity = "0.1744";
-        }
-        setTimeout(() => {
-          buttons[i].style.transition = "ease-in-out opacity 0.75s";
-          buttons[i].style.opacity = "1";
-        }, 650);
 
-        for (let i = 0; i < buttons.length; i++) {
-          console.log(inProgress);
-          if (buttons[i] !== buttons[index]) {
-            buttons[i].addEventListener("mouseover", mouseOverHoverOpacity);
-            buttons[i].addEventListener("mouseout", mouseOutHoverOpacity);
-          }
-        }
+        resetAllButtonsStyle(buttons);
 
-        const img = document.querySelector(".crew-page .crew-img");
-        img.style.transition = "ease-in-out transform 1.25s";
-        img.style.transform = "translateY(102%)";
+        markSelectedButton(buttons[i]);
+        removeButtonHoverEffectClassFromSelectedButton(buttons[i]);
+        addButtonHoverListenersToNonSelectedButtons(buttons, i);
 
-        setTimeout(() => {
-          img.setAttribute("src", dataJSON.crew[i].images.png);
-          img.setAttribute("alt", dataJSON.crew[i].name + " image");
-          img.style.transition = "ease-in-out transform 1.25s";
-          img.style.transform = "translateY(0%)";
-        }, 1500);
+        changeImage(dataJSON, i);
+        changeText(dataJSON, i);
 
+        // Onemogućava spam-ovanje button-a;
+        // Tranzicija slike i teksta traje 2750ms (moguce je kliknuti button pre nego što se nova slika i tekst pojave na ekranu)
         setTimeout(() => {
-          document.querySelector(".crew-page .photo-div").focus();
-        }, 1750);
-
-        const crewRoleText = document.querySelector(
-          ".crew-page .crew-role-text"
-        );
-        crewRoleText.style.transition = "ease-in-out all 1.5s";
-        crewRoleText.style.opacity = "0";
-        crewRoleText.style.scale = "0";
-        setTimeout(() => {
-          crewRoleText.textContent = dataJSON.crew[i].role.toUpperCase();
-          crewRoleText.style.opacity = "0.4951";
-          crewRoleText.style.scale = "1";
-          crewRoleText.style.transition = "ease-in-out all 1.25s";
-        }, 1500);
-
-        const crewNameText = document.querySelector(
-          ".crew-page .crew-name-text"
-        );
-        crewNameText.style.transition = "ease-in-out all 1.5s";
-        crewNameText.style.opacity = "0";
-        crewNameText.style.scale = "0";
-        setTimeout(() => {
-          crewNameText.textContent = dataJSON.crew[i].name.toUpperCase();
-          crewNameText.style.opacity = "1";
-          crewNameText.style.scale = "1";
-          crewNameText.style.transition = "ease-in-out all 1.25s";
-        }, 1500);
-
-        const crewBioText = document.querySelector(".crew-page .crew-bio-text");
-        crewBioText.style.transition = "ease-in-out all 1.5s";
-        crewBioText.style.opacity = "0";
-        crewBioText.style.scale = "0";
-        setTimeout(() => {
-          let correctedText = dataJSON.crew[i].bio;
-          correctedText = correctedText.replaceAll("-", "‑");
-          crewBioText.textContent = correctedText;
-          crewBioText.style.opacity = "1";
-          crewBioText.style.scale = "1";
-          const textAndBtnsContainer = document.querySelector(
-            ".crew-page .text-and-buttons-container"
-          );
-          if (
-            deviceScreenWidth768px.matches &&
-            !deviceScreenWidth1440px.matches
-          ) {
-            if (dataJSON.crew[i].name === "Douglas Hurley") {
-              textAndBtnsContainer.style.width = "458px";
-            } else if (dataJSON.crew[i].name === "Mark Shuttleworth") {
-              textAndBtnsContainer.style.width = "520px";
-            } else if (dataJSON.crew[i].name === "Anousheh Ansari") {
-              textAndBtnsContainer.style.width = "535.7px";
-            } else {
-              textAndBtnsContainer.style.width = "592px";
-            }
-          } else if (
-            deviceScreenWidth768px.matches &&
-            deviceScreenWidth1440px.matches
-          ) {
-            textAndBtnsContainer.style.width = "auto";
-            crewBioText.style.width = "444px";
-          }
-          crewBioText.style.transition = "ease-in-out all 1.25s";
-        }, 1500);
-        setTimeout(() => {
-          buttons[0].disabled = false;
-          buttons[1].disabled = false;
-          buttons[2].disabled = false;
-          buttons[3].disabled = false;
+          enableButtonsFunctionality(buttons);
           inProgress = false;
         }, 1525);
       }
@@ -121,35 +30,152 @@ export const crewDotBtnsListen = (dataJSON) => {
   }
 };
 
+const disableButtonsFunctionality = (buttons) => {
+  for (let i = 0; i < buttons.length; i++) {
+    buttons[i].disabled = "true";
+  }
+};
+
+const enableButtonsFunctionality = (buttons) => {
+  for (let i = 0; i < buttons.length; i++) {
+    buttons[i].removeAttribute("disabled");
+  }
+};
+
+const removeButtonHoverListenersForSelectedButton = (
+  buttons,
+  selectedButtonIndex
+) => {
+  // Brisanje hover listenera-a za selektovano dugme
+  buttons[selectedButtonIndex].removeEventListener(
+    "mouseover",
+    mouseOverHoverOpacity
+  );
+  buttons[selectedButtonIndex].removeEventListener(
+    "mouseout",
+    mouseOutHoverOpacity
+  );
+};
+
+const resetAllButtonsStyle = (buttons) => {
+  for (let i = 0; i < buttons.length; i++) {
+    buttons[i].classList.remove("mark-selected-crew-page-btn");
+    buttons[i].classList.add("reset-all-crew-page-btns");
+    buttons[i].style.transition = "ease-in-out opacity 0.75s";
+  }
+};
+
+const markSelectedButton = (selectedButton) => {
+  setTimeout(() => {
+    selectedButton.classList.remove("reset-all-crew-page-btns");
+    selectedButton.classList.add("mark-selected-crew-page-btn");
+  }, 650);
+};
+
+const removeButtonHoverEffectClassFromSelectedButton = (selectedButton) => {
+  selectedButton.classList.remove("hover-effect-crew-page");
+  selectedButton.removeAttribute("value");
+};
+
+const addButtonHoverListenersToNonSelectedButtons = (
+  buttons,
+  selectedButtonIndex
+) => {
+  for (let i = 0; i < buttons.length; i++) {
+    if (buttons[i] !== buttons[selectedButtonIndex]) {
+      buttons[i].addEventListener("mouseover", mouseOverHoverOpacity);
+      buttons[i].addEventListener("mouseout", mouseOutHoverOpacity);
+    }
+  }
+};
+
 const mouseOverHoverOpacity = (event) => {
-  event.target.style.transition = "0s";
-  event.target.style.opacity = "0.5";
   event.stopPropagation();
+  event.target.classList.add("hover-effect-crew-page");
+  event.target.value = "hover";
+  event.target.style.transition = "0s";
 };
 
 const mouseOutHoverOpacity = (event) => {
-  event.target.style.transition = "0s";
-  event.target.style.opacity = "0.1744";
+  event.target.classList.remove("hover-effect-crew-page");
+  if (event.target.value === "hover") {
+    event.target.removeAttribute("value");
+    event.target.style.transition = "0s";
+  } else {
+    event.target.style.transition = "ease-in-out opacity 0.75s";
+  }
+  event.target.classList.add("reset-all-crew-page-btns");
 };
 
-export const crewWindowResizeListen = (dataJSON) => {
-  window.addEventListener("resize", (event) => {
-    let index;
-    const buttons = document.querySelectorAll(".crew-page .circle-btn");
+const changeImage = (dataJSON, index) => {
+  const img = document.querySelector(".crew-page .crew-img");
+
+  // Tranzicija slike van ekrana
+  img.style.transition = "ease-in-out transform 1.25s";
+  img.style.transform = "translateY(102%)";
+
+  setTimeout(() => {
+    img.setAttribute("src", dataJSON.crew[index].images.png);
+    img.setAttribute("alt", dataJSON.crew[index].name + " image");
+    // Tranzicija nove slike na ekran
+    img.style.transition = "ease-in-out transform 1.25s";
+    img.style.transform = "translateY(0%)";
+  }, 1500);
+
+  // Fokusiraj novu sliku zbog screen reader-a (accessibility)
+  setTimeout(() => {
+    document.querySelector(".crew-page .crew-page-title-text").focus();
+  }, 2000);
+};
+
+const changeText = (dataJSON, index) => {
+  crewRoleText(dataJSON, index);
+  crewNameText(dataJSON, index);
+  crewBioText(dataJSON, index);
+};
+
+const crewRoleText = (dataJSON, index) => {
+  const crewRoleText = document.querySelector(".crew-page .crew-role-text");
+  crewRoleText.classList.remove("change-role-text-animation-in");
+  crewRoleText.classList.add("change-text-animation-out");
+
+  setTimeout(() => {
+    crewRoleText.textContent = dataJSON.crew[index].role.toUpperCase();
+    crewRoleText.classList.remove("change-text-animation-out");
+    crewRoleText.classList.add("change-role-text-animation-in");
+  }, 1500);
+};
+
+const crewNameText = (dataJSON, index) => {
+  const crewNameText = document.querySelector(".crew-page .crew-name-text");
+  crewNameText.classList.remove("change-name-and-bio-text-animation-in");
+  crewNameText.classList.add("change-text-animation-out");
+
+  setTimeout(() => {
+    crewNameText.textContent = dataJSON.crew[index].name.toUpperCase();
+    crewNameText.classList.remove("change-text-animation-out");
+    crewNameText.classList.add("change-name-and-bio-text-animation-in");
+  }, 1500);
+};
+
+const crewBioText = (dataJSON, index) => {
+  const crewBioText = document.querySelector(".crew-page .crew-bio-text");
+  crewBioText.classList.remove("change-name-and-bio-text-animation-in");
+  crewBioText.classList.add("change-text-animation-out");
+
+  setTimeout(() => {
+    let correctedText = dataJSON.crew[index].bio;
+    correctedText = correctedText.replaceAll("-", "‑");
+    crewBioText.textContent = correctedText;
+    crewBioText.classList.remove("change-text-animation-out");
+    crewBioText.classList.add("change-name-and-bio-text-animation-in");
+
+    const deviceScreenWidth768px = window.matchMedia("(min-width: 768px)");
+    const deviceScreenWidth1440px = window.matchMedia("(min-width: 1440px)");
     const textAndBtnsContainer = document.querySelector(
       ".crew-page .text-and-buttons-container"
     );
-    for (let i = 0; i < buttons.length; i++) {
-      if (getComputedStyle(buttons[i]).getPropertyValue("opacity") === "1") {
-        index = i;
-      }
-    }
-
-    if (window.innerWidth < 768) {
-      document.querySelector(".crew-page .crew-bio-text").style.width = "auto";
-      textAndBtnsContainer.style.width = "327px";
-    } else if (window.innerWidth >= 768 && window.innerWidth < 1440) {
-      document.querySelector(".crew-page .crew-bio-text").style.width = "auto";
+    if (deviceScreenWidth768px.matches && !deviceScreenWidth1440px.matches) {
       if (dataJSON.crew[index].name === "Douglas Hurley") {
         textAndBtnsContainer.style.width = "458px";
       } else if (dataJSON.crew[index].name === "Mark Shuttleworth") {
@@ -159,9 +185,49 @@ export const crewWindowResizeListen = (dataJSON) => {
       } else {
         textAndBtnsContainer.style.width = "592px";
       }
-    } else if (window.innerWidth >= 1440) {
-      document.querySelector(".crew-page .crew-bio-text").style.width = "444px";
+    } else if (
+      deviceScreenWidth768px.matches &&
+      deviceScreenWidth1440px.matches
+    ) {
       textAndBtnsContainer.style.width = "auto";
+      crewBioText.style.width = "444px";
     }
-  });
+  }, 1500);
+};
+
+export const crewPageOnResize = (dataJSON) => {
+  let selectedButtonIndex;
+
+  const buttons = document.querySelectorAll(".crew-page .circle-btn");
+  for (let i = 0; i < buttons.length; i++) {
+    if (getComputedStyle(buttons[i]).getPropertyValue("opacity") === "1") {
+      selectedButtonIndex = i;
+    }
+  }
+
+  const textAndBtnsContainer = document.querySelector(
+    ".crew-page .text-and-buttons-container"
+  );
+  const crewBioText = document.querySelector(".crew-page .crew-bio-text");
+
+  if (window.innerWidth < 768) {
+    textAndBtnsContainer.style.width = "327px";
+    crewBioText.style.width = "auto";
+  } else if (window.innerWidth >= 768 && window.innerWidth < 1440) {
+    crewBioText.style.width = "auto";
+    if (dataJSON.crew[selectedButtonIndex].name === "Douglas Hurley") {
+      textAndBtnsContainer.style.width = "458px";
+    } else if (
+      dataJSON.crew[selectedButtonIndex].name === "Mark Shuttleworth"
+    ) {
+      textAndBtnsContainer.style.width = "520px";
+    } else if (dataJSON.crew[selectedButtonIndex].name === "Anousheh Ansari") {
+      textAndBtnsContainer.style.width = "535.7px";
+    } else {
+      textAndBtnsContainer.style.width = "592px";
+    }
+  } else if (window.innerWidth >= 1440) {
+    textAndBtnsContainer.style.width = "auto";
+    crewBioText.style.width = "444px";
+  }
 };

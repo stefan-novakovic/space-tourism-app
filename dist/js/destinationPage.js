@@ -56,9 +56,6 @@ export const destinationMoonsNavListen = (dataJSON) => {
           destinationNameText.style.opacity = "1";
           destinationNameText.style.scale = "1";
           destinationNameText.style.transition = "ease-in-out all 1.75s";
-          setTimeout(() => {
-            destinationNameText.focus();
-          }, 750);
         }, 2000);
 
         const destinationDescText = document.querySelector(
@@ -143,6 +140,10 @@ export const destinationMoonsNavListen = (dataJSON) => {
           destinationEstTravelTimeValueText.style.transition =
             "ease-in-out all 1.75s";
         }, 2000);
+
+        setTimeout(() => {
+          destinationNameText.focus();
+        }, 3000);
 
         setTimeout(() => {
           inProgress = false;
@@ -260,12 +261,10 @@ const markerPositionSwitch = (listItem, resizeOrNot) => {
 };
 
 export const destinationMoonsMarkerPositionSwitchOnWindowResize = () => {
-  window.addEventListener("resize", (event) => {
-    const listItem = document.querySelectorAll(
-      ".destination-page .moons-nav .ul .li"
-    );
-    markerPositionSwitch(listItem[choice], 1);
+  const listItem = document.querySelectorAll(
+    ".destination-page .moons-nav .ul .li"
+  );
+  markerPositionSwitch(listItem[choice], 1);
 
-    destinationMoonMarkerHover();
-  });
+  destinationMoonMarkerHover();
 };

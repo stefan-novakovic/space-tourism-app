@@ -5,7 +5,7 @@ import {
   destinationMoonsMarkerPositionSwitchOnWindowResize,
   destinationMoonMarkerHover,
 } from "./destinationPage.js";
-import { crewDotBtnsListen, crewWindowResizeListen } from "./crewPage.js";
+import { crewDotBtnsListen, crewPageOnResize } from "./crewPage.js";
 import { technologyDotBtnsListen } from "./technologyPage.js";
 
 const initApp = () => {
@@ -19,7 +19,6 @@ const startApp = async () => {
   const dataJSON = await getJSONData();
 
   navMenuMarkerPositionSwitchListen();
-  markerPositionSwitchOnWindowResize();
   hamburgerBtnListen();
 
   homeExploreBtnListen();
@@ -27,12 +26,12 @@ const startApp = async () => {
   destinationMoonMarkerHover();
   destinationMoonsNavListen(dataJSON);
   destinationMoonsNavMenuMarkerPositionSwitchListen();
-  destinationMoonsMarkerPositionSwitchOnWindowResize();
 
   crewDotBtnsListen(dataJSON);
-  crewWindowResizeListen(dataJSON);
 
   technologyDotBtnsListen(dataJSON);
+
+  windowResize(dataJSON);
 };
 
 const getJSONData = async () => {
@@ -117,12 +116,10 @@ const markerPositionSwitch = (listItem, resizeOrNot) => {
 };
 
 const markerPositionSwitchOnWindowResize = () => {
-  window.addEventListener("resize", (event) => {
-    if (window.innerWidth >= 768) {
-      const listItem = document.querySelectorAll(".header .nav .ul .li");
-      markerPositionSwitch(listItem[choice], 1);
-    }
-  });
+  if (window.innerWidth >= 768) {
+    const listItem = document.querySelectorAll(".header .nav .ul .li");
+    markerPositionSwitch(listItem[choice], 1);
+  }
 };
 
 let counter = 0;
@@ -285,4 +282,12 @@ const pageSwitch = (index) => {
       }, 48);
     }, 1002);
   }
+};
+
+const windowResize = (dataJSON) => {
+  window.addEventListener("resize", (event) => {
+    markerPositionSwitchOnWindowResize();
+    destinationMoonsMarkerPositionSwitchOnWindowResize();
+    crewPageOnResize(dataJSON);
+  });
 };
