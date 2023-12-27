@@ -68,28 +68,25 @@ const removeButtonHoverListeners = (buttons) => {
 
 const changeImage = (dataJSON, index) => {
   const img = document.querySelector(".technology-page .technology-img");
+  const imgSource = document.querySelector(
+    ".technology-page .technology-img-source"
+  );
 
   // Tranzicija slike van ekrana
   img.style.transition = "ease-in-out all 1.25s";
   img.style.transform = "translateX(104%)";
 
-  // Ako je screen width >=1440px onda zameni picture source srcset, image src, image alt
-  // Ako je screen width <1440px onda zameni image src, image alt i prebaci sliku sa desne na levu stranu (van ekrana)
   setTimeout(() => {
+    imgSource.setAttribute(
+      "srcset",
+      dataJSON.technology[index].images.portrait
+    );
+    img.setAttribute("src", dataJSON.technology[index].images.landscape);
+    img.setAttribute("alt", dataJSON.technology[index].name + " image");
+
     const deviceScreenWidth1440px = window.matchMedia("(min-width: 1440px)");
-    if (deviceScreenWidth1440px.matches) {
-      const imgSource = document.querySelector(
-        ".technology-page .technology-img-source"
-      );
-      imgSource.setAttribute(
-        "srcset",
-        dataJSON.technology[index].images.portrait
-      );
-      img.setAttribute("src", dataJSON.technology[index].images.landscape);
-      img.setAttribute("alt", dataJSON.technology[index].name + " image");
-    } else {
-      img.setAttribute("src", dataJSON.technology[index].images.landscape);
-      img.setAttribute("alt", dataJSON.technology[index].name + " image");
+    // Ako je screen width <1440px onda prebaci sliku sa desne na levu stranu (van ekrana)
+    if (!deviceScreenWidth1440px.matches) {
       img.style.transition = "none";
       img.style.transform = "translateX(-104%)";
     }
