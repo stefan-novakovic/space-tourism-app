@@ -129,26 +129,35 @@ const markerPositionSwitchOnWindowResize = () => {
   if (newWidthPhone && !newWidthTablet && !newWidthDesktop) {
     if (oldWidthPhone && !oldWidthTablet && !oldWidthDesktop) {
       markerPositionSwitch(listItem[choicePhone], 1);
+      choice = choicePhone;
     } else if (!oldWidthPhone && oldWidthTablet && !oldWidthDesktop) {
       markerPositionSwitch(listItem[choice], 1);
+      choicePhone = choice;
     } else if (!oldWidthPhone && oldWidthTablet && oldWidthDesktop) {
       markerPositionSwitch(listItem[choice], 1);
+      choicePhone = choice;
     }
   } else if (!newWidthPhone && newWidthTablet && !newWidthDesktop) {
     if (oldWidthPhone && !oldWidthTablet && !oldWidthDesktop) {
       markerPositionSwitch(listItem[choicePhone], 1);
+      choice = choicePhone;
     } else if (!oldWidthPhone && oldWidthTablet && !oldWidthDesktop) {
       markerPositionSwitch(listItem[choice], 1);
+      choicePhone = choice;
     } else if (!oldWidthPhone && oldWidthTablet && oldWidthDesktop) {
       markerPositionSwitch(listItem[choice], 1);
+      choicePhone = choice;
     }
   } else if (!newWidthPhone && newWidthTablet && newWidthDesktop) {
     if (oldWidthPhone && !oldWidthTablet && !oldWidthDesktop) {
       markerPositionSwitch(listItem[choicePhone], 1);
+      choice = choicePhone;
     } else if (!oldWidthPhone && oldWidthTablet && !oldWidthDesktop) {
       markerPositionSwitch(listItem[choice], 1);
+      choicePhone = choice;
     } else if (!oldWidthPhone && oldWidthTablet && oldWidthDesktop) {
       markerPositionSwitch(listItem[choice], 1);
+      choicePhone = choice;
     }
   }
 
