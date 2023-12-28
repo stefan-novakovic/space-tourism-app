@@ -19,6 +19,11 @@ export const crewDotBtnsListen = (dataJSON) => {
         changeImage(dataJSON, i);
         changeText(dataJSON, i);
 
+        // Fokusiraj na ovaj tekst zbog screen reader-a (accessibility)
+        setTimeout(() => {
+          document.querySelector(".crew-page .crew-page-title-text").focus();
+        }, 2000);
+
         // Onemogućava spam-ovanje button-a;
         // Tranzicija slike i teksta traje 2750ms (moguce je kliknuti button pre nego što se nova slika i tekst pojave na ekranu)
         setTimeout(() => {
@@ -121,11 +126,6 @@ const changeImage = (dataJSON, index) => {
     img.style.transition = "ease-in-out transform 1.25s";
     img.style.transform = "translateY(0%)";
   }, 1500);
-
-  // Fokusiraj novu sliku zbog screen reader-a (accessibility)
-  setTimeout(() => {
-    document.querySelector(".crew-page .crew-page-title-text").focus();
-  }, 2000);
 };
 
 const changeText = (dataJSON, index) => {

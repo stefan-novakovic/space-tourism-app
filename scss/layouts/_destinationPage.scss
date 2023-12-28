@@ -98,6 +98,26 @@
       height: max-content;
     }
   }
+
+  .destination-img.destination-img-animation-out {
+    transition: ease-in-out all 1.75s;
+    opacity: 0.25;
+    scale: 0;
+    transform: rotate(1080deg);
+    filter: blur(2px);
+    filter: brightness(0%);
+    filter: grayscale(1);
+  }
+
+  .destination-img.destination-img-animation-in {
+    transition: ease-in-out all 1.75s;
+    opacity: 1;
+    scale: 1;
+    transform: rotate(0deg);
+    filter: blur(0px);
+    filter: brightness(100%);
+    filter: grayscale(0);
+  }
 }
 
 .destination-page .text-and-moons-nav-container {
@@ -298,6 +318,17 @@
       .est-travel-time .destination-parameter-name-value-text {
         width: fit-content;
       }
+    }
+
+    .change-text-animation-out {
+      transition: ease-in-out all 1.75s;
+      opacity: 0;
+      scale: 0;
+    }
+    .change-text-animation-in {
+      transition: ease-in-out all 1.75s;
+      opacity: 1;
+      scale: 1;
     }
   }
 }

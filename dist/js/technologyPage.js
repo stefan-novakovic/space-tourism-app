@@ -102,11 +102,6 @@ const changeImage = (dataJSON, index) => {
     img.style.transition = "ease-in-out all 1.25s";
     img.style.transform = "translateX(0%)";
   }, 1300);
-
-  // Fokusiraj novu sliku zbog screen reader-a (accessibility)
-  setTimeout(() => {
-    document.querySelector(".technology-page .terminology-text").focus();
-  }, 2000);
 };
 
 const changeText = (dataJSON, index) => {
@@ -125,6 +120,11 @@ const terminologyText = () => {
     terminologyText.classList.remove("change-text-animation-out");
     terminologyText.classList.add("change-text-animation-in");
   }, 1250);
+
+  // Fokusiraj na ovaj tekst zbog screen reader-a (accessibility)
+  setTimeout(() => {
+    terminologyText.focus();
+  }, 2000);
 };
 
 const nameText = (dataJSON, index) => {

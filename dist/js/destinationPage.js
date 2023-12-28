@@ -7,143 +7,10 @@ export const destinationMoonsNavListen = (dataJSON) => {
       if (!inProgress) {
         inProgress = true;
 
-        const moonsMenuHoverMarker = document.getElementById(
-          "moons-menu-hover-marker"
-        );
-        moonsMenuHoverMarker.style.display = "none";
+        hideMoonsMenuHoverMarkerOnMenuClick();
 
-        const img = document.querySelector(
-          ".destination-page .destination-img"
-        );
-        img.style.transition = "ease-in-out all 1.75s";
-        img.style.opacity = "0.25";
-        img.style.scale = "0";
-        img.style.transform = "rotate(1080deg)";
-        img.style.filter = "blur(2px)";
-        img.style.filter = "brightness(0%)";
-        img.style.filter = "grayscale(1)";
-
-        setTimeout(() => {
-          img.setAttribute("src", dataJSON.destinations[i].images.png);
-          img.setAttribute("alt", dataJSON.destinations[i].name + " image");
-          img.style.transition = "ease-in-out all 1.75s";
-          img.style.opacity = "1";
-          img.style.scale = "1";
-          img.style.transform = "rotate(0deg)";
-          img.style.filter = "blur(0px)";
-          img.style.filter = "brightness(100%)";
-          img.style.filter = "grayscale(0)";
-        }, 2000);
-
-        // setTimeout(() => {
-        //   const destinationPage = document.querySelector(".destination-page");
-        //   if (i === 1 || i === 3) {
-        //     destinationPage.style.minHeight = "825px";
-        //   } else {
-        //     destinationPage.style.minHeight = "850px";
-        //   }
-        // }, 2000);
-
-        const destinationNameText = document.querySelector(
-          ".destination-page .destination-name-text"
-        );
-        destinationNameText.style.transition = "ease-in-out all 1.75s";
-        destinationNameText.style.opacity = "0";
-        destinationNameText.style.scale = "0";
-        setTimeout(() => {
-          destinationNameText.textContent =
-            dataJSON.destinations[i].name.toUpperCase();
-          destinationNameText.style.opacity = "1";
-          destinationNameText.style.scale = "1";
-          destinationNameText.style.transition = "ease-in-out all 1.75s";
-        }, 2000);
-
-        const destinationDescText = document.querySelector(
-          ".destination-page .destination-desc-text"
-        );
-        destinationDescText.style.transition = "ease-in-out all 1.75s";
-        destinationDescText.style.opacity = "0";
-        destinationDescText.style.scale = "0";
-        setTimeout(() => {
-          destinationDescText.textContent =
-            dataJSON.destinations[i].description;
-          destinationDescText.style.opacity = "1";
-          destinationDescText.style.scale = "1";
-          destinationDescText.style.transition = "ease-in-out all 1.75s";
-        }, 2000);
-
-        const destinationDividerRect = document.querySelector(
-          ".destination-page .destination-divider-rect"
-        );
-        destinationDividerRect.style.transition = "ease-in-out all 1.75s";
-        destinationDividerRect.style.opacity = "0";
-        destinationDividerRect.style.scale = "0";
-        setTimeout(() => {
-          destinationDividerRect.style.opacity = "1";
-          destinationDividerRect.style.scale = "1";
-          destinationDividerRect.style.transition = "ease-in-out all 1.75s";
-        }, 2000);
-
-        const destinationAvgDistanceText = document.querySelector(
-          ".destination-page .avg-distance .destination-parameter-name-text"
-        );
-        destinationAvgDistanceText.style.transition = "ease-in-out all 1.75s";
-        destinationAvgDistanceText.style.opacity = "0";
-        destinationAvgDistanceText.style.scale = "0";
-        setTimeout(() => {
-          destinationAvgDistanceText.style.opacity = "1";
-          destinationAvgDistanceText.style.scale = "1";
-          destinationAvgDistanceText.style.transition = "ease-in-out all 1.75s";
-        }, 2000);
-
-        const destinationAvgDistanceValueText = document.querySelector(
-          ".destination-page .avg-distance .destination-parameter-name-value-text"
-        );
-        destinationAvgDistanceValueText.style.transition =
-          "ease-in-out all 1.75s";
-        destinationAvgDistanceValueText.style.opacity = "0";
-        destinationAvgDistanceValueText.style.scale = "0";
-        setTimeout(() => {
-          destinationAvgDistanceValueText.textContent =
-            dataJSON.destinations[i].distance.toUpperCase();
-          destinationAvgDistanceValueText.style.opacity = "1";
-          destinationAvgDistanceValueText.style.scale = "1";
-          destinationAvgDistanceValueText.style.transition =
-            "ease-in-out all 1.75s";
-        }, 2000);
-
-        const destinationEstTravelTimeText = document.querySelector(
-          ".destination-page .est-travel-time .destination-parameter-name-text"
-        );
-        destinationEstTravelTimeText.style.transition = "ease-in-out all 1.75s";
-        destinationEstTravelTimeText.style.opacity = "0";
-        destinationEstTravelTimeText.style.scale = "0";
-        setTimeout(() => {
-          destinationEstTravelTimeText.style.opacity = "1";
-          destinationEstTravelTimeText.style.scale = "1";
-          destinationEstTravelTimeText.style.transition =
-            "ease-in-out all 1.75s";
-        }, 2000);
-
-        const destinationEstTravelTimeValueText = document.querySelector(
-          ".destination-page .est-travel-time .destination-parameter-name-value-text"
-        );
-        destinationEstTravelTimeValueText.style.transition =
-          "ease-in-out all 1.75s";
-        destinationEstTravelTimeValueText.style.opacity = "0";
-        destinationEstTravelTimeValueText.style.scale = "0";
-        setTimeout(() => {
-          destinationEstTravelTimeValueText.textContent =
-            dataJSON.destinations[i].travel.toUpperCase();
-          destinationEstTravelTimeValueText.style.opacity = "1";
-          destinationEstTravelTimeValueText.style.scale = "1";
-          destinationEstTravelTimeValueText.style.transition =
-            "ease-in-out all 1.75s";
-        }, 2000);
-
-        setTimeout(() => {
-          destinationNameText.focus();
-        }, 3000);
+        changeImage(dataJSON, i);
+        changeText(dataJSON, i);
 
         setTimeout(() => {
           inProgress = false;
@@ -153,6 +20,7 @@ export const destinationMoonsNavListen = (dataJSON) => {
   }
 };
 
+// --------------------------- REFAKTORISI ---------------------------
 let inProgressMoonsNavMenuMarker = false;
 let choice = 0;
 export const destinationMoonsNavMenuMarkerPositionSwitchListen = () => {
@@ -267,4 +135,138 @@ export const destinationMoonsMarkerPositionSwitchOnWindowResize = () => {
   markerPositionSwitch(listItem[choice], 1);
 
   destinationMoonMarkerHover();
+};
+
+const hideMoonsMenuHoverMarkerOnMenuClick = () => {
+  const moonsMenuHoverMarker = document.getElementById(
+    "moons-menu-hover-marker"
+  );
+  moonsMenuHoverMarker.style.display = "none";
+};
+
+// --------------------------- KRAJ BUDUCEG REFAKTORISANJA ---------------------------
+
+const changeImage = (dataJSON, index) => {
+  const img = document.querySelector(".destination-page .destination-img");
+  img.classList.remove("destination-img-animation-in");
+  img.classList.add("destination-img-animation-out");
+
+  setTimeout(() => {
+    img.setAttribute("src", dataJSON.destinations[index].images.png);
+    img.setAttribute("alt", dataJSON.destinations[index].name + " image");
+    img.classList.remove("destination-img-animation-out");
+    img.classList.add("destination-img-animation-in");
+  }, 2000);
+};
+
+const changeText = (dataJSON, index) => {
+  destinationName(dataJSON, index);
+  destinationDesc(dataJSON, index);
+  destinationDividerRect();
+  destinationAvgDistanceLabel();
+  destinationAvgDistanceValue(dataJSON, index);
+  destinationEstTravelTimeLabel();
+  destinationEstTravelTimeValue(dataJSON, index);
+};
+
+const destinationName = (dataJSON, index) => {
+  const destinationNameText = document.querySelector(
+    ".destination-page .destination-name-text"
+  );
+  destinationNameText.classList.remove("change-text-animation-in");
+  destinationNameText.classList.add("change-text-animation-out");
+  setTimeout(() => {
+    destinationNameText.textContent =
+      dataJSON.destinations[index].name.toUpperCase();
+    destinationNameText.classList.remove("change-text-animation-out");
+    destinationNameText.classList.add("change-text-animation-in");
+  }, 2000);
+
+  // Fokusiraj na ovaj tekst zbog screen reader-a (accessibility)
+  setTimeout(() => {
+    destinationNameText.focus();
+  }, 3000);
+};
+
+const destinationDesc = (dataJSON, index) => {
+  const destinationDescText = document.querySelector(
+    ".destination-page .destination-desc-text"
+  );
+  destinationDescText.classList.remove("change-text-animation-in");
+  destinationDescText.classList.add("change-text-animation-out");
+  setTimeout(() => {
+    destinationDescText.textContent = dataJSON.destinations[index].description;
+    destinationDescText.classList.remove("change-text-animation-out");
+    destinationDescText.classList.add("change-text-animation-in");
+  }, 2000);
+};
+
+const destinationDividerRect = () => {
+  const destinationDividerRect = document.querySelector(
+    ".destination-page .destination-divider-rect"
+  );
+  destinationDividerRect.classList.remove("change-text-animation-in");
+  destinationDividerRect.classList.add("change-text-animation-out");
+  setTimeout(() => {
+    destinationDividerRect.classList.remove("change-text-animation-out");
+    destinationDividerRect.classList.add("change-text-animation-in");
+  }, 2000);
+};
+
+const destinationAvgDistanceLabel = () => {
+  const destinationAvgDistanceText = document.querySelector(
+    ".destination-page .avg-distance .destination-parameter-name-text"
+  );
+  destinationAvgDistanceText.classList.remove("change-text-animation-in");
+  destinationAvgDistanceText.classList.add("change-text-animation-out");
+  setTimeout(() => {
+    destinationAvgDistanceText.classList.remove("change-text-animation-out");
+    destinationAvgDistanceText.classList.add("change-text-animation-in");
+  }, 2000);
+};
+
+const destinationAvgDistanceValue = (dataJSON, index) => {
+  const destinationAvgDistanceValueText = document.querySelector(
+    ".destination-page .avg-distance .destination-parameter-name-value-text"
+  );
+  destinationAvgDistanceValueText.classList.remove("change-text-animation-in");
+  destinationAvgDistanceValueText.classList.add("change-text-animation-out");
+  setTimeout(() => {
+    destinationAvgDistanceValueText.textContent =
+      dataJSON.destinations[index].distance.toUpperCase();
+    destinationAvgDistanceValueText.classList.remove(
+      "change-text-animation-out"
+    );
+    destinationAvgDistanceValueText.classList.add("change-text-animation-in");
+  }, 2000);
+};
+
+const destinationEstTravelTimeLabel = () => {
+  const destinationEstTravelTimeText = document.querySelector(
+    ".destination-page .est-travel-time .destination-parameter-name-text"
+  );
+  destinationEstTravelTimeText.classList.remove("change-text-animation-in");
+  destinationEstTravelTimeText.classList.add("change-text-animation-out");
+  setTimeout(() => {
+    destinationEstTravelTimeText.classList.remove("change-text-animation-out");
+    destinationEstTravelTimeText.classList.add("change-text-animation-in");
+  }, 2000);
+};
+
+const destinationEstTravelTimeValue = (dataJSON, index) => {
+  const destinationEstTravelTimeValueText = document.querySelector(
+    ".destination-page .est-travel-time .destination-parameter-name-value-text"
+  );
+  destinationEstTravelTimeValueText.classList.remove(
+    "change-text-animation-in"
+  );
+  destinationEstTravelTimeValueText.classList.add("change-text-animation-out");
+  setTimeout(() => {
+    destinationEstTravelTimeValueText.textContent =
+      dataJSON.destinations[index].travel.toUpperCase();
+    destinationEstTravelTimeValueText.classList.remove(
+      "change-text-animation-out"
+    );
+    destinationEstTravelTimeValueText.classList.add("change-text-animation-in");
+  }, 2000);
 };
