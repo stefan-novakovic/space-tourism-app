@@ -1,9 +1,8 @@
 import { homeExploreBtnListen } from "./homePage.js";
 import {
-  destinationMoonsNavListen,
-  destinationMoonsNavMenuMarkerPositionSwitchListen,
-  destinationMoonsMarkerPositionSwitchOnWindowResize,
-  destinationMoonMarkerHover,
+  destinationMoonsNavChoiceListen,
+  destinationMoonsNavMarkerPositionSwitchListen,
+  destinationMoonsNavHoverMarkerListen,
 } from "./destinationPage.js";
 import { crewDotBtnsListen, crewPageOnResize } from "./crewPage.js";
 import { technologyDotBtnsListen } from "./technologyPage.js";
@@ -23,9 +22,9 @@ const startApp = async () => {
 
   homeExploreBtnListen();
 
-  destinationMoonMarkerHover();
-  destinationMoonsNavListen(dataJSON);
-  destinationMoonsNavMenuMarkerPositionSwitchListen();
+  destinationMoonsNavHoverMarkerListen();
+  destinationMoonsNavChoiceListen(dataJSON);
+  destinationMoonsNavMarkerPositionSwitchListen();
 
   crewDotBtnsListen(dataJSON);
 
@@ -333,7 +332,6 @@ const pageSwitch = (index) => {
 const windowResize = (dataJSON) => {
   window.addEventListener("resize", (event) => {
     markerPositionSwitchOnWindowResize();
-    destinationMoonsMarkerPositionSwitchOnWindowResize();
     crewPageOnResize(dataJSON);
   });
 };

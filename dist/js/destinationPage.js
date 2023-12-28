@@ -1,17 +1,19 @@
-export const destinationMoonsNavListen = (dataJSON) => {
+export const destinationMoonsNavChoiceListen = (dataJSON) => {
   let inProgress = false;
 
-  const buttons = document.querySelectorAll(".destination-page .li__moon");
-  for (let i = 0; i < buttons.length; i++) {
-    buttons[i].addEventListener("click", (event) => {
+  const navLinks = document.querySelectorAll(".destination-page .li__moon");
+  for (let i = 0; i < navLinks.length; i++) {
+    navLinks[i].addEventListener("click", (event) => {
       if (!inProgress) {
         inProgress = true;
 
-        hideMoonsMenuHoverMarkerOnMenuClick();
+        // Klikom na link iz nav bar-a sklanja se hover marker ispod tog link-a
+        hideMoonsNavHoverMarker();
 
         changeImage(dataJSON, i);
         changeText(dataJSON, i);
 
+        // VIDI KOLIKO TREBA DA BUDE
         setTimeout(() => {
           inProgress = false;
         }, 2005);
@@ -20,131 +22,12 @@ export const destinationMoonsNavListen = (dataJSON) => {
   }
 };
 
-// --------------------------- REFAKTORISI ---------------------------
-let inProgressMoonsNavMenuMarker = false;
-let choice = 0;
-export const destinationMoonsNavMenuMarkerPositionSwitchListen = () => {
-  const listItem = document.querySelectorAll(
-    ".destination-page .moons-nav .ul .li"
-  );
-
-  for (let i = 0; i < listItem.length; i++) {
-    listItem[i].addEventListener("click", (event) => {
-      choice = i;
-      if (!inProgressMoonsNavMenuMarker) {
-        inProgressMoonsNavMenuMarker = true;
-
-        markerPositionSwitch(listItem[i], 0);
-
-        setTimeout(() => {
-          inProgressMoonsNavMenuMarker = false;
-        }, 2005);
-      }
-    });
-  }
-};
-
-export const destinationMoonMarkerHover = () => {
-  const moonsMenuHoverMarker = document.getElementById(
-    "moons-menu-hover-marker"
-  );
-
-  const deviceScreenWidth1440px = window.matchMedia("(min-width: 1440px)");
-
-  const listItem = document.querySelectorAll(
-    ".destination-page .moons-nav .ul .li"
-  );
-
-  for (let i = 0; i < listItem.length; i++) {
-    listItem[i].addEventListener("mouseover", (event) => {
-      if (deviceScreenWidth1440px.matches) {
-        moonsMenuHoverMarker.style.display = "block";
-
-        if (listItem[i].firstChild.nextSibling.textContent === "MOON") {
-          moonsMenuHoverMarker.style.left = "0px";
-          moonsMenuHoverMarker.style.width = "41px";
-        } else if (listItem[i].firstChild.nextSibling.textContent === "MARS") {
-          moonsMenuHoverMarker.style.left =
-            listItem[i].offsetLeft - 22.5 + listItem[i].offsetWidth / 2 + "px";
-          moonsMenuHoverMarker.style.width = "41px";
-        } else if (
-          listItem[i].firstChild.nextSibling.textContent === "EUROPA"
-        ) {
-          moonsMenuHoverMarker.style.left =
-            listItem[i].offsetLeft - 29 + listItem[i].offsetWidth / 2 + "px";
-          moonsMenuHoverMarker.style.width = "56px";
-        } else if (listItem[i].firstChild.nextSibling.textContent === "TITAN") {
-          moonsMenuHoverMarker.style.left = "239.5px";
-          moonsMenuHoverMarker.style.width = "43px";
-        }
-      } else {
-        moonsMenuHoverMarker.style.display = "none";
-      }
-    });
-
-    listItem[i].addEventListener("mouseout", (event) => {
-      moonsMenuHoverMarker.style.display = "none";
-    });
-  }
-};
-
-const markerPositionSwitch = (listItem, resizeOrNot) => {
-  const moonsMenuMarker = document.getElementById("moons-menu-selected-marker");
-
-  const deviceScreenWidth768px = window.matchMedia("(min-width: 768px)");
-
-  if (resizeOrNot === 1) {
-    moonsMenuMarker.style.transition = "0s";
-  } else {
-    moonsMenuMarker.style.transition = "1s";
-  }
-
-  if (!deviceScreenWidth768px.matches) {
-    moonsMenuMarker.style.width = "36px";
-    if (listItem.firstChild.nextSibling.textContent === "MOON") {
-      moonsMenuMarker.style.left = "0px";
-    } else if (listItem.firstChild.nextSibling.textContent === "TITAN") {
-      moonsMenuMarker.style.left = "201.5px";
-    } else {
-      moonsMenuMarker.style.left =
-        listItem.offsetLeft - 18 + listItem.offsetWidth / 2 + "px";
-    }
-  } else {
-    if (listItem.firstChild.nextSibling.textContent === "MOON") {
-      moonsMenuMarker.style.left = "0px";
-      moonsMenuMarker.style.width = "41px";
-    } else if (listItem.firstChild.nextSibling.textContent === "MARS") {
-      moonsMenuMarker.style.left =
-        listItem.offsetLeft - 22.5 + listItem.offsetWidth / 2 + "px";
-      moonsMenuMarker.style.width = "41px";
-    } else if (listItem.firstChild.nextSibling.textContent === "EUROPA") {
-      moonsMenuMarker.style.left =
-        listItem.offsetLeft - 29 + listItem.offsetWidth / 2 + "px";
-      moonsMenuMarker.style.width = "56px";
-    } else if (listItem.firstChild.nextSibling.textContent === "TITAN") {
-      moonsMenuMarker.style.left = "239.5px";
-      moonsMenuMarker.style.width = "43px";
-    }
-  }
-};
-
-export const destinationMoonsMarkerPositionSwitchOnWindowResize = () => {
-  const listItem = document.querySelectorAll(
-    ".destination-page .moons-nav .ul .li"
-  );
-  markerPositionSwitch(listItem[choice], 1);
-
-  destinationMoonMarkerHover();
-};
-
-const hideMoonsMenuHoverMarkerOnMenuClick = () => {
+const hideMoonsNavHoverMarker = () => {
   const moonsMenuHoverMarker = document.getElementById(
     "moons-menu-hover-marker"
   );
   moonsMenuHoverMarker.style.display = "none";
 };
-
-// --------------------------- KRAJ BUDUCEG REFAKTORISANJA ---------------------------
 
 const changeImage = (dataJSON, index) => {
   const img = document.querySelector(".destination-page .destination-img");
@@ -270,3 +153,125 @@ const destinationEstTravelTimeValue = (dataJSON, index) => {
     destinationEstTravelTimeValueText.classList.add("change-text-animation-in");
   }, 2000);
 };
+
+let choice = 0;
+export const destinationMoonsNavMarkerPositionSwitchListen = () => {
+  const listItems = document.querySelectorAll(
+    ".destination-page .moons-nav .ul .li"
+  );
+
+  let inProgress = false;
+  for (let i = 0; i < listItems.length; i++) {
+    listItems[i].addEventListener("click", (event) => {
+      if (!inProgress) {
+        choice = i;
+        inProgress = true;
+
+        markerPositionSwitch(listItems[choice], "screenResizeNo");
+
+        // VIDI KOLIKO TREBA DA BUDE
+        setTimeout(() => {
+          inProgress = false;
+        }, 2005);
+      }
+    });
+  }
+};
+
+const markerPositionSwitch = (listItem, resizeOrNot) => {
+  const moonsMenuMarker = document.getElementById("moons-menu-selected-marker");
+
+  if (resizeOrNot === "screenResizeYes") {
+    moonsMenuMarker.style.transition = "0s";
+  } else {
+    moonsMenuMarker.style.transition = "1s";
+  }
+
+  const listItemText = listItem.textContent.trim();
+  const deviceScreenWidth768px = window.matchMedia("(min-width: 768px)");
+  if (!deviceScreenWidth768px.matches) {
+    moonsMenuMarker.style.width = "36px";
+    if (listItemText === "MOON") {
+      moonsMenuMarker.style.left = "0px";
+    } else if (listItemText === "TITAN") {
+      moonsMenuMarker.style.left = "201.5px";
+    } else {
+      moonsMenuMarker.style.left =
+        listItem.offsetLeft - 18 + listItem.offsetWidth / 2 + "px";
+    }
+  } else {
+    if (listItemText === "MOON") {
+      moonsMenuMarker.style.left = "0px";
+      moonsMenuMarker.style.width = "41px";
+    } else if (listItemText === "MARS") {
+      moonsMenuMarker.style.left =
+        listItem.offsetLeft - 22.5 + listItem.offsetWidth / 2 + "px";
+      moonsMenuMarker.style.width = "41px";
+    } else if (listItemText === "EUROPA") {
+      moonsMenuMarker.style.left =
+        listItem.offsetLeft - 29 + listItem.offsetWidth / 2 + "px";
+      moonsMenuMarker.style.width = "56px";
+    } else if (listItemText === "TITAN") {
+      moonsMenuMarker.style.left = "239.5px";
+      moonsMenuMarker.style.width = "43px";
+    }
+  }
+};
+
+const destinationMoonsMarkerPositionSwitchOnWindowResize = () => {
+  window.addEventListener("resize", (event) => {
+    const listItems = document.querySelectorAll(
+      ".destination-page .moons-nav .ul .li"
+    );
+
+    markerPositionSwitch(listItems[choice], "screenResizeYes");
+    hideMoonsNavHoverMarker();
+  });
+};
+
+export const destinationMoonsNavHoverMarkerListen = () => {
+  const moonsMenuHoverMarker = document.getElementById(
+    "moons-menu-hover-marker"
+  );
+
+  const listItems = document.querySelectorAll(
+    ".destination-page .moons-nav .ul .li"
+  );
+
+  const deviceScreenWidth1440px = window.matchMedia("(min-width: 1440px)");
+  for (let i = 0; i < listItems.length; i++) {
+    listItems[i].addEventListener("mouseover", (event) => {
+      if (deviceScreenWidth1440px.matches) {
+        const listItemText = listItems[i].textContent.trim();
+        moonsMenuHoverMarker.style.display = "block";
+
+        if (listItemText === "MOON") {
+          moonsMenuHoverMarker.style.left = "0px";
+          moonsMenuHoverMarker.style.width = "41px";
+        } else if (listItemText === "MARS") {
+          moonsMenuHoverMarker.style.left =
+            listItems[i].offsetLeft -
+            22.5 +
+            listItems[i].offsetWidth / 2 +
+            "px";
+          moonsMenuHoverMarker.style.width = "41px";
+        } else if (listItemText === "EUROPA") {
+          moonsMenuHoverMarker.style.left =
+            listItems[i].offsetLeft - 29 + listItems[i].offsetWidth / 2 + "px";
+          moonsMenuHoverMarker.style.width = "56px";
+        } else if (listItemText === "TITAN") {
+          moonsMenuHoverMarker.style.left = "239.5px";
+          moonsMenuHoverMarker.style.width = "43px";
+        }
+      } else {
+        moonsMenuHoverMarker.style.display = "none";
+      }
+    });
+
+    listItems[i].addEventListener("mouseout", (event) => {
+      moonsMenuHoverMarker.style.display = "none";
+    });
+  }
+};
+
+destinationMoonsMarkerPositionSwitchOnWindowResize();
