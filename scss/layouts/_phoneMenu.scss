@@ -23,3 +23,18 @@
   transform: translate(102%);
   transition: 0.875s ease-in-out;
 }
+
+.phone-sidebar-menu .menu-phone-selected-marker {
+  width: 4px;
+  height: 31px;
+  right: 0px;
+  top: 0px;
+  background-color: $whiteColor;
+  position: absolute;
+  bottom: 0;
+  cursor: pointer;
+
+  @include mqMinW(768px) {
+    display: none;
+  }
+}

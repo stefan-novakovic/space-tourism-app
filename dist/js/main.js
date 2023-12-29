@@ -17,10 +17,12 @@ document.addEventListener("DOMContentLoaded", initApp);
 const startApp = async () => {
   const dataJSON = await getJSONData();
 
-  hamburgerBtnOpenCloseListen();
-  phoneNavSelectionListen();
   mainNavSelectionListen();
   selectionMarkerPositionSwitchOnWindowResize();
+
+  hamburgerBtnOpenCloseListen();
+  phoneNavSelectionListen();
+  selectionMarkerPhonePositionSwitchOnWindowResize();
 
   HPExploreBtnListen();
 
@@ -74,6 +76,7 @@ const phoneNavSelectionListen = () => {
         inProgressPhone = true;
         choicePhone = i;
 
+        selectionMarkerPhonePositionSwitch(listItemsPhone[i]);
         closePhoneSidebarMenu();
         pageSwitch(i);
 
@@ -85,14 +88,6 @@ const phoneNavSelectionListen = () => {
   }
 };
 
-const closePhoneSidebarMenu = () => {
-  setTimeout(() => {
-    const phoneSidebarMenu = document.getElementById("phone-sidebar-menu");
-    phoneSidebarMenu.classList.remove("phoneMenuShow");
-    phoneSidebarMenu.classList.add("phoneMenuHide");
-  }, 275);
-};
-
 const hoverMarkerStick = (listItem) => {
   // Na selektovanoj stranici ostaje hover marker, sve dok marker za selekciju ne stigne
   // Markeru za selekciju treba 1s da bi stigao (+ 5ms dodato u timeout delay-u)
@@ -100,22 +95,6 @@ const hoverMarkerStick = (listItem) => {
   setTimeout(() => {
     listItem.classList.remove("hover-stick");
   }, 1005);
-};
-
-const hamburgerBtnOpenCloseListen = () => {
-  const hamburgerBtnOpenMenu = document.getElementById("hamburger-btn-open");
-  const hamburgerBtnCloseMenu = document.getElementById("hamburger-btn-close");
-  const phoneSidebarMenu = document.getElementById("phone-sidebar-menu");
-
-  hamburgerBtnOpenMenu.addEventListener("click", (event) => {
-    phoneSidebarMenu.classList.remove("phoneMenuHide");
-    phoneSidebarMenu.classList.add("phoneMenuShow");
-  });
-
-  hamburgerBtnCloseMenu.addEventListener("click", (event) => {
-    phoneSidebarMenu.classList.remove("phoneMenuShow");
-    phoneSidebarMenu.classList.add("phoneMenuHide");
-  });
 };
 
 const selectionMarkerPositionSwitch = (listItem, resizeOrNot) => {
@@ -248,6 +227,91 @@ const pageSwitch = (choiceIndex) => {
       }, 48);
     }, 1002);
   }
+};
+
+const hamburgerBtnOpenCloseListen = () => {
+  const hamburgerBtnOpenMenu = document.getElementById("hamburger-btn-open");
+  const hamburgerBtnCloseMenu = document.getElementById("hamburger-btn-close");
+  const phoneSidebarMenu = document.getElementById("phone-sidebar-menu");
+
+  hamburgerBtnOpenMenu.addEventListener("click", (event) => {
+    phoneSidebarMenu.classList.remove("phoneMenuHide");
+    phoneSidebarMenu.classList.add("phoneMenuShow");
+  });
+
+  hamburgerBtnCloseMenu.addEventListener("click", (event) => {
+    phoneSidebarMenu.classList.remove("phoneMenuShow");
+    phoneSidebarMenu.classList.add("phoneMenuHide");
+  });
+};
+
+const closePhoneSidebarMenu = () => {
+  setTimeout(() => {
+    const phoneSidebarMenu = document.getElementById("phone-sidebar-menu");
+    phoneSidebarMenu.classList.remove("phoneMenuShow");
+    phoneSidebarMenu.classList.add("phoneMenuHide");
+  }, 275);
+};
+
+const selectionMarkerPhonePositionSwitch = (listItem) => {
+  const selectionMarkerPhone = document.getElementById(
+    "menu-phone-selected-marker"
+  );
+
+  selectionMarkerPhone.style.transition = "0s";
+  selectionMarkerPhone.style.top = listItem.offsetTop - 6 + "px";
+};
+
+const selectionMarkerPhonePositionSwitchOnWindowResize = () => {
+  window.addEventListener("resize", (event) => {
+    let newWidthPhone = window.matchMedia("(max-width: 767px)").matches;
+    let newWidthTablet = window.matchMedia("(min-width: 768px)").matches;
+    let newWidthDesktop = window.matchMedia("(min-width: 1440px)").matches;
+
+    const listItem = document.querySelectorAll(
+      ".phone-sidebar-menu .nav-phone .ul .li"
+    );
+    if (newWidthPhone && !newWidthTablet) {
+      if (oldWidthPhone && !oldWidthTablet) {
+        selectionMarkerPhonePositionSwitch(listItem[choicePhone]);
+        choice = choicePhone;
+      } else if (!oldWidthPhone && oldWidthTablet && !oldWidthDesktop) {
+        selectionMarkerPhonePositionSwitch(listItem[choice]);
+        choicePhone = choice;
+      } else if (!oldWidthPhone && oldWidthTablet && oldWidthDesktop) {
+        selectionMarkerPhonePositionSwitch(listItem[choice]);
+        choicePhone = choice;
+      }
+    } else if (!newWidthPhone && newWidthTablet && !newWidthDesktop) {
+      if (oldWidthPhone && !oldWidthTablet) {
+        selectionMarkerPhonePositionSwitch(listItem[choicePhone]);
+        choice = choicePhone;
+      } else if (!oldWidthPhone && oldWidthTablet && !oldWidthDesktop) {
+        selectionMarkerPhonePositionSwitch(listItem[choice]);
+        choicePhone = choice;
+      } else if (!oldWidthPhone && oldWidthTablet && oldWidthDesktop) {
+        selectionMarkerPhonePositionSwitch(listItem[choice]);
+        choicePhone = choice;
+      }
+    } else if (!newWidthPhone && newWidthTablet && newWidthDesktop) {
+      if (oldWidthPhone && !oldWidthTablet) {
+        selectionMarkerPhonePositionSwitch(listItem[choicePhone]);
+        choice = choicePhone;
+      } else if (!oldWidthPhone && oldWidthTablet && !oldWidthDesktop) {
+        selectionMarkerPhonePositionSwitch(listItem[choice]);
+        choicePhone = choice;
+      } else if (!oldWidthPhone && oldWidthTablet && oldWidthDesktop) {
+        selectionMarkerPhonePositionSwitch(listItem[choice]);
+        choicePhone = choice;
+      }
+    }
+
+    setTimeout(() => {
+      oldWidthPhone = newWidthPhone;
+      oldWidthTablet = newWidthTablet;
+      oldWidthDesktop = newWidthDesktop;
+    }, 50);
+  });
 };
 
 const animationOutRight = (page) => {
