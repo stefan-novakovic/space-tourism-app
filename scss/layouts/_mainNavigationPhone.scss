@@ -41,5 +41,9 @@
     .li:nth-child(5) {
       margin-bottom: 6px;
     }
+
+    .li:active .li__a {
+      color: rgba(255, 255, 255, 0.5021);
+    }
   }
 }
