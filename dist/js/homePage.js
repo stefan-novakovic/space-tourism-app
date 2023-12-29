@@ -1,4 +1,4 @@
-export const homeExploreBtnListen = () => {
+export const HPExploreBtnListen = () => {
   const exploreBtn = document.getElementById("explore-btn");
   const exploreBtnOverlay = document.getElementById("explore-btn-overlay");
 

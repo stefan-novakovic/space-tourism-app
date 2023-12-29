@@ -1,4 +1,4 @@
-export const destinationMoonsNavChoiceListen = (dataJSON) => {
+export const DPMoonsNavSelectionListen = (dataJSON) => {
   let inProgress = false;
 
   const navLinks = document.querySelectorAll(".destination-page .li__moon");
@@ -155,7 +155,7 @@ const destinationEstTravelTimeValue = (dataJSON, index) => {
 };
 
 let choice = 0;
-export const destinationMoonsNavMarkerPositionSwitchListen = () => {
+export const DPMoonsNavSelectionMarkerPositionListen = () => {
   const listItems = document.querySelectorAll(
     ".destination-page .moons-nav .ul .li"
   );
@@ -218,7 +218,7 @@ const markerPositionSwitch = (listItem, resizeOrNot) => {
   }
 };
 
-const destinationMoonsMarkerPositionSwitchOnWindowResize = () => {
+const destinationMoonsNavSelectionMarkerPositionSwitchOnWindowResize = () => {
   window.addEventListener("resize", (event) => {
     const listItems = document.querySelectorAll(
       ".destination-page .moons-nav .ul .li"
@@ -229,7 +229,7 @@ const destinationMoonsMarkerPositionSwitchOnWindowResize = () => {
   });
 };
 
-export const destinationMoonsNavHoverMarkerListen = () => {
+export const DPMoonsNavHoverMarkerListen = () => {
   const moonsMenuHoverMarker = document.getElementById(
     "moons-menu-hover-marker"
   );
@@ -274,4 +274,4 @@ export const destinationMoonsNavHoverMarkerListen = () => {
   }
 };
 
-destinationMoonsMarkerPositionSwitchOnWindowResize();
+destinationMoonsNavSelectionMarkerPositionSwitchOnWindowResize();

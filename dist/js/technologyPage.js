@@ -1,4 +1,4 @@
-export const technologyDotBtnsListen = (dataJSON) => {
+export const TPDotBtnsListen = (dataJSON) => {
   let inProgress = false;
 
   const buttons = document.querySelectorAll(".technology-page .circle-btn-alt");

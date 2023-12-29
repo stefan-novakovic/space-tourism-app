@@ -1,11 +1,11 @@
-import { homeExploreBtnListen } from "./homePage.js";
+import { HPExploreBtnListen } from "./homePage.js";
 import {
-  destinationMoonsNavChoiceListen,
-  destinationMoonsNavMarkerPositionSwitchListen,
-  destinationMoonsNavHoverMarkerListen,
+  DPMoonsNavSelectionListen,
+  DPMoonsNavSelectionMarkerPositionListen,
+  DPMoonsNavHoverMarkerListen,
 } from "./destinationPage.js";
-import { crewDotBtnsListen, crewPageOnResize } from "./crewPage.js";
-import { technologyDotBtnsListen } from "./technologyPage.js";
+import { CPDotBtnsListen, CPOnWindowResize } from "./crewPage.js";
+import { TPDotBtnsListen } from "./technologyPage.js";
 
 const initApp = () => {
   console.log("DOM Content Loaded!");
@@ -17,20 +17,21 @@ document.addEventListener("DOMContentLoaded", initApp);
 const startApp = async () => {
   const dataJSON = await getJSONData();
 
-  navMenuMarkerPositionSwitchListen();
-  hamburgerBtnListen();
+  hamburgerBtnOpenCloseListen();
+  phoneNavSelectionListen();
+  mainNavSelectionListen();
+  selectionMarkerPositionSwitchOnWindowResize();
 
-  homeExploreBtnListen();
+  HPExploreBtnListen();
 
-  destinationMoonsNavHoverMarkerListen();
-  destinationMoonsNavChoiceListen(dataJSON);
-  destinationMoonsNavMarkerPositionSwitchListen();
+  DPMoonsNavHoverMarkerListen();
+  DPMoonsNavSelectionMarkerPositionListen();
+  DPMoonsNavSelectionListen(dataJSON);
 
-  crewDotBtnsListen(dataJSON);
+  CPDotBtnsListen(dataJSON);
+  CPOnWindowResize(dataJSON);
 
-  technologyDotBtnsListen(dataJSON);
-
-  windowResize(dataJSON);
+  TPDotBtnsListen(dataJSON);
 };
 
 const getJSONData = async () => {
@@ -39,56 +40,69 @@ const getJSONData = async () => {
   return dataJSON;
 };
 
-let inProgress = false;
 let choice = 0;
-let choicePhone = 0;
-const navMenuMarkerPositionSwitchListen = () => {
-  const listItem = document.querySelectorAll(".header .nav .ul .li");
-  const listItemPhone = document.querySelectorAll("main .nav-phone .ul .li");
+const mainNavSelectionListen = () => {
+  let inProgress = false;
 
-  for (let i = 0; i < listItem.length; i++) {
-    listItem[i].addEventListener("click", (event) => {
-      choice = i;
+  const listItems = document.querySelectorAll(".header .nav .ul .li");
+  for (let i = 0; i < listItems.length; i++) {
+    listItems[i].addEventListener("click", (event) => {
       if (!inProgress) {
         inProgress = true;
+        choice = i;
 
-        // SELEKTOVANA STRANICA OSTAJE PODVUCENA DOK MARKER NE STIGNE
-        listItem[i].classList.add("hover-stick");
-        setTimeout(() => {
-          listItem[i].classList.remove("hover-stick");
-        }, 1005);
-
-        markerPositionSwitch(listItem[i], 0);
+        hoverMarkerStick(listItems[i]);
+        selectionMarkerPositionSwitch(listItems[i], "screenResizeNo");
         pageSwitch(i);
+
         setTimeout(() => {
           inProgress = false;
         }, 1801);
       }
     });
   }
+};
 
-  for (let i = 0; i < listItemPhone.length; i++) {
-    listItemPhone[i].addEventListener("click", (event) => {
-      choicePhone = i;
-      setTimeout(() => {
-        const phoneSidebarMenu = document.getElementById("phone-sidebar-menu");
-        phoneSidebarMenu.classList.remove("phoneMenuShow");
-        phoneSidebarMenu.classList.add("phoneMenuHide");
-      }, 275);
+let choicePhone = 0;
+const phoneNavSelectionListen = () => {
+  let inProgressPhone = false;
 
-      if (!inProgress) {
-        inProgress = true;
+  const listItemsPhone = document.querySelectorAll("main .nav-phone .ul .li");
+  for (let i = 0; i < listItemsPhone.length; i++) {
+    listItemsPhone[i].addEventListener("click", (event) => {
+      if (!inProgressPhone) {
+        inProgressPhone = true;
+        choicePhone = i;
 
+        closePhoneSidebarMenu();
         pageSwitch(i);
+
         setTimeout(() => {
-          inProgress = false;
+          inProgressPhone = false;
         }, 1651);
       }
     });
   }
 };
 
-const hamburgerBtnListen = () => {
+const closePhoneSidebarMenu = () => {
+  setTimeout(() => {
+    const phoneSidebarMenu = document.getElementById("phone-sidebar-menu");
+    phoneSidebarMenu.classList.remove("phoneMenuShow");
+    phoneSidebarMenu.classList.add("phoneMenuHide");
+  }, 275);
+};
+
+const hoverMarkerStick = (listItem) => {
+  // Na selektovanoj stranici ostaje hover marker, sve dok marker za selekciju ne stigne
+  // Markeru za selekciju treba 1s da bi stigao (+ 5ms dodato u timeout delay-u)
+  listItem.classList.add("hover-stick");
+  setTimeout(() => {
+    listItem.classList.remove("hover-stick");
+  }, 1005);
+};
+
+const hamburgerBtnOpenCloseListen = () => {
   const hamburgerBtnOpenMenu = document.getElementById("hamburger-btn-open");
   const hamburgerBtnCloseMenu = document.getElementById("hamburger-btn-close");
   const phoneSidebarMenu = document.getElementById("phone-sidebar-menu");
@@ -104,234 +118,161 @@ const hamburgerBtnListen = () => {
   });
 };
 
-const markerPositionSwitch = (listItem, resizeOrNot) => {
-  const marker = document.getElementById("menu-selected-marker");
+const selectionMarkerPositionSwitch = (listItem, resizeOrNot) => {
+  const selectionMarker = document.getElementById("menu-selected-marker");
 
-  if (resizeOrNot === 1) {
-    marker.style.transition = "0s";
+  if (resizeOrNot === "screenResizeYes") {
+    selectionMarker.style.transition = "0s";
   } else {
-    marker.style.transition = "1s";
+    selectionMarker.style.transition = "1s";
   }
-  marker.style.left = listItem.offsetLeft + "px";
-  marker.style.width = listItem.offsetWidth + "px";
+
+  selectionMarker.style.left = listItem.offsetLeft + "px";
+  selectionMarker.style.width = listItem.offsetWidth + "px";
 };
 
 let oldWidthPhone = window.matchMedia("(max-width: 767px)").matches;
 let oldWidthTablet = window.matchMedia("(min-width: 768px)").matches;
 let oldWidthDesktop = window.matchMedia("(min-width: 1440px)").matches;
-const markerPositionSwitchOnWindowResize = () => {
-  let newWidthPhone = window.matchMedia("(max-width: 767px)").matches;
-  let newWidthTablet = window.matchMedia("(min-width: 768px)").matches;
-  let newWidthDesktop = window.matchMedia("(min-width: 1440px)").matches;
+const selectionMarkerPositionSwitchOnWindowResize = () => {
+  window.addEventListener("resize", (event) => {
+    let newWidthPhone = window.matchMedia("(max-width: 767px)").matches;
+    let newWidthTablet = window.matchMedia("(min-width: 768px)").matches;
+    let newWidthDesktop = window.matchMedia("(min-width: 1440px)").matches;
 
-  const listItem = document.querySelectorAll(".header .nav .ul .li");
-  if (newWidthPhone && !newWidthTablet && !newWidthDesktop) {
-    if (oldWidthPhone && !oldWidthTablet && !oldWidthDesktop) {
-      markerPositionSwitch(listItem[choicePhone], 1);
-      choice = choicePhone;
-    } else if (!oldWidthPhone && oldWidthTablet && !oldWidthDesktop) {
-      markerPositionSwitch(listItem[choice], 1);
-      choicePhone = choice;
-    } else if (!oldWidthPhone && oldWidthTablet && oldWidthDesktop) {
-      markerPositionSwitch(listItem[choice], 1);
-      choicePhone = choice;
+    const listItem = document.querySelectorAll(".header .nav .ul .li");
+    if (newWidthPhone && !newWidthTablet) {
+      if (oldWidthPhone && !oldWidthTablet) {
+        selectionMarkerPositionSwitch(listItem[choicePhone], "screenResizeYes");
+        choice = choicePhone;
+      } else if (!oldWidthPhone && oldWidthTablet && !oldWidthDesktop) {
+        selectionMarkerPositionSwitch(listItem[choice], "screenResizeYes");
+        choicePhone = choice;
+      } else if (!oldWidthPhone && oldWidthTablet && oldWidthDesktop) {
+        selectionMarkerPositionSwitch(listItem[choice], "screenResizeYes");
+        choicePhone = choice;
+      }
+    } else if (!newWidthPhone && newWidthTablet && !newWidthDesktop) {
+      if (oldWidthPhone && !oldWidthTablet) {
+        selectionMarkerPositionSwitch(listItem[choicePhone], "screenResizeYes");
+        choice = choicePhone;
+      } else if (!oldWidthPhone && oldWidthTablet && !oldWidthDesktop) {
+        selectionMarkerPositionSwitch(listItem[choice], "screenResizeYes");
+        choicePhone = choice;
+      } else if (!oldWidthPhone && oldWidthTablet && oldWidthDesktop) {
+        selectionMarkerPositionSwitch(listItem[choice], "screenResizeYes");
+        choicePhone = choice;
+      }
+    } else if (!newWidthPhone && newWidthTablet && newWidthDesktop) {
+      if (oldWidthPhone && !oldWidthTablet) {
+        selectionMarkerPositionSwitch(listItem[choicePhone], "screenResizeYes");
+        choice = choicePhone;
+      } else if (!oldWidthPhone && oldWidthTablet && !oldWidthDesktop) {
+        selectionMarkerPositionSwitch(listItem[choice], "screenResizeYes");
+        choicePhone = choice;
+      } else if (!oldWidthPhone && oldWidthTablet && oldWidthDesktop) {
+        selectionMarkerPositionSwitch(listItem[choice], "screenResizeYes");
+        choicePhone = choice;
+      }
     }
-  } else if (!newWidthPhone && newWidthTablet && !newWidthDesktop) {
-    if (oldWidthPhone && !oldWidthTablet && !oldWidthDesktop) {
-      markerPositionSwitch(listItem[choicePhone], 1);
-      choice = choicePhone;
-    } else if (!oldWidthPhone && oldWidthTablet && !oldWidthDesktop) {
-      markerPositionSwitch(listItem[choice], 1);
-      choicePhone = choice;
-    } else if (!oldWidthPhone && oldWidthTablet && oldWidthDesktop) {
-      markerPositionSwitch(listItem[choice], 1);
-      choicePhone = choice;
-    }
-  } else if (!newWidthPhone && newWidthTablet && newWidthDesktop) {
-    if (oldWidthPhone && !oldWidthTablet && !oldWidthDesktop) {
-      markerPositionSwitch(listItem[choicePhone], 1);
-      choice = choicePhone;
-    } else if (!oldWidthPhone && oldWidthTablet && !oldWidthDesktop) {
-      markerPositionSwitch(listItem[choice], 1);
-      choicePhone = choice;
-    } else if (!oldWidthPhone && oldWidthTablet && oldWidthDesktop) {
-      markerPositionSwitch(listItem[choice], 1);
-      choicePhone = choice;
-    }
-  }
 
-  setTimeout(() => {
-    oldWidthPhone = newWidthPhone;
-    oldWidthTablet = newWidthTablet;
-    oldWidthDesktop = newWidthDesktop;
-  }, 100);
+    setTimeout(() => {
+      oldWidthPhone = newWidthPhone;
+      oldWidthTablet = newWidthTablet;
+      oldWidthDesktop = newWidthDesktop;
+    }, 50);
+  });
 };
 
 let counter = 0;
-const pageSwitch = (index) => {
-  const deviceScreenWidth768px = window.matchMedia("(min-width: 768px)");
+const pageSwitch = (choiceIndex) => {
   counter += 1;
 
-  if (deviceScreenWidth768px.matches) {
-    if (counter % 2 !== 0) {
-      document.getElementById("home-page").style.transform = "translateX(102%)";
-    } else {
-      document.getElementById("home-page").style.transform =
-        "translateX(-102%)";
-    }
-  } else {
-    document.getElementById("home-page").style.transform = "translateX(-102%)";
-  }
-  document.getElementById("home-page").style.transition = "all 1s ease-in";
-  setTimeout(() => {
+  const homePage = document.getElementById("home-page");
+  const destinationPage = document.getElementById("destination-page");
+  const crewPage = document.getElementById("crew-page");
+  const technologyPage = document.getElementById("technology-page");
+  const pagesArray = [homePage, destinationPage, crewPage, technologyPage];
+
+  const deviceScreenWidth768px = window.matchMedia("(min-width: 768px)");
+  for (let i = 0; i < pagesArray.length; i++) {
     if (deviceScreenWidth768px.matches) {
       if (counter % 2 !== 0) {
-        document.getElementById("home-page").style.transform =
-          "translateY(102%)";
+        animationOutRight(pagesArray[i]);
       } else {
-        document.getElementById("home-page").style.transform =
-          "translateY(-102%)";
+        animationOutLeft(pagesArray[i]);
       }
     } else {
-      document.getElementById("home-page").style.transform = "translateY(102%)";
+      animationOutLeft(pagesArray[i]);
     }
-    document.getElementById("home-page").style.transition = "none";
-    document.getElementById("home-page").style.display = "none";
-  }, 1001);
 
-  if (deviceScreenWidth768px.matches) {
-    if (counter % 2 !== 0) {
-      document.getElementById("destination-page").style.transform =
-        "translateX(102%)";
-    } else {
-      document.getElementById("destination-page").style.transform =
-        "translateX(-102%)";
-    }
-  } else {
-    document.getElementById("destination-page").style.transform =
-      "translateX(-102%)";
-  }
-  document.getElementById("destination-page").style.transition =
-    "all 1s ease-in";
-  setTimeout(() => {
-    if (deviceScreenWidth768px.matches) {
-      if (counter % 2 !== 0) {
-        document.getElementById("destination-page").style.transform =
-          "translateY(102%)";
-      } else {
-        document.getElementById("destination-page").style.transform =
-          "translateY(-102%)";
-      }
-    } else {
-      document.getElementById("destination-page").style.transform =
-        "translateY(102%)";
-    }
-    document.getElementById("destination-page").style.transition = "none";
-    document.getElementById("destination-page").style.display = "none";
-  }, 1001);
-
-  if (deviceScreenWidth768px.matches) {
-    if (counter % 2 !== 0) {
-      document.getElementById("crew-page").style.transform = "translateX(102%)";
-    } else {
-      document.getElementById("crew-page").style.transform =
-        "translateX(-102%)";
-    }
-  } else {
-    document.getElementById("crew-page").style.transform = "translateX(-102%)";
-  }
-  document.getElementById("crew-page").style.transition = "all 1s ease-in";
-  setTimeout(() => {
-    if (deviceScreenWidth768px.matches) {
-      if (counter % 2 !== 0) {
-        document.getElementById("crew-page").style.transform =
-          "translateY(102%)";
-      } else {
-        document.getElementById("crew-page").style.transform =
-          "translateY(-102%)";
-      }
-    } else {
-      document.getElementById("crew-page").style.transform = "translateY(102%)";
-    }
-    document.getElementById("crew-page").style.transition = "none";
-    document.getElementById("crew-page").style.display = "none";
-  }, 1001);
-
-  if (deviceScreenWidth768px.matches) {
-    if (counter % 2 !== 0) {
-      document.getElementById("technology-page").style.transform =
-        "translateX(102%)";
-    } else {
-      document.getElementById("technology-page").style.transform =
-        "translateX(-102%)";
-    }
-  } else {
-    document.getElementById("technology-page").style.transform =
-      "translateX(-102%)";
-  }
-  document.getElementById("technology-page").style.transition =
-    "all 1s ease-in";
-  setTimeout(() => {
-    if (deviceScreenWidth768px.matches) {
-      if (counter % 2 !== 0) {
-        document.getElementById("technology-page").style.transform =
-          "translateY(102%)";
-      } else {
-        document.getElementById("technology-page").style.transform =
-          "translateY(-102%)";
-      }
-    } else {
-      document.getElementById("technology-page").style.transform =
-        "translateY(102%)";
-    }
-    document.getElementById("technology-page").style.transition = "none";
-    document.getElementById("technology-page").style.display = "none";
-  }, 1001);
-
-  if (index === 0) {
     setTimeout(() => {
-      document.getElementById("home-page").style.display = "flex";
+      if (deviceScreenWidth768px.matches) {
+        if (counter % 2 !== 0) {
+          changePagePositionBelowScreen(pagesArray[i]);
+        } else {
+          changePagePositionAboveScreen(pagesArray[i]);
+        }
+      } else {
+        changePagePositionBelowScreen(pagesArray[i]);
+      }
+    }, 1001);
+  }
+
+  if (choiceIndex === 0) {
+    setTimeout(() => {
+      homePage.style.display = "flex";
       setTimeout(() => {
-        document.getElementById("home-page").style.transform = "translateX(0%)";
-        document.getElementById("home-page").style.transition =
-          "all 0.6s ease-out";
+        animationIn(homePage);
       }, 48);
     }, 1002);
-  } else if (index === 1) {
+  } else if (choiceIndex === 1) {
     setTimeout(() => {
-      document.getElementById("destination-page").style.display = "flex";
+      destinationPage.style.display = "flex";
       setTimeout(() => {
-        document.getElementById("destination-page").style.transform =
-          "translateX(0%)";
-        document.getElementById("destination-page").style.transition =
-          "all 0.6s ease-out";
+        animationIn(destinationPage);
       }, 48);
     }, 1002);
-  } else if (index === 2) {
+  } else if (choiceIndex === 2) {
     setTimeout(() => {
-      document.getElementById("crew-page").style.display = "flex";
+      crewPage.style.display = "flex";
       setTimeout(() => {
-        document.getElementById("crew-page").style.transform = "translateX(0%)";
-        document.getElementById("crew-page").style.transition =
-          "all 0.6s ease-out";
+        animationIn(crewPage);
       }, 48);
     }, 1002);
-  } else if (index === 3) {
+  } else if (choiceIndex === 3) {
     setTimeout(() => {
-      document.getElementById("technology-page").style.display = "flex";
+      technologyPage.style.display = "flex";
       setTimeout(() => {
-        document.getElementById("technology-page").style.transform =
-          "translateX(0%)";
-        document.getElementById("technology-page").style.transition =
-          "all 0.6s ease-out";
+        animationIn(technologyPage);
       }, 48);
     }, 1002);
   }
 };
 
-const windowResize = (dataJSON) => {
-  window.addEventListener("resize", (event) => {
-    markerPositionSwitchOnWindowResize();
-    crewPageOnResize(dataJSON);
-  });
+const animationOutRight = (page) => {
+  page.style.transform = "translateX(102%)";
+  page.style.transition = "all 1s ease-in";
+};
+
+const animationOutLeft = (page) => {
+  page.style.transform = "translateX(-102%)";
+  page.style.transition = "all 1s ease-in";
+};
+
+const changePagePositionBelowScreen = (page) => {
+  page.style.transform = "translateY(102%)";
+  page.style.transition = "none";
+  page.style.display = "none";
+};
+
+const changePagePositionAboveScreen = (page) => {
+  page.style.transform = "translateY(-102%)";
+  page.style.transition = "none";
+  page.style.display = "none";
+};
+
+const animationIn = (page) => {
+  page.style.transform = "translateX(0%)";
+  page.style.transition = "all 0.6s ease-out";
 };

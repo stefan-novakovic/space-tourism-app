@@ -1,4 +1,4 @@
-export const crewDotBtnsListen = (dataJSON) => {
+export const CPDotBtnsListen = (dataJSON) => {
   let inProgress = false;
 
   const buttons = document.querySelectorAll(".crew-page .circle-btn");
@@ -195,39 +195,43 @@ const crewBioText = (dataJSON, index) => {
   }, 1500);
 };
 
-export const crewPageOnResize = (dataJSON) => {
-  let selectedButtonIndex;
+export const CPOnWindowResize = (dataJSON) => {
+  window.addEventListener("resize", (event) => {
+    let selectedButtonIndex;
 
-  const buttons = document.querySelectorAll(".crew-page .circle-btn");
-  for (let i = 0; i < buttons.length; i++) {
-    if (getComputedStyle(buttons[i]).getPropertyValue("opacity") === "1") {
-      selectedButtonIndex = i;
+    const buttons = document.querySelectorAll(".crew-page .circle-btn");
+    for (let i = 0; i < buttons.length; i++) {
+      if (getComputedStyle(buttons[i]).getPropertyValue("opacity") === "1") {
+        selectedButtonIndex = i;
+      }
     }
-  }
 
-  const textAndBtnsContainer = document.querySelector(
-    ".crew-page .text-and-buttons-container"
-  );
-  const crewBioText = document.querySelector(".crew-page .crew-bio-text");
+    const textAndBtnsContainer = document.querySelector(
+      ".crew-page .text-and-buttons-container"
+    );
+    const crewBioText = document.querySelector(".crew-page .crew-bio-text");
 
-  if (window.innerWidth < 768) {
-    textAndBtnsContainer.style.width = "327px";
-    crewBioText.style.width = "auto";
-  } else if (window.innerWidth >= 768 && window.innerWidth < 1440) {
-    crewBioText.style.width = "auto";
-    if (dataJSON.crew[selectedButtonIndex].name === "Douglas Hurley") {
-      textAndBtnsContainer.style.width = "458px";
-    } else if (
-      dataJSON.crew[selectedButtonIndex].name === "Mark Shuttleworth"
-    ) {
-      textAndBtnsContainer.style.width = "520px";
-    } else if (dataJSON.crew[selectedButtonIndex].name === "Anousheh Ansari") {
-      textAndBtnsContainer.style.width = "535.7px";
-    } else {
-      textAndBtnsContainer.style.width = "592px";
+    if (window.innerWidth < 768) {
+      textAndBtnsContainer.style.width = "327px";
+      crewBioText.style.width = "auto";
+    } else if (window.innerWidth >= 768 && window.innerWidth < 1440) {
+      crewBioText.style.width = "auto";
+      if (dataJSON.crew[selectedButtonIndex].name === "Douglas Hurley") {
+        textAndBtnsContainer.style.width = "458px";
+      } else if (
+        dataJSON.crew[selectedButtonIndex].name === "Mark Shuttleworth"
+      ) {
+        textAndBtnsContainer.style.width = "520px";
+      } else if (
+        dataJSON.crew[selectedButtonIndex].name === "Anousheh Ansari"
+      ) {
+        textAndBtnsContainer.style.width = "535.7px";
+      } else {
+        textAndBtnsContainer.style.width = "592px";
+      }
+    } else if (window.innerWidth >= 1440) {
+      textAndBtnsContainer.style.width = "auto";
+      crewBioText.style.width = "444px";
     }
-  } else if (window.innerWidth >= 1440) {
-    textAndBtnsContainer.style.width = "auto";
-    crewBioText.style.width = "444px";
-  }
+  });
 };
