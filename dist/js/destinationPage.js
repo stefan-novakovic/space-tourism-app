@@ -1,22 +1,27 @@
+let choiceMoon = 0;
 export const DPMoonsNavSelectionListen = (dataJSON) => {
   let inProgress = false;
 
   const navLinks = document.querySelectorAll(".destination-page .li__moon");
   for (let i = 0; i < navLinks.length; i++) {
     navLinks[i].addEventListener("click", (event) => {
-      if (!inProgress) {
-        inProgress = true;
+      if (i !== choiceMoon) {
+        if (!inProgress) {
+          inProgress = true;
 
-        // Klikom na link iz nav bar-a sklanja se hover marker ispod tog link-a
-        hideMoonsNavHoverMarker();
+          choiceMoon = i;
 
-        changeImage(dataJSON, i);
-        changeText(dataJSON, i);
+          // Klikom na link iz nav bar-a sklanja se hover marker ispod tog link-a
+          hideMoonsNavHoverMarker();
 
-        // VIDI KOLIKO TREBA DA BUDE
-        setTimeout(() => {
-          inProgress = false;
-        }, 2005);
+          changeImage(dataJSON, i);
+          changeText(dataJSON, i);
+
+          // VIDI KOLIKO TREBA DA BUDE
+          setTimeout(() => {
+            inProgress = false;
+          }, 2005);
+        }
       }
     });
   }
@@ -163,16 +168,18 @@ export const DPMoonsNavSelectionMarkerPositionListen = () => {
   let inProgress = false;
   for (let i = 0; i < listItems.length; i++) {
     listItems[i].addEventListener("click", (event) => {
-      if (!inProgress) {
-        choice = i;
-        inProgress = true;
+      if (i !== choice) {
+        if (!inProgress) {
+          choice = i;
+          inProgress = true;
 
-        markerPositionSwitch(listItems[choice], "screenResizeNo");
+          markerPositionSwitch(listItems[choice], "screenResizeNo");
 
-        // VIDI KOLIKO TREBA DA BUDE
-        setTimeout(() => {
-          inProgress = false;
-        }, 2005);
+          // VIDI KOLIKO TREBA DA BUDE
+          setTimeout(() => {
+            inProgress = false;
+          }, 2005);
+        }
       }
     });
   }

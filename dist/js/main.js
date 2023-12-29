@@ -49,17 +49,20 @@ const mainNavSelectionListen = () => {
   const listItems = document.querySelectorAll(".header .nav .ul .li");
   for (let i = 0; i < listItems.length; i++) {
     listItems[i].addEventListener("click", (event) => {
-      if (!inProgress) {
-        inProgress = true;
-        choice = i;
+      if (i !== choice) {
+        if (!inProgress) {
+          inProgress = true;
 
-        hoverMarkerStick(listItems[i]);
-        selectionMarkerPositionSwitch(listItems[i], "screenResizeNo");
-        pageSwitch(i);
+          choice = i;
 
-        setTimeout(() => {
-          inProgress = false;
-        }, 1801);
+          hoverMarkerStick(listItems[i]);
+          selectionMarkerPositionSwitch(listItems[i], "screenResizeNo");
+          pageSwitch(i);
+
+          setTimeout(() => {
+            inProgress = false;
+          }, 1801);
+        }
       }
     });
   }
@@ -72,17 +75,19 @@ const phoneNavSelectionListen = () => {
   const listItemsPhone = document.querySelectorAll("main .nav-phone .ul .li");
   for (let i = 0; i < listItemsPhone.length; i++) {
     listItemsPhone[i].addEventListener("click", (event) => {
-      if (!inProgressPhone) {
-        inProgressPhone = true;
-        choicePhone = i;
+      if (i !== choicePhone) {
+        if (!inProgressPhone) {
+          inProgressPhone = true;
+          choicePhone = i;
 
-        selectionMarkerPhonePositionSwitch(listItemsPhone[i]);
-        closePhoneSidebarMenu();
-        pageSwitch(i);
+          selectionMarkerPhonePositionSwitch(listItemsPhone[i]);
+          closePhoneSidebarMenu();
+          pageSwitch(i);
 
-        setTimeout(() => {
-          inProgressPhone = false;
-        }, 1651);
+          setTimeout(() => {
+            inProgressPhone = false;
+          }, 1651);
+        }
       }
     });
   }

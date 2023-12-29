@@ -178,6 +178,10 @@
       border: 1px solid $whiteColor;
     }
 
+    .circle-btn-alt:active {
+      filter: brightness(80%);
+    }
+
     .circle-btn-alt.reset-all-technology-page-btns {
       background-color: transparent;
       color: $whiteColor;

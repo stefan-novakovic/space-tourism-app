@@ -1,35 +1,40 @@
 export const CPDotBtnsListen = (dataJSON) => {
+  let choice = 0;
   let inProgress = false;
 
   const buttons = document.querySelectorAll(".crew-page .circle-btn");
   for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener("click", (event) => {
-      disableButtonsFunctionality(buttons);
-      removeButtonHoverListenersForSelectedButton(buttons, i);
+      if (i !== choice) {
+        disableButtonsFunctionality(buttons);
+        removeButtonHoverListenersForSelectedButton(buttons, i);
 
-      if (!inProgress) {
-        inProgress = true;
+        if (!inProgress) {
+          inProgress = true;
 
-        resetAllButtonsStyle(buttons);
+          choice = i;
 
-        markSelectedButton(buttons[i]);
-        removeButtonHoverEffectClassFromSelectedButton(buttons[i]);
-        addButtonHoverListenersToNonSelectedButtons(buttons, i);
+          resetAllButtonsStyle(buttons);
 
-        changeImage(dataJSON, i);
-        changeText(dataJSON, i);
+          markSelectedButton(buttons[i]);
+          removeButtonHoverEffectClassFromSelectedButton(buttons[i]);
+          addButtonHoverListenersToNonSelectedButtons(buttons, i);
 
-        // Fokusiraj na ovaj tekst zbog screen reader-a (accessibility)
-        setTimeout(() => {
-          document.querySelector(".crew-page .crew-page-title-text").focus();
-        }, 2000);
+          changeImage(dataJSON, i);
+          changeText(dataJSON, i);
 
-        // Onemogućava spam-ovanje button-a;
-        // Tranzicija slike i teksta traje 2750ms (moguce je kliknuti button pre nego što se nova slika i tekst pojave na ekranu)
-        setTimeout(() => {
-          enableButtonsFunctionality(buttons);
-          inProgress = false;
-        }, 1525);
+          // Fokusiraj na ovaj tekst zbog screen reader-a (accessibility)
+          setTimeout(() => {
+            document.querySelector(".crew-page .crew-page-title-text").focus();
+          }, 2000);
+
+          // Onemogućava spam-ovanje button-a;
+          // Tranzicija slike i teksta traje 2750ms (moguce je kliknuti button pre nego što se nova slika i tekst pojave na ekranu)
+          setTimeout(() => {
+            enableButtonsFunctionality(buttons);
+            inProgress = false;
+          }, 1525);
+        }
       }
     });
   }

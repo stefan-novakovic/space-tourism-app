@@ -1,27 +1,32 @@
+let choice = 0;
 export const TPDotBtnsListen = (dataJSON) => {
   let inProgress = false;
 
   const buttons = document.querySelectorAll(".technology-page .circle-btn-alt");
   for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener("click", (event) => {
-      if (!inProgress) {
-        inProgress = true;
+      if (i !== choice) {
+        if (!inProgress) {
+          inProgress = true;
 
-        removeButtonHoverListenersFromAllButtons(buttons);
-        resetAllButtonsStyle(buttons);
+          choice = i;
 
-        markSelectedButton(buttons[i]);
-        removeButtonHoverEffectClassFromSelectedButton(buttons[i]);
-        addButtonHoverListenersToNonSelectedButtons(buttons);
+          removeButtonHoverListenersFromAllButtons(buttons);
+          resetAllButtonsStyle(buttons);
 
-        changeImage(dataJSON, i);
-        changeText(dataJSON, i);
+          markSelectedButton(buttons[i]);
+          removeButtonHoverEffectClassFromSelectedButton(buttons[i]);
+          addButtonHoverListenersToNonSelectedButtons(buttons);
 
-        // Onemogućava spam-ovanje button-a;
-        // Tranzicija slike i teksta traje 2550ms (+30ms zbog zaštite)
-        setTimeout(() => {
-          inProgress = false;
-        }, 2580);
+          changeImage(dataJSON, i);
+          changeText(dataJSON, i);
+
+          // Onemogućava spam-ovanje button-a;
+          // Tranzicija slike i teksta traje 2550ms (+30ms zbog zaštite)
+          setTimeout(() => {
+            inProgress = false;
+          }, 2580);
+        }
       }
     });
   }
