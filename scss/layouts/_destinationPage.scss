@@ -9,16 +9,16 @@
   display: none;
 
   background-color: $darkBlueColor;
-  background-image: url("../../dist/assets/destination/background-destination-mobile.jpg");
+  background-image: url("/assets/destination/background-destination-mobile.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 
   @include mqMinW(525px) {
-    background-image: url("../../dist/assets/destination/background-destination-tablet.jpg");
+    background-image: url("/assets/destination/background-destination-tablet.jpg");
   }
 
   @include mqMinW(950px) {
-    background-image: url("../../dist/assets/destination/background-destination-desktop.jpg");
+    background-image: url("/assets/destination/background-destination-desktop.jpg");
     background-position: center;
   }
 
