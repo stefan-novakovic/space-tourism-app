@@ -37,7 +37,7 @@ const startApp = async () => {
 };
 
 const getJSONData = async () => {
-  const data = await fetch("data.json");
+  const data = await fetch("db/data.json");
   const dataJSON = await data.json();
   return dataJSON;
 };
