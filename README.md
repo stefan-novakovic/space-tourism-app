@@ -1,2 +1,2 @@
-Space Tourism Website\
-DEMO: https://space-tourism-website-novakovic.netlify.app/
+Space Tourism Web Application\
+DEMO: https://space-tourism-novakovic.netlify.app/
