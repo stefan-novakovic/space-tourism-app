@@ -29,11 +29,11 @@ export const CPDotBtnsListen = (dataJSON) => {
           }, 2000);
 
           // Onemogućava spam-ovanje button-a;
-          // Tranzicija slike i teksta traje 2750ms (moguce je kliknuti button pre nego što se nova slika i tekst pojave na ekranu)
+          // Tranzicija slike i teksta traje 4500ms (moguce je kliknuti button pre nego što se nova slika i pojavi na ekranu)
           setTimeout(() => {
             enableButtonsFunctionality(buttons);
             inProgress = false;
-          }, 1525);
+          }, 2000);
         }
       }
     });
@@ -128,9 +128,11 @@ const changeImage = (dataJSON, index) => {
     img.setAttribute("src", dataJSON.crew[index].images.png);
     img.setAttribute("alt", dataJSON.crew[index].name + " image");
     // Tranzicija nove slike na ekran
-    img.style.transition = "ease-in-out transform 1.25s";
-    img.style.transform = "translateY(0%)";
-  }, 1500);
+    setTimeout(() => {
+      img.style.transition = "ease-in-out transform 1.25s";
+      img.style.transform = "translateY(0%)";
+    }, 650);
+  }, 1350);
 };
 
 const changeText = (dataJSON, index) => {

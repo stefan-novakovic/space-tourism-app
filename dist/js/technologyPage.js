@@ -22,10 +22,10 @@ export const TPDotBtnsListen = (dataJSON) => {
           changeText(dataJSON, i);
 
           // Onemogućava spam-ovanje button-a;
-          // Tranzicija slike i teksta traje 2550ms (+30ms zbog zaštite)
+          // Tranzicija slike i teksta traje 3350ms (+30ms zbog zaštite)
           setTimeout(() => {
             inProgress = false;
-          }, 2580);
+          }, 3380);
         }
       }
     });
@@ -104,9 +104,9 @@ const changeImage = (dataJSON, index) => {
 
   // Tranzicija nove slike na ekran
   setTimeout(() => {
-    img.style.transition = "ease-in-out all 1.25s";
+    img.style.transition = "ease-in-out all 1.35s";
     img.style.transform = "translateX(0%)";
-  }, 1300);
+  }, 2000);
 };
 
 const changeText = (dataJSON, index) => {
